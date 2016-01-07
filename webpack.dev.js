@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: './dist',
     filename: 'static/[name].bindle.js',
-    publicPath: '.'
+    publicPath: ''
   },
   module: {
     loaders: [
@@ -25,6 +25,10 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style', 'css']
+      },
+      { 
+        test: /\.(png|jpg)$/, 
+        loader: 'url?limit=250000' 
       },
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

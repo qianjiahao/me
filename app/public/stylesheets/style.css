@@ -1,8 +1,65 @@
-body {
-  padding: 50px;
+html,body {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+.blue#00B7FF {
   color: #00B7FF;
+}
+
+.blue#3dbcf5 {
+  color: #3dbcf5;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.shadow-6 {
+  box-shadow: 1px 1px 3px #666;
+}
+
+.shadow-3 {
+  box-shadow: 1px 1px 3px #333;
+}
+
+.shadow-9 {
+  box-shadow: 1px 1px 3px #999;
+}
+
+.shadow-c {
+  box-shadow: 1px 1px 3px #ccc;
+}
+
+.clearFix {
+  overflow: hidden;
+}
+
+#content {
+  height: 100%;
+  width: 100%;
+}
+
+.cover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.hoverBtn {
+  transition: all 0.3s;
+}
+.hoverBtn:hover {
+  color: white;
+  background-color: #3dbcf5;
+  border-color: #3dbcf5;
 }
