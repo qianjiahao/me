@@ -16,7 +16,7 @@ var Nav = React.createClass({
         <div style={Style.box}>
         </div>
         <div style={assgin({}, Style.box, Style.login)}>
-          <Link to="/login">in</Link>
+          <Link to="/login"><i className="iconfont icon-login"></i></Link>
         </div>
       </div>
     );

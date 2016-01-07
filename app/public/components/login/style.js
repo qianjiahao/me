@@ -48,6 +48,8 @@ module.exports = {
     textAlign: 'center',
     paddingTop: '10px',
     paddingBottom: '10px',
+    cursor: 'pointer',
+    'WebkitUserSelect': 'none'
   },
   msg: {
     textAlign: 'center',
