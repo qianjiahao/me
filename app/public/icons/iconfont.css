@@ -16,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .icon-logout:before { content: "\e638"; }
-.icon-home:before { content: "\e671"; }
+.icon-console:before { content: "\e671"; }
 .icon-password:before { content: "\e736"; }
 .icon-user:before { content: "\e616"; }
 .icon-support:before { content: "\f003e"; }

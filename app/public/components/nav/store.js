@@ -12,6 +12,7 @@ msg.on('checkLoginStatus', () => {
   api.checkLoginStatus().then(res => {
     if(res.result === 'error') {
       store.cursor().set('isLogin', false);
+      window.location.hash = '#/';
     }
     if(res.result === 'ok') {
       var now = Date.now();
@@ -21,6 +22,7 @@ msg.on('checkLoginStatus', () => {
         store.cursor().set('isLogin', true);
       }else {
         store.cursor().set('isLogin', false);
+        window.location.hash = '#/';
       }
     }
   });
@@ -33,6 +35,7 @@ msg.on('logout', () => {
     }
     if(res.result === 'ok') {
       store.cursor().set('isLogin', false);
+      window.location.hash = '#/';
     }
-  })
-})
+  });
+});

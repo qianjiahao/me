@@ -22,14 +22,16 @@ var Nav = React.createClass({
 
         <Link to="/index" style={assgin({}, Style.box, Style.logo, Style.a)}>Q</Link>
         
-        <div style={Style.box}>
-        </div>
-
         {data && data.get('isLogin')
           ? (
-            <a href="javascript:;" style={assgin({}, Style.box, Style.login, Style.a)} onClick={() => msg.emit('logout')}>
-              <i className="iconfont icon-logout"></i>
-            </a>
+            <div>
+              <a href="javascript:;" style={assgin({}, Style.box, Style.login, Style.a)} onClick={() => msg.emit('logout')}>
+                <i className="iconfont icon-logout"></i>
+              </a>
+              <Link to="/console" style={assgin({}, Style.box)}>
+                <i className="iconfont icon-console"></i>
+              </Link>
+            </div>
           ) 
           : (
             <Link to="/login" style={assgin({}, Style.box, Style.login)}>

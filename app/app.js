@@ -8,6 +8,7 @@ require('./public/icons/iconfont.css');
 var Nav = require('./public/components/nav/app.js');
 var Index = require('./public/components/index/app.js');
 var Login = require('./public/components/login/app.js');
+var Console = require('./public/components/console/app.js');
 
 var App = React.createClass({
   render () {
@@ -28,6 +29,7 @@ render((
       <IndexRoute component={Index} />
       <Route path="index" component={Index} />
       <Route path="login" component={Login} />
+      <Route path="console" component={Console} />
     </Route>
   </Router>
 ), document.getElementById('content'));
