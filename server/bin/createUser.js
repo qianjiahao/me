@@ -1,21 +1,31 @@
 var User = require('../db/User.js');
 var bcrypt = require('bcrypt');
+var data = require('../../data.js');
 
-var user = {
-  username: 'qianjiahao',
-  bcrypt_password: 'aboutme'
-};
+if(Object.keys(data)) {
 
-bcrypt.genSalt(10, (err, salt) => {
-  bcrypt.hash(user.bcrypt_password, salt, (err, hash) => {
-    user.bcrypt_password = hash;
+  User.findOne({ username: data.username }, (err, user) => {
+    if(err) return err;
 
-    User.save(user, (err, user) => {
-      if(err) return err;
+    if(user) {
+      return console.log('Find one reuslt : ', user);
+    }
 
-      console.log('save user');
-      console.log(user);
-    });
-  });
-});
+    if(!user) {
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(data.bcrypt_password, salt, (err, hash) => {
+          data.bcrypt_password = hash;
+
+          User.create(data, (err, user) => {
+            if(err) return err;
+
+            console.log('Create one user : ', user);
+          });
+        });
+      });    
+    }
+  })
+}
+
+
 

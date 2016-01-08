@@ -10,7 +10,9 @@ var Console = React.createClass({
   render: function() {
     return (
       <div>
-        console
+        <div>console tools</div>
+        <div>title</div>
+        <div>content</div>
       </div>
     );
   }
