@@ -1,9 +1,9 @@
 var ajax = require('ajax');
 
 
-exports.login = (username, password) => {
+exports.login = (username, password, authCode) => {
   return new Promise((resolve) => {
-    ajax.post('/login', { username: username, password: password }, (res) => {
+    ajax.post('/login', { username: username, password: password, authCode: authCode }, (res) => {
       resolve(res);
     });
   });

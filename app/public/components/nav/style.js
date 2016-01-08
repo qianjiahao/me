@@ -12,7 +12,8 @@ module.exports = {
     textAlign: 'center',
     fontSize: '20px',
     paddingTop: '10px',
-    paddingBottom: '10px'
+    paddingBottom: '10px',
+    display: 'block'
   },
   login: {
     position: 'absolute',
@@ -23,6 +24,7 @@ module.exports = {
     height: '30px',
   },
   a: {
-    color: 'white'
+    color: 'white',
+    textDecoration: 'none'
   }
 }

@@ -9,10 +9,10 @@ module.exports = {
   },
   group: {
     width: '230px',
-    border: 'none',
     margin: '0 auto',
     border: '1px #b1b1b1 solid',
     marginTop: '10px',
+    transition: 'all 0.3s'
   },
   icon: {
     float: 'left',

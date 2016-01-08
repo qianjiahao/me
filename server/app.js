@@ -15,6 +15,7 @@ var app = express();
 app.set('views', path.resolve(__dirname, '../dist'));
 app.set('views', path.resolve(__dirname, '../app/public/views'));
 app.set('view engine', 'html');
+app.set('trust proxy', 1);
 app.engine('.html', require('ejs').__express);
 
 // uncomment after placing your favicon in /public
@@ -29,7 +30,6 @@ app.use(session({
   secret: 'secret is secret',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
 }));
 
 app.use('/', routes);
