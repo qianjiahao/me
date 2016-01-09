@@ -4,11 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>{%= o.htmlWebpackPlugin.options.title %}</title>
+
+    <style type="text/css">
+    html,body {
+      height: 100%;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+      font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
+
+    #content {
+      height: 100%;
+      width: 100%;
+    }
+    .animation-box {
+      width: 60vw;
+      /*border: 1px #b1b1b1 solid;*/
+      margin: 0 auto;
+      height: 50%;
+      margin-top: 12.5%;
+      position: relative;
+    }
+
+    @-webkit-keyframes 'heart-beat' {
+      0% {
+        margin-left: 0;
+      }
+      /*30% {
+        margin-top: 15vw;
+      }
+      40% {
+        margin-top: 5vw;
+      }
+      60% {
+        margin-top: 25vw;
+      }
+      70% {
+       margin-top: 15vw; 
+      }*/
+      100% {
+        margin-left: 58vw; 
+      }
+    }
+
+    .point {
+      width: 1vw;
+      height: 1vw;
+      position: absolute;
+      margin-top: 15vw;
+      border-radius: 0.5vw;
+      background-color: #00B7FF;
+      -webkit-animation-name:'heart-beat';
+      -webkit-animation-duration: 2.4s;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-iteration-count: infinite;
+    }
+
+    .pd0 {
+      -webkit-animation-delay: 0s;
+      background-color: black;
+    }
+    .pd1 {
+      -webkit-animation-delay: -0.2s;
+      background-color:  #8B00FF;
+    }
+    .pd2 {
+      -webkit-animation-delay: -0.4s;
+      background-color: #0000FF;
+    }
+    .pd3 {
+      -webkit-animation-delay: -0.6s;
+      background-color: #00FFFF;
+    }
+    .pd4 {
+      -webkit-animation-delay: -0.8s;
+      background-color: #00FF00;
+    }
+    .pd5 {
+      -webkit-animation-delay: -1s;
+      background-color: #FFFF00;
+    }
+    .pd6 {
+      -webkit-animation-delay: -1.2s;
+      background-color: #FF7F00;
+    }
+    .pd7 {
+      -webkit-animation-delay: -1.4s;
+      background-color: #FF0000;
+    }
+    .pd8 {
+      -webkit-animation-delay: -1.6s;
+      background-color: white;
+    }
+    
+    </style>
 </head>
 <body>
   <div id="content">
 
-    content
+    <div class="animation-box">
+      
+      <div class="point pd0"></div>
+      <div class="point pd1"></div>
+      <div class="point pd2"></div>
+      <div class="point pd3"></div>
+      <div class="point pd4"></div>
+      <div class="point pd5"></div>
+      <div class="point pd6"></div>
+      <div class="point pd7"></div>
+      <div class="point pd8"></div>
+
+    </div>
+
 
   </div>
 
