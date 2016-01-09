@@ -5,6 +5,7 @@ module.exports = {
     left: '0px',
     bottom: '0px',
     width: '40px',
+    zIndex: '9999',
     backgroundColor: '#2a2a2a'
   },
   box: {

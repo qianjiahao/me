@@ -63,3 +63,27 @@ a {
   background-color: #3dbcf5;
   border-color: #3dbcf5;
 }
+
+@keyframes round {
+  0% {
+    transform: rotate(45deg);
+  }
+  60% {
+    transform: rotate(405deg); 
+  }
+  100% {
+    transform: rotate(405deg); 
+  }
+}
+
+@-webkit-keyframes round {
+  0% {
+    transform: rotate(45deg);
+  }
+  60% {
+    transform: rotate(405deg); 
+  }
+  100% {
+    transform: rotate(405deg); 
+  }
+}

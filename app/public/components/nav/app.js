@@ -18,7 +18,7 @@ var Nav = React.createClass({
     var data = store.data();
 
     return (
-      <div style={Style.container} className="shadow-9">
+      <div style={Style.container}>
 
         <Link to="/index" style={assgin({}, Style.box, Style.logo, Style.a)}>Q</Link>
         

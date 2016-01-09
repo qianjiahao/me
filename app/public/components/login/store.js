@@ -6,7 +6,7 @@ var store = module.exports = Store({
   msg: '',
   username: '',
   password: '',
-  authCode: ''
+  authCode: '',
 });
 
 msg.on('login', () => {
