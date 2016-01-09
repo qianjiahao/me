@@ -19,106 +19,91 @@
       height: 100%;
       width: 100%;
     }
-    .animation-box {
-      width: 60vw;
-      /*border: 1px #b1b1b1 solid;*/
-      margin: 0 auto;
-      height: 50%;
-      margin-top: 12.5%;
-      position: relative;
-    }
 
-    @-webkit-keyframes 'heart-beat' {
-      0% {
-        margin-left: 0;
-      }
-      /*30% {
-        margin-top: 15vw;
-      }
-      40% {
-        margin-top: 5vw;
-      }
-      60% {
-        margin-top: 25vw;
-      }
-      70% {
-       margin-top: 15vw; 
-      }*/
-      100% {
-        margin-left: 58vw; 
-      }
-    }
-
-    .point {
-      width: 1vw;
-      height: 1vw;
+    .circle {
+      width: 26vw;
+      height: 26vw;
       position: absolute;
-      margin-top: 15vw;
-      border-radius: 0.5vw;
-      background-color: #00B7FF;
-      -webkit-animation-name:'heart-beat';
+      top: 25%;
+      right: 38vw;
+      /*border: 1px #b1b1b1 solid;*/
+      transform: rotate(45deg);
+
+      animation-name:'round';
+      animation-duration: 2.4s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+
+      -webkit-animation-name:'round';
       -webkit-animation-duration: 2.4s;
       -webkit-animation-timing-function: ease-in-out;
       -webkit-animation-iteration-count: infinite;
     }
 
-    .pd0 {
-      -webkit-animation-delay: 0s;
-      background-color: black;
+    .dot {
+      width: 1.5vw;
+      height: 1.5vw;
+      border-radius: 1.5vw;
+      position: absolute;
+      box-shadow: 0px 0px 2px #333;
     }
-    .pd1 {
-      -webkit-animation-delay: -0.2s;
-      background-color:  #8B00FF;
+
+    @keyframes round {
+      0% {
+        transform: rotate(45deg);
+      }
+      60% {
+        transform: rotate(405deg); 
+      }
+      100% {
+        transform: rotate(405deg); 
+      }
     }
-    .pd2 {
-      -webkit-animation-delay: -0.4s;
-      background-color: #0000FF;
+
+    @-webkit-keyframes round {
+      0% {
+        transform: rotate(45deg);
+      }
+      60% {
+        transform: rotate(405deg); 
+      }
+      100% {
+        transform: rotate(405deg); 
+      }
     }
-    .pd3 {
-      -webkit-animation-delay: -0.6s;
-      background-color: #00FFFF;
-    }
-    .pd4 {
-      -webkit-animation-delay: -0.8s;
-      background-color: #00FF00;
-    }
-    .pd5 {
-      -webkit-animation-delay: -1s;
-      background-color: #FFFF00;
-    }
-    .pd6 {
-      -webkit-animation-delay: -1.2s;
-      background-color: #FF7F00;
-    }
-    .pd7 {
-      -webkit-animation-delay: -1.4s;
-      background-color: #FF0000;
-    }
-    .pd8 {
-      -webkit-animation-delay: -1.6s;
-      background-color: white;
-    }
-    
+
+    .d8 { background-color: #000000; }
+    .d7 { background-color: #8B00FF; }
+    .d6 { background-color: #0000FF; }
+    .d5 { background-color: #00FFFF; }
+    .d4 { background-color: #00FF00; }
+    .d3 { background-color: #FFFF00; }
+    .d2 { background-color: #FF7F00; }
+    .d1 { background-color: #FF0000; }
+    .d0 { background-color: #FFFFFF; }
+
+    .c0 { -webkit-animation-delay: 0.0s; }
+    .c1 { -webkit-animation-delay: 0.1s; }
+    .c2 { -webkit-animation-delay: 0.2s; }
+    .c3 { -webkit-animation-delay: 0.3s; }
+    .c4 { -webkit-animation-delay: 0.4s; }
+    .c5 { -webkit-animation-delay: 0.5s; }
+    .c6 { -webkit-animation-delay: 0.6s; }
+    .c7 { -webkit-animation-delay: 0.7s; }
+    .c8 { -webkit-animation-delay: 0.8s; }
     </style>
 </head>
 <body>
   <div id="content">
-
-    <div class="animation-box">
-      
-      <div class="point pd0"></div>
-      <div class="point pd1"></div>
-      <div class="point pd2"></div>
-      <div class="point pd3"></div>
-      <div class="point pd4"></div>
-      <div class="point pd5"></div>
-      <div class="point pd6"></div>
-      <div class="point pd7"></div>
-      <div class="point pd8"></div>
-
-    </div>
-
-
+    <div class="circle c0"><div class="dot d0"></div></div>
+    <div class="circle c1"><div class="dot d1"></div></div>
+    <div class="circle c2"><div class="dot d2"></div></div>
+    <div class="circle c3"><div class="dot d3"></div></div>
+    <div class="circle c4"><div class="dot d4"></div></div>
+    <div class="circle c5"><div class="dot d5"></div></div>
+    <div class="circle c6"><div class="dot d6"></div></div>
+    <div class="circle c7"><div class="dot d7"></div></div>
+    <div class="circle c8"><div class="dot d8"></div></div>
   </div>
 
   {% for ( var i in o.htmlWebpackPlugin.files.js ) { %}
