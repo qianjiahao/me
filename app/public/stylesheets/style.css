@@ -4,6 +4,7 @@ html,body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  position: relative;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -39,12 +40,6 @@ a {
 .clearFix {
   overflow: hidden;
 }
-
-#content {
-  height: 100%;
-  width: 100%;
-}
-
 .cover-img {
   position: absolute;
   top: 0;

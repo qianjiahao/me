@@ -21,8 +21,8 @@ router.get('/authCode', (req, res) => {
 router.post('/login', (req, res) => {
   var username = req.body.username;
   var password = req.body.password;
-  var authCode = req.body.authCode ? '' : req.body.authCode.toLowerCase();
-  var code = req.session.authCode ? '' : req.session.authCode.toLowerCase();
+  var authCode = req.body.authCode ? req.body.authCode.toLowerCase() : '';
+  var code = req.session.authCode ? req.session.authCode.toLowerCase() : '';
 
   User.findOne({ username: username }, (err, user) => {
     if(err) return res.json({ result: 'error', msg: '用户名或密码错误' });

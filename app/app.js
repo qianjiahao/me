@@ -22,7 +22,6 @@ var App = React.createClass({
 })
 
 
-
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>

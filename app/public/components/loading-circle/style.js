@@ -4,8 +4,9 @@ module.exports = {
     height: '100%',
     backgroundColor: '#2a2a2a',
     opacity: '0.7',
-    position: 'absolute',
-    overflow: 'hidden'
+    position: 'fixed',
+    overflow: 'hidden',
+    zIndex: '999'
   },
   circle: {
     width: '26vw',
