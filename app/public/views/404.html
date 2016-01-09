@@ -64,7 +64,63 @@
       font-size: 3vw;
       width: 100%;
       text-align: center;
+      color: white;
+      transition: all 0.3s;
       font-family:Verdana,Tahoma,sans-serif;
+    }
+    .link:hover {
+      color: black;
+    }
+
+    @keyframes 'blink' {
+      0% {
+        visibility: visible;
+      }
+      33% {
+        visibility: hidden;
+      }
+      100% {
+        visibility: hidden; 
+      }
+    }
+
+    @-webkit-keyframes 'blink' {
+      0% {
+        visibility: visible;
+        transition: all 0.2s;
+      }
+      50% {
+        visibility: hidden;
+        transition: all 0.2s;
+      }
+      100% {
+        visibility: hidden; 
+        transition: all 0.2s;
+      }
+    }
+
+    .arrow1 {
+      -webkit-animation-name:'blink';
+      -webkit-animation-duration: 1s;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-delay: 0.4s;
+      -webkit-animation-iteration-count: infinite;
+    }
+
+    .arrow2 {
+      -webkit-animation-name:'blink';
+      -webkit-animation-duration: 1s;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-delay: 0.2s;
+      -webkit-animation-iteration-count: infinite;
+    }
+
+    .arrow3 {
+      -webkit-animation-name:'blink';
+      -webkit-animation-duration: 1s;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-delay: 0s;
+      -webkit-animation-iteration-count: infinite;
     }
   </style>
 </head>
@@ -75,7 +131,13 @@
   <span class="message">本网页已飞向浩瀚宇宙</span>
 
   <div class="link">
+    <span class="arrow1"> < </span>
+    <span class="arrow2"> < </span>
+    <span class="arrow3"> < </span>
     <a href="/">回到过去</a>
+    <span class="arrow3"> > </span>
+    <span class="arrow2"> > </span>
+    <span class="arrow1"> > </span>
   </div>
 </body>
 </html>

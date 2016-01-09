@@ -1,5 +1,6 @@
 var React = require('react');
 var { msg, mixins } = require('iflux');
+var Style = require('./style.js');
 
 var Console = React.createClass({
 
@@ -9,10 +10,12 @@ var Console = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <div>console tools</div>
-        <div>title</div>
-        <div>content</div>
+      <div style={Style.container}>
+        <div style={Style.tools}>console tools</div>
+        <div style={Style.title}>
+          <input type="text" style={Style.input}/>
+        </div>
+        <div style={Style.content}>content</div>
       </div>
     );
   }

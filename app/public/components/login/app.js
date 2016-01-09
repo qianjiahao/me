@@ -50,7 +50,6 @@ var Login = React.createClass({
       </div>
     );
   }
-
 });
 
 module.exports = Login;
