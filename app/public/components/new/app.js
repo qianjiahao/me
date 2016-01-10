@@ -19,6 +19,12 @@ var New = React.createClass({
           <label>标签 <span style={Style.hint}>分隔符 |</span></label>
           <input type="text" placeholder="" style={assgin({}, Style.input)}/>
         </div>
+        <form action="/uploads" method="post" encType="multipart/form-data">
+          <div style={Style.group}>
+            <input type="file" name="file"/>
+          </div>
+          <button type="submit">upload</button>
+        </form>
         <div style={Style.group}>
           <label>正文</label>
           <textarea placeholder="" style={assgin({}, Style.textArea)}/>

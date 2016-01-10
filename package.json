@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./server/bin/run.js",
+    "server": "./node_modules/.bin/nodemon ./server/bin/run.js",
     "build": "./node_modules/.bin/webpack --config ./webpack.dev.js -w"
   },
   "repository": {
@@ -37,6 +38,7 @@
     "jade": "~1.11.0",
     "mongoose": "^4.3.4",
     "morgan": "~1.6.1",
+    "multer": "^1.1.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-router": "^1.0.3",
@@ -56,6 +58,7 @@
     "gulp": "^3.9.0",
     "gulp-livereload": "^3.8.1",
     "html-webpack-plugin": "^1.7.0",
+    "nodemon": "^1.8.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9"

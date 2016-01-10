@@ -3,6 +3,7 @@ var router = express.Router();
 var ccap = require('ccap');
 var User = require('../db/User.js');
 var bcrypt = require('bcrypt');
+var upload = require('../util/multerUtil.js');
 
 router.get('/authCode', (req, res) => {
   if(req.url == '/favicon.ico') return res.end('');
@@ -64,6 +65,11 @@ router.post('/checkLoginStatus', (req, res) => {
   }
 
   return res.json({ result: 'ok', msg: '欢迎归来', data: req.session });
+});
+
+router.post('/uploads', upload, function(req, res) {
+  console.log(req.file, req.body);
+  res.json({ data: ''});
 });
 
 module.exports = router;
