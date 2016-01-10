@@ -9,6 +9,9 @@ var Nav = require('./public/components/nav/app.js');
 var Index = require('./public/components/index/app.js');
 var Login = require('./public/components/login/app.js');
 var Console = require('./public/components/console/app.js');
+var Settings = require('./public/components/settings/app.js');
+var New = require('./public/components/new/app.js');
+var Dashboard = require('./public/components/dashboard/app.js');
 
 var App = React.createClass({
   render () {
@@ -28,7 +31,12 @@ render((
       <IndexRoute component={Index} />
       <Route path="index" component={Index} />
       <Route path="login" component={Login} />
-      <Route path="console" component={Console} />
+      <Route path="console" component={Console}>
+        <IndexRoute component={Dashboard} />
+        <Route path="dashboard" component={Dashboard} />
+        <Route path="settings" component={Settings} />
+        <Route path="new" component={New} />
+      </Route>
     </Route>
   </Router>
 ), document.getElementById('content'));

@@ -20,7 +20,7 @@ msg.on('login', () => {
     store.cursor().set('msg', res.msg);
 
     if(res.result == 'ok') {
-      window.location.href = '/';
+      window.location.hash = '#/console';
     }
   });
 });

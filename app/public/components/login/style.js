@@ -1,4 +1,7 @@
 module.exports = {
+  container: {
+    backgroundColor: 'white'
+  },
   title: {
     fontSize: '30px',
     width: '100%',

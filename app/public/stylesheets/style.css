@@ -8,35 +8,6 @@ html,body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.blue#00B7FF {
-  color: #00B7FF;
-}
-
-.blue#3dbcf5 {
-  color: #3dbcf5;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-.shadow-6 {
-  box-shadow: 1px 1px 3px #666;
-}
-
-.shadow-3 {
-  box-shadow: 1px 1px 3px #333;
-}
-
-.shadow-9 {
-  box-shadow: 1px 1px 3px #999;
-}
-
-.shadow-c {
-  box-shadow: 1px 1px 3px #ccc;
-}
-
 .clearFix {
   overflow: hidden;
 }
@@ -57,6 +28,13 @@ a {
   color: white;
   background-color: #3dbcf5;
   border-color: #3dbcf5;
+}
+
+.bread {
+  border: none;
+  border-left: 2px #3dbcf5 solid;
+  padding-left: 3px;
+  margin-left: 3px;
 }
 
 @keyframes round {
@@ -82,3 +60,7 @@ a {
     transform: rotate(405deg); 
   }
 }
+
+
+/*blue #00B7FF*/
+/*blue #3dbcf5 */

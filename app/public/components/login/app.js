@@ -13,7 +13,7 @@ var Login = React.createClass({
     var data = store.data();
 
     return (
-      <div>
+      <div style={Style.container}>
         <div style={Style.title}>in</div>
 
         <div>
