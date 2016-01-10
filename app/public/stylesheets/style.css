@@ -30,13 +30,6 @@ html,body {
   border-color: #3dbcf5;
 }
 
-.bread {
-  border: none;
-  border-left: 2px #3dbcf5 solid;
-  padding-left: 3px;
-  margin-left: 3px;
-}
-
 @keyframes round {
   0% {
     transform: rotate(45deg);
@@ -61,6 +54,17 @@ html,body {
   }
 }
 
+@-moz-keyframes round {
+  0% {
+    transform: rotate(45deg);
+  }
+  60% {
+    transform: rotate(405deg); 
+  }
+  100% {
+    transform: rotate(405deg); 
+  }
+}
 
 /*blue #00B7FF*/
 /*blue #3dbcf5 */

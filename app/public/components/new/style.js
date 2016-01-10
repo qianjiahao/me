@@ -2,6 +2,7 @@ module.exports = {
   group: {
     padding: '10px',
     boxShadow: '0px 1px 3px #b1b1b1',
+    // borderBottom: '1px #b1b1b1 solid',
     margin: '10px 0'
   },
   input: {
@@ -14,12 +15,18 @@ module.exports = {
   textArea: {
     fontSize: '18px',
     width: '100%',
-    height: '400px',
+    height: '300px',
     border: 'none',
     outline: 'none'
   },
   publish: {
-    float: 'right'
+    float: 'right',
+    paddingLeft: '20px',
+    paddingRight: '20px',
+    color: 'white',
+    cursor: 'pointer',
+    backgroundColor: '#3dbcf5',
+    borderRadius: '3px'
   },
   a: {
     color: 'black'

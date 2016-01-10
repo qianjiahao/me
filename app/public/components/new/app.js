@@ -8,11 +8,8 @@ var New = React.createClass({
   render: function() {
     return (
       <div>
-        <span className="bread">
-          <Link to="/console" style={Style.a}>控制台</Link>
-        </span>
         <span className="bread">新建</span>
-        <span style={Style.publish}>发布</span>
+        <div style={Style.publish}>发布</div>
         <div style={Style.group}>
           <label>标题</label>
           <input type="text" placeholder="" style={assgin({}, Style.input)}/>
