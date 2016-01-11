@@ -2,8 +2,7 @@ module.exports = {
   group: {
     padding: '10px',
     boxShadow: '0px 1px 3px #b1b1b1',
-    // borderBottom: '1px #b1b1b1 solid',
-    margin: '10px 0'
+    margin: '20px 0'
   },
   input: {
     border: 'none',
@@ -19,10 +18,9 @@ module.exports = {
     border: 'none',
     outline: 'none'
   },
-  publish: {
+  create: {
     float: 'right',
-    paddingLeft: '20px',
-    paddingRight: '20px',
+    padding: '5px 20px',
     color: 'white',
     cursor: 'pointer',
     backgroundColor: '#3dbcf5',

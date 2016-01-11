@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 var ccap = require('ccap');
 var User = require('../db/User.js');
+var Blog = require('../db/Blog.js');
 var bcrypt = require('bcrypt');
-var upload = require('../util/multerUtil.js');
+var formidable = require('formidable');
 
 router.get('/authCode', (req, res) => {
   if(req.url == '/favicon.ico') return res.end('');
@@ -67,9 +68,46 @@ router.post('/checkLoginStatus', (req, res) => {
   return res.json({ result: 'ok', msg: '欢迎归来', data: req.session });
 });
 
-router.post('/uploads', upload, function(req, res) {
-  console.log(req.file, req.body);
-  res.json({ data: ''});
+router.post('/uploads', (req, res) => {
+  var form = new formidable.IncomingForm();
+
+  form.encoding = 'utf-8';
+  form.uploadDir = './app/public/uploads';
+  form.keepExtensions = true;
+  form.hash = 'md5';
+
+  form.on('progress', (size, total) => {
+    console.log(`receive ${(size/total*100).toFixed(2)}%`);
+  });
+
+  form.parse(req, (err, fields, files) => {
+    if(err) return console.log(err);
+
+    res.json({data: files});
+  });
 });
 
+router.post('/create', (req, res) => {
+
+  var blog = req.body;
+  Blog.create(blog, (err, blog) => {
+    if(err) {
+     console.log(err); 
+     return res.json({ result: 'error', msg: err }); 
+    }
+    
+    console.log('1')
+    if(blog) return res.json({ result: 'ok', msg: '创建成功', data: blog });
+    console.log('2')
+  });
+});
+
+router.post('/findAll', (req, res) => {
+  Blog.findAll((err, blogs) => {
+    if(err) return res.json({ result: 'error', msg: err });
+
+    if(!blogs) return res.json({ result: 'ok', msg: '查询成功', data: {} })
+    if(blogs) return res.json({ result: 'ok', msg: '查询成功', data: blogs });
+  })
+})
 module.exports = router;

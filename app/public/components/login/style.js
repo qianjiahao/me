@@ -20,10 +20,10 @@ module.exports = {
   icon: {
     float: 'left',
     width: '50px',
-    height: '40px',
+    height: '36px',
     textAlign: 'center',
     verticalAlign: 'middle',
-    lineHeight: '40px',
+    lineHeight: '36px',
     borderRight: '1px #b1b1b1 solid',
   },
   input: {
@@ -33,7 +33,7 @@ module.exports = {
     border: 'none',
     outline: 'none',
     display: 'block',
-    fontSize: '26px'
+    fontSize: '22px'
   },
   authCode: {
     width: '220px',
@@ -44,7 +44,7 @@ module.exports = {
     border: 'none',
     outline: 'none',
     display: 'block',
-    fontSize: '26px',
+    fontSize: '22px',
     width: '220px'
   },
   submit: {

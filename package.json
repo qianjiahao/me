@@ -32,6 +32,7 @@
     "es6-shim": "^0.34.1",
     "express": "~4.13.1",
     "express-session": "^1.12.1",
+    "formidable": "^1.0.17",
     "history": "^1.17.0",
     "iflux": "^1.1.11",
     "immutable": "^3.7.6",
