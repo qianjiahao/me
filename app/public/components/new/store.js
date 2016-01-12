@@ -5,7 +5,8 @@ var store = module.exports = Store({
   title: '',
   tags: '',
   publish: 0,
-  content: ''
+  content: '',
+  tab: 0,
 });
 
 msg.on('changeTitle', value => {
@@ -50,3 +51,10 @@ msg.on('create', () => {
     }
   });
 });
+
+msg.on('tab', value => {
+  store.cursor().set('tab', value);
+});
+
+
+

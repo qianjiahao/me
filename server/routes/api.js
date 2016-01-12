@@ -1,24 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var ccap = require('ccap');
 var User = require('../db/User.js');
 var Blog = require('../db/Blog.js');
 var bcrypt = require('bcrypt');
-var formidable = require('formidable');
+var { uploads_single, query_uploads } = require('../util/uploads.js');
+var authCode = require('../util/authCode.js');
 
-router.get('/authCode', (req, res) => {
-  if(req.url == '/favicon.ico') return res.end('');
+router.get('/authCode', authCode);
 
-  var any = ccap().get();
-  var text = any[0];
-  var butter = any[1];
+router.post('/uploads', uploads_single);
 
-  console.log(text);
-
-  req.session.authCode = text;
-  console.log(req.session);
-  res.end(butter);
-});
+router.post('/query_uploads', query_uploads);
 
 router.post('/login', (req, res) => {
   var username = req.body.username;
@@ -68,24 +60,6 @@ router.post('/checkLoginStatus', (req, res) => {
   return res.json({ result: 'ok', msg: '欢迎归来', data: req.session });
 });
 
-router.post('/uploads', (req, res) => {
-  var form = new formidable.IncomingForm();
-
-  form.encoding = 'utf-8';
-  form.uploadDir = './app/public/uploads';
-  form.keepExtensions = true;
-  form.hash = 'md5';
-
-  form.on('progress', (size, total) => {
-    console.log(`receive ${(size/total*100).toFixed(2)}%`);
-  });
-
-  form.parse(req, (err, fields, files) => {
-    if(err) return console.log(err);
-
-    res.json({data: files});
-  });
-});
 
 router.post('/create', (req, res) => {
 
@@ -96,9 +70,7 @@ router.post('/create', (req, res) => {
      return res.json({ result: 'error', msg: err }); 
     }
     
-    console.log('1')
     if(blog) return res.json({ result: 'ok', msg: '创建成功', data: blog });
-    console.log('2')
   });
 });
 

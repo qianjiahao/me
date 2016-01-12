@@ -12,11 +12,18 @@ module.exports = {
 
   },
   textArea: {
+    marginTop: '10px',
     fontSize: '18px',
     width: '100%',
     height: '300px',
     border: 'none',
     outline: 'none'
+  },
+  htmlArea: {
+    marginTop: '10px',
+    fontSize: '18px',
+    width: '100%',
+    height: '300px',
   },
   create: {
     float: 'right',
@@ -31,5 +38,19 @@ module.exports = {
   },
   hint: {
     color: '#b1b1b1'
+  },
+  tab: {
+    padding: '5px',
+    margin: '5px',
+    cursor: 'pointer',
+    border: '1px white solid'
+  },
+  active: {
+    border: '1px #3dbcf5 solid'
+  },
+  pic: {
+    display: 'inline',
+    float: 'right',
+    cursor: 'pointer'
   }
 }

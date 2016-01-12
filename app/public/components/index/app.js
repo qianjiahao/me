@@ -6,7 +6,7 @@ var Index = React.createClass({
   render: function() {
     return (
       <div style={Style.container}>
-        <div style={Style.leftAside}>
+        <div style={Style.rightAside}>
           <img className="cover-img" src="../../images/bg2.jpg" />
         </div>
         <div style={Style.warpper}>

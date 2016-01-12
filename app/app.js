@@ -18,7 +18,7 @@ var App = React.createClass({
     return (
       <div>
         <Nav />
-        <div style={{marginLeft: '40px'}}>{this.props.children}</div>
+        <div style={{marginLeft: '40px', overflowX: 'hidden'}}>{this.props.children}</div>
       </div>
     )
   }

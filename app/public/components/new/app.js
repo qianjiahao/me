@@ -5,7 +5,8 @@ var { Link } = require('react-router');
 var { msg, mixins } = require('iflux');
 var StoreMixin = mixins.StoreMixin;
 var store = require('./store.js');
-
+var markdown = require('markdown').markdown;
+var Pic = require('../pic/app.js');
 var New = React.createClass({
   mixins: [StoreMixin(store)],
 
@@ -37,16 +38,16 @@ var New = React.createClass({
           <input type="radio" name="publish" value="1" {...publishOpts} onChange={this.changePublish}/>Y
           <input type="radio" name="publish" value="0" {...unpublishOpts} onChange={this.changePublish}/>N
         </div>
-{/*        <form action="/uploads" method="post" encType="multipart/form-data" target="frameFile">
-          <div style={Style.group}>
-            <input type="file" name="file"/>
-          </div>
-          <button type="submit">upload</button>
-        </form>
-        <iframe id='frameFile' name='frameFile' style={{display: 'none'}}></iframe>*/}
         <div style={Style.group}>
-          <label>正文</label>
-          <textarea placeholder="" style={assgin({}, Style.textArea)} value={data.get('content')} onChange={this.changeContent}/>
+        <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 0)}>text</span>
+        <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 1)}>toHTML</span>
+        <Pic styles={Style.pic}/>
+          {data.get('tab') == 0 ? (
+            <textarea placeholder="" style={assgin({}, Style.textArea)} value={data.get('content')} onChange={this.changeContent}/>
+          ) : (
+            <div style={Style.htmlArea} dangerouslySetInnerHTML={{__html: markdown.toHTML(data.get('content'))}} />
+          )}
+          
         </div>
       </div>
     );
