@@ -5,7 +5,9 @@ var Immutable = require('immutable');
 var store = module.exports = Store({
   toggle_panel: false,
   tab: 0,
-  images: Immutable.List()
+  list: Immutable.List(),
+  currentPage: '',
+  totalPage: ''
 });
 
 msg.on('toggle_panel', value => {
@@ -22,7 +24,11 @@ msg.on('toggle_tab', value => {
 msg.on('query_uploads', (pageSize, pageNumber) => {
   api.query_uploads(pageSize, pageNumber).then(res => {
     if(res.result === 'ok') {
-      store.cursor().set('images', Immutable.fromJS(res.data));
+      store.cursor().withMutations(cursor => {
+        cursor.set('list', Immutable.fromJS(res.data.list));
+        cursor.set('currentPage', res.data.currentPage);
+        cursor.set('totalPage', res.data.totalPage);
+      });
     }
   });
 });

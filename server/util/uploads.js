@@ -12,13 +12,22 @@ exports.uploads_single = (req, res) => {
 
   form.on('progress', (size, total) => {
     console.log(`receive ${(size/total*100).toFixed(2)}%`);
+  });
 
+  form.on('end', () => {
+    return res.json({ result: 'ok', msg: 'upload success' });
+  });
+
+  form.on('error', (err) => {
+    return res.json({ result: 'error', err: err });
+  });
+
+  form.on('aborted', () => {
+    return res.json({ result: 'aborted', msg: 'upload request aborted' });
   });
 
   form.parse(req, (err, fields, files) => {
-    if(err) return console.log(err);
-
-    return res.json({ files: files });
+    if(err) return res.json({ result: 'error', err: err });
   });
 };
 
@@ -30,12 +39,19 @@ exports.query_uploads = (req, res) => {
   fs.readdir(uploads_path, (err, dir) => {
     if(err) return res.json({ result: 'error', msg: err });
 
-    var data = [];
+    var list = [];
     var len = pageSize * pageNumber < dir.length ? pageNumber * pageSize : dir.length;
     for(let i = (pageNumber-1) * pageSize; i < len; i++) {
-      data.push(dir[i]);
+      list.push(dir[i]);
     }
 
-    return res.json({ result: 'ok', msg: '查询成功', data: data });
+    return res.json({ 
+      result: 'ok', 
+      data: {
+        list: list,
+        currentPage: pageNumber,
+        totalPage: dir.length    
+      }
+    });
   });
 }

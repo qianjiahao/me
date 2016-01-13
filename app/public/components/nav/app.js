@@ -29,7 +29,7 @@ var Nav = React.createClass({
                 <i className="iconfont icon-logout"></i>
               </a>
               <Link to="/console" style={assgin({}, Style.box, Style.a)}>
-                <i className="iconfont icon-console"></i>
+                <i className="iconfont icon-home"></i>
               </Link>
             </div>
           ) 

@@ -22,25 +22,32 @@ var New = React.createClass({
     
     return (
       <div>
-        <span className="bread">新建</span>
-        <div style={Style.create} onClick={this.create}>create</div>
-        <div style={Style.group}>
+        <div>
+          <span className="bread">新建</span>
+          <div style={Style.create} onClick={this.create}><i className="iconfont icon-new" style={Style.new}></i></div>
+        </div>
+        
+        <div style={assgin({}, Style.group, Style.title)}>
           <label>标题</label>
           <input type="text" placeholder="" style={assgin({}, Style.input)} value={data.get('title')} onChange={this.changeTitle}/>
         </div>
         
+        <div style={assgin({}, Style.group, Style.publish)}>
+          是否发布
+          <div style={Style.input}>
+            <input type="radio" name="publish" value="1" {...publishOpts} onChange={this.changePublish}/>Y
+            <input type="radio" name="publish" value="0" {...unpublishOpts} onChange={this.changePublish}/>N
+          </div>
+        </div>
+
         <div style={Style.group}>
           <label>标签 <span style={Style.hint}>分隔符 |</span></label>
           <input type="text" placeholder="" style={assgin({}, Style.input)} value={data.get('tags')} onChange={this.changeTags}/>
         </div>
+        
         <div style={Style.group}>
-          是否发布 
-          <input type="radio" name="publish" value="1" {...publishOpts} onChange={this.changePublish}/>Y
-          <input type="radio" name="publish" value="0" {...unpublishOpts} onChange={this.changePublish}/>N
-        </div>
-        <div style={Style.group}>
-        <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 0)}>text</span>
-        <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 1)}>toHTML</span>
+        <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 0)}><i className="iconfont icon-text"></i></span>
+        <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 1)}><i className="iconfont icon-html"></i></span>
         <Pic styles={Style.pic}/>
           {data.get('tab') == 0 ? (
             <textarea placeholder="" style={assgin({}, Style.textArea)} value={data.get('content')} onChange={this.changeContent}/>

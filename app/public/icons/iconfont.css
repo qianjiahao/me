@@ -15,10 +15,22 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-logout:before { content: "\e638"; }
-.icon-console:before { content: "\e671"; }
-.icon-password:before { content: "\e736"; }
-.icon-user:before { content: "\e616"; }
-.icon-support:before { content: "\f003e"; }
-.icon-visit:before { content: "\e6a1"; }
-.icon-login:before { content: "\e622"; }
+.icon-pic:before { content: "\e600"; }
+/*.icon-fenyeshangyiye:before { content: "\e601"; }
+.icon-fenyexiayiye:before { content: "\e602"; }
+.icon-fenyezuihouye:before { content: "\e603"; }
+.icon-fenyezuiqianye:before { content: "\e604"; }*/
+.icon-close:before { content: "\e613"; }
+.icon-login:before { content: "\e608"; }
+.icon-text:before { content: "\e609"; }
+.icon-new:before { content: "\e60a"; }
+.icon-user:before { content: "\e611"; }
+.icon-logout:before { content: "\e60b"; }
+.icon-wrench:before { content: "\e606"; }
+.icon-upload:before { content: "\e607"; }
+.icon-html:before { content: "\e60c"; }
+.icon-password:before { content: "\e612"; }
+.icon-home:before { content: "\e60e"; }
+.icon-less:before { content: "\e60f"; }
+.icon-more:before { content: "\e610"; }
+.icon-select:before { content: "\e614"; }

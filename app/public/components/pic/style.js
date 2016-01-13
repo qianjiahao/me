@@ -7,7 +7,7 @@ module.exports = {
     left: '300px',
     top: '150px',
     backgroundColor: 'white',
-    boxShadow: '0 1px 3px #333',
+    boxShadow: '0 1px 6px #333',
     padding: '10px',
     border: '10px #666 solid',
     overflow: 'hidden'
@@ -21,7 +21,7 @@ module.exports = {
     top: '0',
     padding: '10px',
     cursor: 'pointer',
-    boxShadow: '0 0 3px #aaa'
+    boxShadow: '1px 1px 3px #aaa'
   },
   tab: {
     display: 'inline-block',

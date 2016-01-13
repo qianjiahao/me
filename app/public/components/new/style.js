@@ -2,14 +2,22 @@ module.exports = {
   group: {
     padding: '10px',
     boxShadow: '0px 1px 3px #b1b1b1',
-    margin: '20px 0'
+    marginTop: '10px'
+  },
+  title: {
+    width: '70%',
+    display: 'inline-block'
+  },
+  publish: {
+    width: '20%',
+    marginLeft: '10px',
+    display: 'inline-block'
   },
   input: {
     border: 'none',
     outline: 'none',
     width: '100%',
-    fontSize: '18px',
-
+    fontSize: '16px',
   },
   textArea: {
     marginTop: '10px',
@@ -24,14 +32,16 @@ module.exports = {
     fontSize: '18px',
     width: '100%',
     height: '300px',
+    overflow: 'auto'
   },
   create: {
     float: 'right',
-    padding: '5px 20px',
-    color: 'white',
+    color: '#3dbcf5',
     cursor: 'pointer',
-    backgroundColor: '#3dbcf5',
-    borderRadius: '3px'
+    fontSize: '24px'
+  },
+  new: {
+    fontSize: '24px'
   },
   a: {
     color: 'black'
@@ -50,7 +60,10 @@ module.exports = {
   },
   pic: {
     display: 'inline',
-    float: 'right',
+    padding: '5px',
+    margin: '5px',
+    cursor: 'pointer',
+    border: '1px white solid',
     cursor: 'pointer'
   }
 }
