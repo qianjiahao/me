@@ -6,8 +6,8 @@ var store = module.exports = Store({
   toggle_panel: false,
   tab: 0,
   list: Immutable.List(),
-  currentPage: '',
-  totalPage: ''
+  currentPage: 1,
+  totalPage: 1
 });
 
 msg.on('toggle_panel', value => {
@@ -17,7 +17,7 @@ msg.on('toggle_panel', value => {
 msg.on('toggle_tab', value => {
   store.cursor().set('tab', value);
   if(value == 1) {
-    msg.emit('query_uploads', 10, 1);
+    msg.emit('query_uploads', 20, 1);
   }
 });
 

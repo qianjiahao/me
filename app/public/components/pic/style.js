@@ -25,7 +25,7 @@ module.exports = {
   },
   tab: {
     display: 'inline-block',
-    padding: '3px',
+    padding: '3px 10px',
     boxShadow: '0 1px 3px #999'
   },
   active: {
@@ -71,41 +71,43 @@ module.exports = {
     lineHeight: '24px',
     color: 'white'
   },
-  pre: {
-    width: '180px',
-    position: 'absolute',
-    bottom: '10px',
-    left: '10px',
-    padding: '20px 0',
-    backgroundColor: '#3dbcf5',
-    fontSize: '24px',
-    textAlign: 'center',
-    lineHeight: '24px',
-    color: 'white'
+  img: {
+    width: '100px',
+    height: '60px',
+    overflow: 'hidden',
+    float: 'left',
+    margin: '10px'
   },
-  choose: {
-    width: '200px',
-    position: 'absolute',
-    bottom: '10px',
-    right: '210px',
-    padding: '20px 0',
-    backgroundColor: '#3dbcf5',
-    fontSize: '24px',
+  page: {
+    width: '400px',
+    float: 'left',
     textAlign: 'center',
-    lineHeight: '24px',
-    color: 'white'
+    marginTop: '20px',
+    position: 'relative'
+  },
+  pre: {
+    position: 'absolute',
+    left: '0'
+  },
+  current: {
+    textAlign: 'center'
   },
   next: {
-    width: '180px',
     position: 'absolute',
-    bottom: '10px',
-    right: '10px',
-    padding: '20px 0',
+    right: '0'
+  },
+  pageRight: {
+    marginLeft: '450px',
+    textAlign: 'center',
+    marginTop: '10px'
+  },
+  choose: {
+    display: 'block',
+    padding: '10px',
     backgroundColor: '#3dbcf5',
     fontSize: '24px',
     textAlign: 'center',
     lineHeight: '24px',
     color: 'white'
   }
-
 }

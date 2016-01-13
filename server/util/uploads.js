@@ -33,8 +33,8 @@ exports.uploads_single = (req, res) => {
 
 exports.query_uploads = (req, res) => {
 
-  var pageSize = req.body.pageSize;
-  var pageNumber = req.body.pageNumber;
+  var pageSize = req.body.pageSize ? parseInt(req.body.pageSize) : 20;
+  var pageNumber = req.body.pageNumber ? parseInt(req.body.pageNumber) : 1;
 
   fs.readdir(uploads_path, (err, dir) => {
     if(err) return res.json({ result: 'error', msg: err });
@@ -45,12 +45,15 @@ exports.query_uploads = (req, res) => {
       list.push(dir[i]);
     }
 
+    var currentPage = pageNumber;
+    var totalPage = Math.ceil(dir.length / pageSize);
+
     return res.json({ 
       result: 'ok', 
       data: {
         list: list,
-        currentPage: pageNumber,
-        totalPage: dir.length    
+        currentPage: currentPage,
+        totalPage: totalPage
       }
     });
   });
