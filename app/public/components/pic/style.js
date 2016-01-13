@@ -32,6 +32,18 @@ module.exports = {
     color: 'white',
     backgroundColor: '#3dbcf5'
   },
+  form: {
+    display: 'none'
+  },
+  frame: {
+    border: 'none',
+    width: '100%',
+    backgroundColor: 'white',
+    position: 'absolute',
+    bottom: '0',
+    left: '0',
+    right: '0'
+  },
   content: {
     width: '100%',
     display: 'none',
@@ -40,12 +52,17 @@ module.exports = {
   uploadsArea: {
     cursor: 'pointer',
     height: '300px',
-    backgroundColor: '#eee'
+    backgroundImage: 'url("./images/default.png")',
+    backgroundSize: 'contain',
+    backgroundPosition: '50% 60%',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#ccc'
   },
   pictureArea: {
     height: '300px',
   },
   submit: {
+    display: 'block',
     width: '100%',
     padding: '20px 0',
     backgroundColor: '#3dbcf5',

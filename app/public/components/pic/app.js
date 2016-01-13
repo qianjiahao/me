@@ -27,14 +27,13 @@ var Pic = React.createClass({
         
           <div style={assgin({}, Style.content, (data.get('tab') == 0 ? Style.open : {}))}>
             <div style={Style.uploadsArea}  onClick={this.chooseFile}>
-              <form ref="form" action="/uploads" method="post" encType="multipart/form-data" target="frameFile" style={{visibility: 'hidden'}}>
+              <form ref="form" action="/uploads" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
                 <div style={Style.group}>
-                  <input type="file" name="file" ref="file" multiple="multiple"/>
+                  <input type="file" name="file" ref="file" multiple="multiple" onChange={this.submit}/>
                 </div>
               </form>
-              <iframe id='frameFile' name='frameFile' style={{display: 'none'}}></iframe>
+              <iframe id='frameFile' name='frameFile' style={Style.frame}></iframe>
             </div>
-            <div onClick={() => this.refs.form.submit()} style={Style.submit}>uploads</div>
           </div>
           <div style={assgin({}, Style.content, (data.get('tab') == 1 ? Style.open : {}))}>
             <div style={Style.pictureArea}>
@@ -53,6 +52,11 @@ var Pic = React.createClass({
 
   chooseFile(e) {
     this.refs.file.click();
+  },
+  submit() {
+    if(document.querySelector("input[type=file]").value) {
+      this.refs.form.submit();
+    }
   }
 });
 

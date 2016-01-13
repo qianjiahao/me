@@ -15,7 +15,7 @@ msg.on('toggle_panel', value => {
 msg.on('toggle_tab', value => {
   store.cursor().set('tab', value);
   if(value == 1) {
-    msg.emit('query_uploads', 10, 2);
+    msg.emit('query_uploads', 10, 1);
   }
 });
 

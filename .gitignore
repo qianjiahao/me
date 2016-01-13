@@ -31,3 +31,6 @@ dist
 
 # private data
 /data.js
+
+# uploads
+uploads/

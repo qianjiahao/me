@@ -12,13 +12,13 @@ exports.uploads_single = (req, res) => {
 
   form.on('progress', (size, total) => {
     console.log(`receive ${(size/total*100).toFixed(2)}%`);
+
   });
 
   form.parse(req, (err, fields, files) => {
     if(err) return console.log(err);
 
-    console.log(fields, files);
-    return res.json({ fields: fields });
+    return res.json({ files: files });
   });
 };
 
