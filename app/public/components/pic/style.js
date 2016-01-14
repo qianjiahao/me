@@ -21,7 +21,6 @@ module.exports = {
     top: '0',
     padding: '10px',
     cursor: 'pointer',
-    boxShadow: '1px 1px 3px #aaa'
   },
   tab: {
     display: 'inline-block',
@@ -97,17 +96,11 @@ module.exports = {
     right: '0'
   },
   pageRight: {
-    marginLeft: '450px',
-    textAlign: 'center',
-    marginTop: '10px'
+    marginLeft: '420px',
+    textAlign: 'right',
+    marginTop: '20px'
   },
-  choose: {
-    display: 'block',
-    padding: '10px',
-    backgroundColor: '#3dbcf5',
-    fontSize: '24px',
-    textAlign: 'center',
-    lineHeight: '24px',
-    color: 'white'
+  settings: {
+    margin: '0 10px',
   }
 }

@@ -13,31 +13,18 @@ var New = React.createClass({
   render: function() {
 
     var data = store.data();
-
-    var publishOpts = {};
-    var unpublishOpts = {};
-    
-    publishOpts.checked = data.get('publish') == 1 ? "checked" : "";
-    unpublishOpts.checked = data.get('publish') == 0 ? "checked" : "";
     
     return (
       <div>
         <div>
           <span className="bread">新建</span>
-          <div style={Style.create} onClick={this.create}><i className="iconfont icon-new" style={Style.new}></i></div>
+          <div style={Style.publish} onClick={this.publish}><i className="iconfont icon-publish" style={Style.big}></i>发布</div>
+          <div style={Style.save} onClick={this.save}><i className="iconfont icon-save" style={Style.big}></i>草稿</div>
         </div>
         
-        <div style={assgin({}, Style.group, Style.title)}>
+        <div style={assgin({}, Style.group)}>
           <label>标题</label>
           <input type="text" placeholder="" style={assgin({}, Style.input)} value={data.get('title')} onChange={this.changeTitle}/>
-        </div>
-        
-        <div style={assgin({}, Style.group, Style.publish)}>
-          是否发布
-          <div style={Style.input}>
-            <input type="radio" name="publish" value="1" {...publishOpts} onChange={this.changePublish}/>Y
-            <input type="radio" name="publish" value="0" {...unpublishOpts} onChange={this.changePublish}/>N
-          </div>
         </div>
 
         <div style={Style.group}>

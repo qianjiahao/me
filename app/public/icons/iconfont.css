@@ -16,21 +16,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .icon-pic:before { content: "\e600"; }
-/*.icon-fenyeshangyiye:before { content: "\e601"; }
-.icon-fenyexiayiye:before { content: "\e602"; }
-.icon-fenyezuihouye:before { content: "\e603"; }
-.icon-fenyezuiqianye:before { content: "\e604"; }*/
+.icon-pre:before { content: "\e601"; }
+.icon-next:before { content: "\e602"; }
 .icon-close:before { content: "\e613"; }
 .icon-login:before { content: "\e608"; }
-.icon-text:before { content: "\e609"; }
+.icon-publish:before { content: "\e60d"; }
 .icon-new:before { content: "\e60a"; }
+.icon-delete:before { content: "\e615"; }
 .icon-user:before { content: "\e611"; }
 .icon-logout:before { content: "\e60b"; }
 .icon-wrench:before { content: "\e606"; }
 .icon-upload:before { content: "\e607"; }
+.icon-save:before { content: "\e604"; }
 .icon-html:before { content: "\e60c"; }
 .icon-password:before { content: "\e612"; }
 .icon-home:before { content: "\e60e"; }
-.icon-pre:before { content: "\e60f"; }
-.icon-next:before { content: "\e610"; }
+.icon-text:before { content: "\e603"; }
+.icon-less:before { content: "\e60f"; }
+.icon-unselect:before { content: "\e616"; }
+.icon-rocket:before { content: "\e605"; }
+.icon-more:before { content: "\e610"; }
+.icon-multi-select:before { content: "\e617"; }
 .icon-select:before { content: "\e614"; }
+.icon-selected:before { content: "\e618"; }

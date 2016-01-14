@@ -4,15 +4,6 @@ module.exports = {
     boxShadow: '0px 1px 3px #b1b1b1',
     marginTop: '10px'
   },
-  title: {
-    width: '70%',
-    display: 'inline-block'
-  },
-  publish: {
-    width: '20%',
-    marginLeft: '10px',
-    display: 'inline-block'
-  },
   input: {
     border: 'none',
     outline: 'none',
@@ -34,13 +25,18 @@ module.exports = {
     height: '300px',
     overflow: 'auto'
   },
-  create: {
+  save: {
+    float: 'right',
+    cursor: 'pointer',
+    margin: '0 10px'
+  },
+  publish: {
+    margin: '0 10px',
     float: 'right',
     color: '#3dbcf5',
     cursor: 'pointer',
-    fontSize: '24px'
   },
-  new: {
+  big: {
     fontSize: '24px'
   },
   a: {
