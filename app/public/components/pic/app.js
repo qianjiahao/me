@@ -16,12 +16,11 @@ var Pic = React.createClass({
   render: function() {
     var data = store.data();
 
-    console.log(data && data.toJS())
     return (
       <div style={this.props.styles}>
       <span onClick={() => msg.emit('toggle_panel', true)}><i className="iconfont icon-pic"></i></span>
 
-        <div style={assgin({}, Style.panel, (data.get('toggle_panel') ? Style.open : {}))}>
+        <div style={assgin({}, Style.panel, (data.get('toggle_panel') ? Style.open : {}))} draggable="true">
           <span onClick={() => msg.emit('toggle_panel', false)} style={Style.close}>X</span>
           <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={() => msg.emit('toggle_tab', 0)}><i className="iconfont icon-upload"></i></span>
           <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={() => msg.emit('toggle_tab', 1)}><i className="iconfont icon-pic"></i></span>
@@ -47,9 +46,23 @@ var Pic = React.createClass({
               }) : (<h2>无图</h2>)}
             </div>
             <div style={Style.page}>
-              <span style={Style.pre}><i className="iconfont icon-pre"></i>&nbsp;1</span>
+
+              {/* 上一页 */}
+              <span style={Style.pre}>
+                <i className="iconfont icon-pre" onClick={() => msg.emit('toggle_page', data.get('currentPage') - 1)}></i>
+                &nbsp;
+                <a onClick={() => msg.emit('toggle_page', 1)}>1</a>
+              </span>
+
+              {/* 当前页 */}
               <span style={Style.current}>{data.get('currentPage')}</span>
-              <span style={Style.next}>{data.get('totalPage')}&nbsp;<i className="iconfont icon-next"></i></span>
+
+              {/* 下一页 */}
+              <span style={Style.next}>
+                <a onClick={() => msg.emit('toggle_page', data.get('totalPage'))}>{data.get('totalPage')}</a>
+                &nbsp;
+                <i className="iconfont icon-next" onClick={() => msg.emit('toggle_page', data.get('currentPage') + 1)}></i>
+              </span>
             </div>
             <div style={Style.pageRight}>
               <span onClick={() => msg.emit('choose_picture')} style={Style.choose}>choose</span>

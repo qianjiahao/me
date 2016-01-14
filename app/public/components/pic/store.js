@@ -7,7 +7,8 @@ var store = module.exports = Store({
   tab: 0,
   list: Immutable.List(),
   currentPage: 1,
-  totalPage: 1
+  totalPage: 1,
+  pageSize: 20
 });
 
 msg.on('toggle_panel', value => {
@@ -17,7 +18,7 @@ msg.on('toggle_panel', value => {
 msg.on('toggle_tab', value => {
   store.cursor().set('tab', value);
   if(value == 1) {
-    msg.emit('query_uploads', 20, 1);
+    msg.emit('query_uploads', store.data().get('pageSize'), 1);
   }
 });
 
@@ -33,6 +34,11 @@ msg.on('query_uploads', (pageSize, pageNumber) => {
   });
 });
 
-msg.on('choose_picture', () => {
+msg.on('toggle_page', value => {
+  var totalPage = store.data().get('totalPage');
+  var pageSize = store.data().get('pageSize');
 
+  if(value <= totalPage && value >= 1) {
+    msg.emit('query_uploads', pageSize, value);
+  }
 });
