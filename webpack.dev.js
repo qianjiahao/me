@@ -15,6 +15,9 @@ module.exports = {
     filename: 'static/[name].bindle.js',
     publicPath: ''
   },
+  resolve: {
+    modulesDirectories: ['', 'javascripts', 'node_modules']
+  },
   module: {
     loaders: [
       {

@@ -1,6 +1,6 @@
 var { msg, Store } = require('iflux');
-var api = require('./api.js');
 var Immutable = require('immutable');
+var ajax = require('ajax');
 
 var store = module.exports = Store({
   msg: '',
@@ -16,12 +16,17 @@ msg.on('login', () => {
     authCode: store.data().get('authCode')
   };
 
-  api.login(user.username, user.password, user.authCode).then(res => {
-    store.cursor().set('msg', res.msg);
-
-    if(res.result == 'ok') {
+  ajax({ 
+    url: '/login', 
+    type: 'post', 
+    data: user
+  }).then(res => {
+    if(res.result === 'ok') {
       window.location.hash = '#/console';
     }
+    store.cursor().set('msg', res.msg);
+  }).catch(err => {
+    console.log(err);
   });
 });
 

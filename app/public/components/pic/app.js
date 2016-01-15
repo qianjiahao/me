@@ -10,7 +10,8 @@ var Pic = React.createClass({
 
   getDefaultProps() {
     return {
-      styles: {}
+      styles: {},
+      onFinish: () => {}
     }
   },
   render: function() {
@@ -25,9 +26,10 @@ var Pic = React.createClass({
           <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={() => msg.emit('toggle_tab', 0)}><i className="iconfont icon-upload"></i></span>
           <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={() => msg.emit('toggle_tab', 1)}><i className="iconfont icon-pic"></i></span>
         
+          {/* [批量]上传图片 */}
           <div style={assgin({}, Style.content, (data.get('tab') == 0 ? Style.open : {}))} className="clearFix">
-            <div style={Style.uploadsArea}  onClick={this.chooseFile}>
-              <form ref="form" action="/uploads" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
+            <div style={Style.uploadsArea}  onClick={() => this.refs.file.click()}>
+              <form ref="form" action="/upload/images" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
                 <div style={Style.group}>
                   <input type="file" name="file" ref="file" multiple="multiple" onChange={this.submit}/>
                 </div>
@@ -35,6 +37,8 @@ var Pic = React.createClass({
               <iframe id='frameFile' name='frameFile' style={Style.frame}></iframe>
             </div>
           </div>
+
+          {/* 操作图片 */}
           <div style={assgin({}, Style.content, (data.get('tab') == 1 ? Style.open : {}))}>
             <div style={Style.pictureArea} className="clearFix">
               {data.get('list').size ? data.get('list').map((v, k) => {
@@ -49,7 +53,7 @@ var Pic = React.createClass({
 
               {/* 上一页 */}
               <span style={assgin({}, Style.pre, Style.settings)}>
-                <i className="iconfont icon-pre" onClick={() => msg.emit('toggle_page', data.get('currentPage') - 1)}></i>
+                <i className="iconfont icon-pre" onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) - 1)}></i>
                 &nbsp;
                 <a style={Style.settings} onClick={() => msg.emit('toggle_page', 1)}>1</a>
               </span>
@@ -61,12 +65,15 @@ var Pic = React.createClass({
               <span style={assgin({}, Style.next, Style.settings)}>
                 <a style={Style.settings} onClick={() => msg.emit('toggle_page', data.get('totalPage'))}>{data.get('totalPage')}</a>
                 &nbsp;
-                <i className="iconfont icon-next" onClick={() => msg.emit('toggle_page', data.get('currentPage') + 1)}></i>
+                <i className="iconfont icon-next" onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) + 1)}></i>
               </span>
             </div>
             <div style={Style.pageRight}>
+              {/* 多选 */}
               <span style={Style.settings}><i style={Style.settings} className="iconfont icon-multi-select"></i></span>
-              <span style={Style.settings} onClick={() => msg.emit('choose_picture')}><i style={Style.settings} className="iconfont icon-select"></i></span>
+              {/* 完成 */}
+              <span style={Style.settings} onClick={this.finish}><i style={Style.settings} className="iconfont icon-select"></i></span>
+              {/* 删除 */}
               <span style={Style.settings}><i style={Style.settings} className="iconfont icon-delete"></i></span>
             </div>
           </div>
@@ -75,13 +82,14 @@ var Pic = React.createClass({
     );
   },
 
-  chooseFile(e) {
-    this.refs.file.click();
-  },
   submit() {
     if(document.querySelector("input[type=file]").value) {
       this.refs.form.submit();
     }
+  },
+
+  finish() {
+    this.props.onFinish(['data']);
   }
 });
 

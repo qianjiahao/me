@@ -1,5 +1,5 @@
 var { msg, Store } = require('iflux');
-var api = require('./api.js');
+var ajax = require('ajax');
 
 var store = module.exports = Store({
   title: '',
@@ -23,6 +23,10 @@ msg.on('changePublish', value => {
 
 msg.on('changeContent', value => {
   store.cursor().set('content', value);
+});
+
+msg.on('tab', value => {
+  store.cursor().set('tab', value);
 });
 
 msg.on('clear', () => {
@@ -52,9 +56,21 @@ msg.on('create', () => {
   });
 });
 
-msg.on('tab', value => {
-  store.cursor().set('tab', value);
+msg.on('save', () => {
+  var blog = {
+    title: store.data().get('title'),
+    tags: store.data().get('tags'),
+    content: store.data().get('content'),
+    publish: 0
+  }
+
 });
+
+msg.on('publish', () => {
+
+})
+
+
 
 
 
