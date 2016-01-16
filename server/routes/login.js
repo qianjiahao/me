@@ -57,9 +57,6 @@ exports.logout = (req, res) => {
 
 exports.checkLoginStatus = (req, res) => {
   console.log(req.session);
-  if(!req.session.username) {
-    return res.json({ result: 'error', msg: '用户未登录' });
-  }
-
+  if(!req.session.username) return res.json({ result: 'error', msg: '用户未登录' });
   return res.json({ result: 'ok', msg: '欢迎归来', data: req.session });
 }

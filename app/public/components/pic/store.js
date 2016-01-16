@@ -7,7 +7,7 @@ var store = module.exports = Store({
   tab: 0,
   currentPage: 1,
   totalPage: 1,
-  pageSize: 20,
+  pageSize: 12,
 
   result: Immutable.List()
 });
@@ -35,7 +35,7 @@ msg.on('toggle_page', value => {
 msg.on('query_images', (pageSize, pageNumber) => {
 
   ajax({
-    url: `/upload/images?pageSize=${pageSize}&pageNumber=${pageNumber}`,
+    url: `/image/query?pageSize=${pageSize}&pageNumber=${pageNumber}`,
     type: 'get'
   }).then(res => {
     if(res.result === 'ok') {

@@ -1,11 +1,11 @@
 module.exports = {
   panel: {
     display: 'none',
-    width: '600px',
-    height: '400px',
+    width: '700px',
+    height: '450px',
     position: 'absolute',
-    left: '300px',
-    top: '150px',
+    left: '230px',
+    top: '100px',
     backgroundColor: 'white',
     boxShadow: '0 1px 6px #333',
     padding: '10px',
@@ -58,7 +58,7 @@ module.exports = {
     backgroundColor: '#ccc'
   },
   pictureArea: {
-    height: '300px',
+    height: '339px',
   },
   submit: {
     display: 'block',
@@ -71,8 +71,8 @@ module.exports = {
     color: 'white'
   },
   img: {
-    width: '100px',
-    height: '60px',
+    width: '155px',
+    height: '93px',
     overflow: 'hidden',
     float: 'left',
     margin: '10px'

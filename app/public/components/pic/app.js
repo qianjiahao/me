@@ -29,7 +29,7 @@ var Pic = React.createClass({
           {/* [批量]上传图片 */}
           <div style={assgin({}, Style.content, (data.get('tab') == 0 ? Style.open : {}))} className="clearFix">
             <div style={Style.uploadsArea}  onClick={() => this.refs.file.click()}>
-              <form ref="form" action="/upload/images" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
+              <form ref="form" action="/image/upload" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
                 <div style={Style.group}>
                   <input type="file" name="file" ref="file" multiple="multiple" onChange={this.submit}/>
                 </div>
@@ -44,7 +44,7 @@ var Pic = React.createClass({
               {data.get('result').size ? data.get('result').map((v, k) => {
                 return (
                   <div style={Style.img} key={k}>
-                    <img src={'uploads/images/' + v} width='100'/>
+                    <img src={'uploads/images/' + v} width='155'/>
                   </div>
                 );
               }) : (<h2>无图</h2>)}
