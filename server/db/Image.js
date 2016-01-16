@@ -1,5 +1,6 @@
 var mongoose = require('./db_config.js');
 var type = require('type-of');
+require('babel-polyfill');
 
 var Image = mongoose.model('Image', new mongoose.Schema({
   name: {
@@ -15,31 +16,52 @@ var Image = mongoose.model('Image', new mongoose.Schema({
 }));
 
 module.exports = {
-  create(data, cb) {
-    if(type(data) === 'string') {
-      Image.create({ name: data }, (err, res) => {
-        if(err) return cb(err);
+  create(data) {
+    return new Promise((resolve, reject) => {
+      if(type(data) === 'string') {
+        data = [data];
+      } 
 
-        return cb(null, res);
-      })
-    } else if(type(data) === 'array') {
-      Promise.all(data.map((v) => {
-        return new Promise((resolve, reject) => {
-          Image.create({ name: v }, (err, res) => {
-            if(err) return reject(err);
+      if(type(data) !== 'array') return reject('TypeError : type must be string or array');
 
-            return resolve(res);
+      Promise.all(
+        data.map((v) => {
+          return new Promise((resolve, reject) => {
+            
+            var name = v.slice(v.lastIndexOf('/')+1, v.length);
+
+            Image.create({ name: name }, (err, res) => {
+              if(err) return reject(err);
+
+              return resolve(res);
+            })
           })
         })
-      })).then(res => {
-        return cb(null, res);
-      }).catch(err => {
-        return cb(err);
-      })
+      ).then(res => resolve(res))
+      .catch(err => reject(err))  
+    })
+  },
+  findByPage(data) {
+    return new Promise((resolve, reject) => {
+      var skip = (data.pageNumber - 1) * data.pageSize;
+      var limit = +data.pageSize;
+      
+      Image.count((err, total) => {
+        if(err) return reject(err);
 
-    } else {
-      console.log(`type : ${type(data)}`);
-      cb('TypeError : type must be string or array');
-    }
+        Image.find().sort({ upload_Date: -1 })
+          .skip(skip).limit(limit)
+          .exec((err, images) => {
+            if(err) return reject(err);
+
+            var result = [];
+
+            images.map((image) => {
+              result[result.length] = image.name;
+            })
+            resolve({ result: result, total: total});
+          })  
+      })
+    })
   }
 }

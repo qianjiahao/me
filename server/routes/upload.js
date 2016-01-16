@@ -2,9 +2,11 @@ var formidable = require('formidable');
 var uploads_path = './app/public/uploads';
 var Image = require('../db/Image.js');
 var fs = require('fs');
-var fse = require('fs-extra');
 var path = require('path');
-var move = require('../util/move.js');
+
+var copy = require('../util/copy.js');
+var remove = require('../util/remove.js');
+
 
 exports.upload = (req, res) => {
   var form = new formidable.IncomingForm();
@@ -35,66 +37,42 @@ exports.upload = (req, res) => {
     var temp_path = './app/public/uploads/temp';
     var images_path = './app/public/uploads/images';
 
-    fs.readdir(temp_path, (err, temp) => {
-      if(err) console.log(err);
+    try {
+      (async function () {
+        var target = await copy(temp_path, images_path, 'dir', (size, total) => console.log(`copy : ${(size/total*100).toFixed(2)}%`))
+        var source = await remove(temp_path, 'dir');
+        var result = await Image.create(source);
 
-      if(temp && temp.length) {
-
-        Image.create(temp, (err) => {
-          if(err) console.log(err);
-
-          fs.readdir(temp_path, (err, temp) => {
-            if(err) console.log(err);
-
-            Promise.all(temp.map((v) => {
-              return new Promise((resolve, reject) => {
-                move(path.join(temp_path, v), path.join(images_path, v), (size, total) => console.log(`move ${v} : ${(size/total*100).toFixed(2)}%`))
-                  .then(filename => resolve(filename))
-                  .catch(err => reject(err));
-              });
-            })).then(() => {
-              console.log('upload images finished');
-              
-              return res.json({ result: 'ok', msg: 'upload success', data: temp });
-            }).catch(err => console.log(err));
-          })
-        });
-      } else {
-        console.log('temp is empty');
-      }
-    });
-
+        return res.json({ result: 'ok', msg: 'upload success', data: result });    
+      })();
+    } catch (e) {
+      console.log(e);
+    }
   });
 };
 
 
 exports.query = (req,res) => {
-  var pageSize = req.query.pageSize; 
-  var pageNumber = req.query.pageNumber;
-
-  pageSize = isNaN(pageSize) ? 20 : pageSize;
-  pageNumber = isNaN(pageNumber) ? 1 : pageNumber;
+  var pageSize = parseInt(req.query.pageSize); 
+  var pageNumber = parseInt(req.query.pageNumber);
   
-  fs.readdir(uploads_path, (err, dir) => {
-    if(err) return res.json({ result: 'error', msg: err });
+  try {
+    (async function () {
+      var data = await Image.findByPage({pageNumber: pageNumber, pageSize: pageSize});
+      console.log(data);
 
-    var list = [];
-    var len = pageSize * pageNumber < dir.length ? pageNumber * pageSize : dir.length;
-    for(let i = (pageNumber-1) * pageSize; i < len; i++) {
-      list.push(dir[i]);
-    }
+      return res.json({ 
+        result: 'ok', 
+        data: {
+          result: data.result,
+          currentPage: pageNumber,
+          totalPage: Math.ceil(data.total/pageSize)
+        }
+      });
 
-    var currentPage = pageNumber;
-    var totalPage = Math.ceil(dir.length / pageSize);
-
-    return res.json({ 
-      result: 'ok', 
-      data: {
-        list: list,
-        currentPage: currentPage,
-        totalPage: totalPage
-      }
-    });
-  });
+    })();
+  } catch (e) {
+    console.log(e);
+  }
 };
 

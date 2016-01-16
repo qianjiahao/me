@@ -41,10 +41,10 @@ var Pic = React.createClass({
           {/* 操作图片 */}
           <div style={assgin({}, Style.content, (data.get('tab') == 1 ? Style.open : {}))}>
             <div style={Style.pictureArea} className="clearFix">
-              {data.get('list').size ? data.get('list').map((v, k) => {
+              {data.get('result').size ? data.get('result').map((v, k) => {
                 return (
                   <div style={Style.img} key={k}>
-                    <img src={'uploads/' + v} width='100'/>
+                    <img src={'uploads/images/' + v} width='100'/>
                   </div>
                 );
               }) : (<h2>无图</h2>)}

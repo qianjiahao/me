@@ -5,10 +5,11 @@ var ajax = require('ajax');
 var store = module.exports = Store({
   toggle_panel: false,
   tab: 0,
-  list: Immutable.List(),
   currentPage: 1,
   totalPage: 1,
-  pageSize: 20
+  pageSize: 20,
+
+  result: Immutable.List()
 });
 
 msg.on('toggle_panel', value => {
@@ -32,13 +33,14 @@ msg.on('toggle_page', value => {
 });
 
 msg.on('query_images', (pageSize, pageNumber) => {
+
   ajax({
     url: `/upload/images?pageSize=${pageSize}&pageNumber=${pageNumber}`,
     type: 'get'
   }).then(res => {
     if(res.result === 'ok') {
       store.cursor().withMutations(cursor => {
-        cursor.set('list', Immutable.fromJS(res.data.list));
+        cursor.set('result', Immutable.fromJS(res.data.result));
         cursor.set('currentPage', res.data.currentPage);
         cursor.set('totalPage', res.data.totalPage);
       });

@@ -1,34 +1,77 @@
-import fs from 'fs';
-import stat from './stat.js';
+var fs = require('fs');
+var path = require('path');
 
-function copy (source, target, progress) {
+function copy (source, target, type, progress) {
   return new Promise((resolve, reject) => {
 
-    stat(source)
-      .then(file => {
+    fs.stat(source, (err, stats) => {
 
-        let ss = fs.createReadStream(source);
-        let ts = fs.createWriteStream(target);
+      if(err) return reject(err);
 
-        ss.on('error', err => reject);
-        ts.on('error', err => reject);
+      fs.stat(target, (err) => {
+        if(err) return reject(err);
 
-        let copySize = 0;
+        if(type === 'file') {
 
-        ss.on('data', data => {
-          copySize += data.length;
-          progress && progress(copySize, file.size);
-        });
+          var ss = fs.createReadStream(source);
+          var ts = fs.createWriteStream(target);
 
-        ss.on('end', () => resolve(target))
+          ss.on('error', err => reject);
+          ts.on('error', err => reject);
 
-        ss.pipe(ts);
+          var copySize = 0;
 
+          ss.on('data', data => {
+            copySize += data.length;
+            progress && progress(copySize, stats.size);
+          });
+
+          ss.on('end', () => resolve(target))
+
+          ss.pipe(ts);
+
+        } else {
+
+          fs.readdir(source, (err, dir) => {
+            if(err) return reject(err);
+
+            if(dir && !dir.length) return reject('directory is empty now');
+
+            Promise.all(
+              dir.map((v) => {
+                return new Promise((resolve, reject) => {
+                  var sub_source = path.join(source, v);
+                  var sub_target = path.join(target, v);
+
+                  fs.stat(sub_source, (err, stats) => {
+                    if(err) return reject(err);
+
+                    var ss = fs.createReadStream(sub_source);
+                    var ts = fs.createWriteStream(sub_target);
+
+                    ss.on('error', err => reject);
+                    ts.on('error', err => reject);
+
+                    var copySize = 0;
+
+                    ss.on('data', data => {
+                      copySize += data.length;
+                      progress && progress(copySize, stats.size);
+                    });
+
+                    ss.on('end', () => resolve(sub_target))
+
+                    ss.pipe(ts);  
+                  })
+                })
+              })
+            ).then(res => resolve(res)).catch(err => reject(err))
+          })
+        }
       })
-      .catch(err => {
-        return reject(err);
-      })
+    })
   })
 }
 
 module.exports = copy;
+
