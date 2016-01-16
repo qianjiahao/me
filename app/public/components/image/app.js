@@ -18,6 +18,10 @@ var Pic = React.createClass({
     var data = store.data();
 
     console.log(data && data.get('temp').toJS())
+
+    var i = data.get('currentPage');
+    var page = [i-3, i-2, i-1, i, i+1, i+2, i+3];
+
     return (
       <div style={this.props.styles}>
       <span onClick={() => msg.emit('toggle_panel', true)}><i className="iconfont icon-pic"></i></span>
@@ -35,8 +39,8 @@ var Pic = React.createClass({
                   <input type="file" name="file" ref="file" multiple="multiple" onChange={this.submit}/>
                 </div>
               </form>
-              <iframe id='frameFile' name='frameFile' style={Style.frame}></iframe>
             </div>
+            <iframe id='frameFile' name='frameFile' style={Style.frame}></iframe>
           </div>
 
           {/* 操作图片 */}
@@ -61,24 +65,16 @@ var Pic = React.createClass({
                 );
               }) : (<h2>无图</h2>)}
             </div>
+            <span style={assgin({}, Style.pager, Style.pre)} className="page" onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) - 1)}><i className="iconfont icon-pre"></i></span>
+            <span style={assgin({}, Style.pager, Style.next)} className="page"  onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) + 1)}><i className="iconfont icon-next"></i></span>
             <div style={Style.page}>
+              {page.map((v) => {
+                if(v > 0 && v <= data.get('totalPage')) {
+                  return (<a style={assgin({}, Style.settings, (v == data.get('currentPage') ? Style.current : {}))} onClick={() => msg.emit('toggle_page', v)}>{v}</a>);
+                }
+              })}
 
-              {/* 上一页 */}
-              <span style={assgin({}, Style.pre, Style.settings)}>
-                <i className="iconfont icon-pre" onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) - 1)}></i>
-                &nbsp;
-                <a style={Style.settings} onClick={() => msg.emit('toggle_page', 1)}>1</a>
-              </span>
-
-              {/* 当前页 */}
-              <span style={assgin({}, Style.current, Style.settings)}>{data.get('currentPage')}</span>
-
-              {/* 下一页 */}
-              <span style={assgin({}, Style.next, Style.settings)}>
-                <a style={Style.settings} onClick={() => msg.emit('toggle_page', data.get('totalPage'))}>{data.get('totalPage')}</a>
-                &nbsp;
-                <i className="iconfont icon-next" onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) + 1)}></i>
-              </span>
+              <span>total : {data.get('totalPage')}</span>
             </div>
             <div style={Style.pageRight}>
               {/* 多选 */}

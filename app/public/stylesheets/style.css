@@ -21,6 +21,13 @@ html,body {
   background-size: cover;
 }
 
+.page {
+
+}
+.page:hover {
+  background-color: #eee;
+}
+
 .hoverBtn {
   transition: all 0.3s;
 }

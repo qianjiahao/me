@@ -1,7 +1,7 @@
 module.exports = {
   panel: {
     display: 'none',
-    width: '700px',
+    width: '800px',
     height: '450px',
     position: 'absolute',
     left: '230px',
@@ -35,13 +35,13 @@ module.exports = {
     color: '#3dbcf5',
   },
   form: {
-    display: 'none'
+    display: 'none',
   },
   frame: {
     border: 'none',
     width: '100%',
     backgroundColor: 'white',
-    position: 'absolute',
+    position: 'relative',
     bottom: '0',
     left: '0',
     right: '0'
@@ -50,18 +50,21 @@ module.exports = {
     width: '100%',
     display: 'none',
     marginTop: '10px',
+    position: 'relative'
   },
   uploadsArea: {
     cursor: 'pointer',
-    height: '300px',
+    height: '250px',
     backgroundImage: 'url("./images/default.png")',
     backgroundSize: 'contain',
     backgroundPosition: '50% 60%',
     backgroundRepeat: 'no-repeat',
-    backgroundColor: '#ccc'
+    backgroundColor: '#ccc',
+    position: 'relative'
   },
   pictureArea: {
     height: '339px',
+    marginLeft: '50px'
   },
   submit: {
     display: 'block',
@@ -92,6 +95,27 @@ module.exports = {
   hide: {
     display: 'none'
   },
+  pager: {
+    position: 'absolute',
+    height: '319px',
+    width: '50px',
+    top: '10px',
+    display: 'block',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    lineHeight: '319px'
+  },
+  pre: {
+    left: '0px',
+  },
+  next: {
+    right: '0px',
+  },
+  current: {
+    color: '#3dbcf5',
+    fontSize: '18px',
+    margin: '0 20px'
+  },
   page: {
     width: '400px',
     float: 'left',
@@ -99,23 +123,12 @@ module.exports = {
     marginTop: '20px',
     position: 'relative'
   },
-  pre: {
-    position: 'absolute',
-    left: '0'
-  },
-  current: {
-    textAlign: 'center'
-  },
-  next: {
-    position: 'absolute',
-    right: '0'
-  },
   pageRight: {
     marginLeft: '420px',
     textAlign: 'right',
     marginTop: '20px'
   },
   settings: {
-    margin: '0 10px',
+    margin: '0 20px'
   }
 }
