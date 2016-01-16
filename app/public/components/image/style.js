@@ -10,7 +10,8 @@ module.exports = {
     boxShadow: '0 1px 6px #333',
     padding: '10px',
     border: '10px #666 solid',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    cursor: 'default'
   },
   open: {
     display: 'block'

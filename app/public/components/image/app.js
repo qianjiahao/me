@@ -17,10 +17,9 @@ var Pic = React.createClass({
   render: function() {
     var data = store.data();
 
-    console.log(data && data.get('temp').toJS())
-
     var i = data.get('currentPage');
     var page = [i-3, i-2, i-1, i, i+1, i+2, i+3];
+
 
     return (
       <div style={this.props.styles}>
@@ -33,7 +32,7 @@ var Pic = React.createClass({
         
           {/* [批量]上传图片 */}
           <div style={assgin({}, Style.content, (data.get('toggle_tab') == 0 ? Style.open : {}))} className="clearFix">
-            <div style={Style.uploadsArea}  onClick={() => this.refs.file.click()}>
+            <div style={Style.uploadsArea}  onClick={this.upload}>
               <form ref="form" action="/image/upload" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
                 <div style={Style.group}>
                   <input type="file" name="file" ref="file" multiple="multiple" onChange={this.submit}/>
@@ -68,13 +67,13 @@ var Pic = React.createClass({
             <span style={assgin({}, Style.pager, Style.pre)} className="page" onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) - 1)}><i className="iconfont icon-pre"></i></span>
             <span style={assgin({}, Style.pager, Style.next)} className="page"  onClick={() => msg.emit('toggle_page', parseInt(data.get('currentPage')) + 1)}><i className="iconfont icon-next"></i></span>
             <div style={Style.page}>
-              {page.map((v) => {
+              {page.map((v, k) => {
                 if(v > 0 && v <= data.get('totalPage')) {
-                  return (<a style={assgin({}, Style.settings, (v == data.get('currentPage') ? Style.current : {}))} onClick={() => msg.emit('toggle_page', v)}>{v}</a>);
+                  return (<a key={k} style={assgin({}, Style.settings, (v == data.get('currentPage') ? Style.current : {}))} onClick={() => msg.emit('toggle_page', v)}>{v}</a>);
                 }
               })}
 
-              <span>total : {data.get('totalPage')}</span>
+              <span>Total {<a style={assgin({}, Style.settings)} onClick={() => msg.emit('toggle_page', data.get('totalPage'))}>{data.get('totalPage')}</a>}</span>
             </div>
             <div style={Style.pageRight}>
               {/* 多选 */}
@@ -82,7 +81,7 @@ var Pic = React.createClass({
               {/* 完成 */}
               <span style={Style.settings} onClick={this.finish}><i style={Style.settings} className="iconfont icon-select"></i></span>
               {/* 删除 */}
-              <span style={Style.settings}><i style={Style.settings} className="iconfont icon-delete"></i></span>
+              <span style={Style.settings} onClick={this.remove}><i style={Style.settings} className="iconfont icon-delete"></i></span>
             </div>
           </div>
         </div>
@@ -95,9 +94,16 @@ var Pic = React.createClass({
       this.refs.form.submit();
     }
   },
+  upload() {
+    this.refs.file.click();
+  },
 
   finish() {
-    this.props.onFinish(['data']);
+    this.props.onFinish(store.data().get('temp'));
+  },
+
+  remove() {
+    msg.emit('remove_images');
   }
 });
 

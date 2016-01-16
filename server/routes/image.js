@@ -6,6 +6,7 @@ var path = require('path');
 
 var copy = require('../util/copy.js');
 var remove = require('../util/remove.js');
+var iter = require('../util/iter.js');
 
 
 exports.upload = (req, res) => {
@@ -77,41 +78,38 @@ exports.query = (req,res) => {
 };
 
 exports.remove = (req, res) => {
-  var list = req.body.list;
+  var list = req.body.list.split(',');
   var pageSize = req.body.pageSize;
 
-  console.log(list, pageSize);
-  // try {
-  //   (async function () {
+  try {
+    (async function () {
 
-  //     var images_path = './app/public/uploads/images';
-  //     var result = await Image.remove(list);
+      var images_path = './app/public/uploads/images';
+      var result = await Image.remove(list);
+      var images = await iter(images_path);
 
-  //     var data = await Promise.all(
-  //       images_path.map((v) => {
-  //         if(result.indexOf(v) !== -1) {
-  //           return remove(path.join(images_path, v));
-  //         }
-  //       })
-  //     );
+      var data = await Promise.all(
+        result.map((v) => {
+          if(images.indexOf(v) !== -1) {
+            return remove(path.join(images_path, v), 'file');
+          }
+        })
+      );
 
-  //     console.log(result, data);
+      var data = await Image.findByPage({pageNumber: 1, pageSize: pageSize});
 
-  //     var data = await Image.findByPage({pageNumber: 1, pageSize: pageSize});
-  //     console.log(data);
+      return res.json({ 
+        result: 'ok', 
+        data: {
+          result: data.result,
+          currentPage: 1,
+          totalPage: Math.ceil(data.total/pageSize)
+        }
+      });
 
-  //     return res.json({ 
-  //       result: 'ok', 
-  //       data: {
-  //         result: data.result,
-  //         currentPage: 1,
-  //         totalPage: Math.ceil(data.total/pageSize)
-  //       }
-  //     });
-
-  //   })();
-  // } catch (e) {
-  //   console.log(e);
-  // }
+    })();
+  } catch (e) {
+    console.log(e);
+  }
 }
 

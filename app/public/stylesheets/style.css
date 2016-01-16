@@ -22,9 +22,10 @@ html,body {
 }
 
 .page {
-
+  
 }
 .page:hover {
+  color: #3dbcf5;
   background-color: #eee;
 }
 

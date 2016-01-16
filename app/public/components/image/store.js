@@ -73,19 +73,25 @@ msg.on('query_images', (pageSize, pageNumber) => {
 });
 
 msg.on('remove_images', () => {
+  if(!store.data().get('temp').size) return ;
+
   ajax({
     url: '/image/remove',
     type: 'post',
-    data: { list: store.data().get('temp'), pageSize: store.data().get('pageSize') }
+    data: { list: store.data().get('temp').toJS(), pageSize: store.data().get('pageSize') }
   }).then(res => {
     if(res.result === 'ok') {
+      console.log('ok')
       store.cursor().withMutations(cursor => {
         cursor.set('result', Immutable.fromJS(res.data.result));
         cursor.set('currentPage', res.data.currentPage);
         cursor.set('totalPage', res.data.totalPage);
+        cursor.update('temp', temp => temp.clear());
       });
     }
+
   }).catch(err => {
     console.log(err);
   });
-})
+});
+
