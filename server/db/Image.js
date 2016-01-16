@@ -63,5 +63,19 @@ module.exports = {
           })  
       })
     })
+  },
+  remove(data) {
+    return new Promise((resolve, reject) => {
+
+      Promise.all(
+        data.map((v) => {
+          Image.remove({ name: v }, (err) => {
+            if(err) return reject(err);
+
+            resolve(v)
+          })
+        })
+      ).then(res => resolve(res)).catch(err => reject(err));
+    })
   }
 }

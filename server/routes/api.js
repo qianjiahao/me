@@ -4,11 +4,12 @@ var User = require('../db/User.js');
 var Blog = require('../db/Blog.js');
 var bcrypt = require('bcrypt');
 var { authCode, login, logout, checkLoginStatus } = require('./login.js');
-var { query, upload } = require('./image.js');
+var { query, upload, remove } = require('./image.js');
 
 
 router.get('/image/query', query);
 router.post('/image/upload', upload);
+router.post('/image/remove', remove);
 
 router.get('/authCode', authCode);
 router.post('/login', login);

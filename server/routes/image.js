@@ -76,3 +76,42 @@ exports.query = (req,res) => {
   }
 };
 
+exports.remove = (req, res) => {
+  var list = req.body.list;
+  var pageSize = req.body.pageSize;
+
+  console.log(list, pageSize);
+  // try {
+  //   (async function () {
+
+  //     var images_path = './app/public/uploads/images';
+  //     var result = await Image.remove(list);
+
+  //     var data = await Promise.all(
+  //       images_path.map((v) => {
+  //         if(result.indexOf(v) !== -1) {
+  //           return remove(path.join(images_path, v));
+  //         }
+  //       })
+  //     );
+
+  //     console.log(result, data);
+
+  //     var data = await Image.findByPage({pageNumber: 1, pageSize: pageSize});
+  //     console.log(data);
+
+  //     return res.json({ 
+  //       result: 'ok', 
+  //       data: {
+  //         result: data.result,
+  //         currentPage: 1,
+  //         totalPage: Math.ceil(data.total/pageSize)
+  //       }
+  //     });
+
+  //   })();
+  // } catch (e) {
+  //   console.log(e);
+  // }
+}
+

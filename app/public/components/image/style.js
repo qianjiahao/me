@@ -31,6 +31,9 @@ module.exports = {
     color: 'white',
     backgroundColor: '#3dbcf5'
   },
+  iconActive: {
+    color: '#3dbcf5',
+  },
   form: {
     display: 'none'
   },
@@ -75,7 +78,19 @@ module.exports = {
     height: '93px',
     overflow: 'hidden',
     float: 'left',
-    margin: '10px'
+    margin: '10px',
+    position: 'relative'
+  },
+  selectIcon: {
+    position: 'absolute',
+    right: '10px',
+    bottom: '10px'
+  },
+  show: {
+    display: 'block'
+  },
+  hide: {
+    display: 'none'
   },
   page: {
     width: '400px',

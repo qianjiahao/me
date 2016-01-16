@@ -33,7 +33,7 @@
 .icon-home:before { content: "\e60e"; }
 .icon-text:before { content: "\e603"; }
 .icon-less:before { content: "\e60f"; }
-.icon-unselect:before { content: "\e616"; }
+.icon-unselected:before { content: "\e616"; }
 .icon-rocket:before { content: "\e605"; }
 .icon-more:before { content: "\e610"; }
 .icon-multi-select:before { content: "\e617"; }

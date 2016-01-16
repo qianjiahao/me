@@ -6,7 +6,7 @@ var { msg, mixins } = require('iflux');
 var StoreMixin = mixins.StoreMixin;
 var store = require('./store.js');
 var markdown = require('markdown').markdown;
-var Pic = require('../pic/app.js');
+var Image = require('../image/app.js');
 var New = React.createClass({
   mixins: [StoreMixin(store)],
 
@@ -35,7 +35,7 @@ var New = React.createClass({
         <div style={Style.group}>
         <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 0)}><i className="iconfont icon-text"></i></span>
         <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 1)}><i className="iconfont icon-html"></i></span>
-        <Pic styles={Style.pic}/>
+        <Image styles={Style.image}/>
           {data.get('tab') == 0 ? (
             <textarea placeholder="" style={assgin({}, Style.textArea)} value={data.get('content')} onChange={this.changeContent}/>
           ) : (

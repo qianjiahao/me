@@ -54,7 +54,7 @@ module.exports = {
   active: {
     border: '1px #3dbcf5 solid'
   },
-  pic: {
+  image: {
     display: 'inline',
     padding: '5px',
     margin: '5px',
