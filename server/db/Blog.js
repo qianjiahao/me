@@ -77,11 +77,13 @@ module.exports = {
       });
     });
   },
-  findAll(cb) {
-    Blog.find({}, (err, blogs) => {
-      if(err) return cb(err);
+  find(query) {
+    return new Promise((resolve, reject) => {
+      Blog.find(query, (err, blogs) => {
+        if(err) reject(err);
 
-      return cb(null, blogs);
+        resolve(blogs);
+      });  
     });
   }
 }

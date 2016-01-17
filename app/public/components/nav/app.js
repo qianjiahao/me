@@ -29,11 +29,11 @@ var Nav = React.createClass({
               <a href="javascript:;" style={assgin({}, Style.box, Style.login, Style.a)} onClick={() => msg.emit('logout')}>
                 <i className="iconfont icon-logout"></i>
               </a>
-              <Link to="/console" style={assgin({}, Style.box, Style.a)}>
-                <i className="iconfont icon-home"></i>
-              </Link>
               <Link to="/console/writer" style={assgin({}, Style.box, Style.a)}>
                 <i className="iconfont icon-writer"></i>
+              </Link>
+              <Link to="/console/dashboard" style={assgin({}, Style.box, Style.a)}>
+                <i className="iconfont icon-dashboard"></i>
               </Link>
             </div>
           ) 

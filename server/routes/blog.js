@@ -75,3 +75,19 @@ exports.publish = (req, res) => {
     res.json({ result: 'error', msg: e });
   }
 }
+
+exports.query_blog = (req, res) => {
+  var obj = req.body.obj;
+  console.log(req.body);
+  try {
+
+    var result = Blog.find(obj);
+    console.log(result);
+
+    res.json({ result: 'ok', data: result });
+  } catch (e) {
+    console.log(e);
+
+    res.json({ result: 'error', msg: e });
+  }
+}

@@ -38,8 +38,8 @@ var Writer = React.createClass({
             <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 1)}><i className="iconfont icon-html" style={Style.i}></i></span>
             <Image styles={Style.tab} onFinish={this.selectImage}/>
 
-            <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('publish')}><i className="iconfont icon-publish" style={Style.i}></i>发布</div>
-            <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('save')}><i className="iconfont icon-save" style={Style.i}></i>草稿</div>
+            <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('publish')}><i className="iconfont icon-publish" style={Style.i}></i></div>
+            <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('save')}><i className="iconfont icon-save" style={Style.i}></i></div>
           </div>
           <div style={Style.content_area}>
             {data.get('tab') == 0 

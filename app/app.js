@@ -10,6 +10,7 @@ var Index = require('./public/components/index/app.js');
 var Login = require('./public/components/login/app.js');
 var Console = require('./public/components/console/app.js');
 var Writer = require('./public/components/writer/app.js');
+var Dashboard = require('./public/components/dashboard');
 
 var App = React.createClass({
   render () {
@@ -33,7 +34,7 @@ render((
         <IndexRoute component={Writer} />
         <Route path="writer" component={Writer} />
         <Route path="writer/:id" component={Writer} />
-        
+        <Route path="dashboard" component={Dashboard} />
       </Route>
     </Route>
   </Router>

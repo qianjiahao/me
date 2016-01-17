@@ -8,7 +8,6 @@ var store = module.exports = Store({
   content: '',
 
   tab: 0,
-  msg: ''
 });
 
 msg.on('clear', () => {
