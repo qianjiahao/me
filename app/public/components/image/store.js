@@ -12,7 +12,7 @@ var store = module.exports = Store({
   pageSize: 12,
 
   result: Immutable.List(),
-  temp: Immutable.List()    // will be deleted
+  temp: Immutable.List()    // temporal store selected data
 });
 
 msg.on('toggle_panel', value => {
@@ -94,4 +94,3 @@ msg.on('remove_images', () => {
     console.log(err);
   });
 });
-

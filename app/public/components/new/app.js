@@ -35,7 +35,7 @@ var New = React.createClass({
         <div style={Style.group}>
         <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 0)}><i className="iconfont icon-text"></i></span>
         <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('tab', 1)}><i className="iconfont icon-html"></i></span>
-        <Image styles={Style.image}/>
+        <Image styles={Style.image} onFinish={this.finish}/>
           {data.get('tab') == 0 ? (
             <textarea placeholder="" style={assgin({}, Style.textArea)} value={data.get('content')} onChange={this.changeContent}/>
           ) : (
@@ -61,6 +61,10 @@ var New = React.createClass({
   },
   create() {
     msg.emit('create');
+  },
+  finish(data) {
+    console.log(data);
+    msg.emit('insert_images', data);
   }
 });
 

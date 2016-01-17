@@ -13,15 +13,7 @@ var Console = React.createClass({
   render: function() {
     return (
       <div style={Style.container}>
-        <div style={Style.header} className="clearFix">
-          <Link to="/console/settings" style={assgin({float: 'right'}, Style.a)}>settings</Link>
-          <Link to="/console/new" style={assgin({float: 'right'}, Style.a)}>new</Link>
-          <Link to="/console/dashboard" style={assgin({float: 'right'}, Style.a)}>dashboard</Link>
-          <div></div>
-          <div></div>
-        </div>
         <div style={Style.wrapper}>{this.props.children}</div>
-        
       </div>
     );
   }

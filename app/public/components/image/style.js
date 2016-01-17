@@ -32,9 +32,6 @@ module.exports = {
     color: 'white',
     backgroundColor: '#3dbcf5'
   },
-  iconActive: {
-    color: '#3dbcf5',
-  },
   form: {
     display: 'none',
   },
@@ -113,8 +110,8 @@ module.exports = {
     right: '0px',
   },
   current: {
-    color: '#3dbcf5',
-    fontSize: '18px',
+    color: '#ff4e00',
+    fontSize: '22px',
     margin: '0 20px'
   },
   page: {
@@ -131,5 +128,14 @@ module.exports = {
   },
   settings: {
     margin: '0 20px'
+  },
+  i: {
+    fontSize: '20px'
+  },
+  blue: {
+    color: '#3dbcf5'
+  },
+  orange: {
+    color: '#ff4e00'
   }
 }

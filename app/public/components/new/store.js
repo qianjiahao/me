@@ -38,23 +38,9 @@ msg.on('clear', () => {
   });
 });
 
-msg.on('create', () => {
-  var blog = {
-    title: store.data().get('title'),
-    tags: store.data().get('tags'),
-    publish: store.data().get('publish'),
-    content: store.data().get('content')
-  }
-
-  api.create(blog).then(res => {
-    if(res.result === 'ok') {
-      msg.emit('clear');
-      window.location.hash = '#/console';
-    } else {
-      console.log(res.msg);
-    }
-  });
-});
+msg.on('insert_images', (data) => {
+  
+})
 
 msg.on('save', () => {
   var blog = {

@@ -4,8 +4,8 @@ var ajax = require('ajax');
 
 var store = module.exports = Store({
   msg: '',
-  username: '',
-  password: '',
+  username: 'qjh',
+  password: 'me',
   authCode: '',
 });
 

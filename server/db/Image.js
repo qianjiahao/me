@@ -1,6 +1,5 @@
 var mongoose = require('./db_config.js');
 var type = require('type-of');
-require('babel-polyfill');
 
 var Image = mongoose.model('Image', new mongoose.Schema({
   name: {
