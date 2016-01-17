@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>{%= o.htmlWebpackPlugin.options.title %}</title>
-
+    <link href="stylesheets/highlight/dark.css" rel="stylesheet">
     <style type="text/css">
     html,body {
       height: 100% !important;
@@ -166,5 +166,7 @@
   {% for ( var i in o.htmlWebpackPlugin.files.js ) { %}
     <script type="text/javascript" src={%= o.htmlWebpackPlugin.files.js[i]%}></script>
   {% } %}
+  <script type="text/javascript" src="javascripts/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

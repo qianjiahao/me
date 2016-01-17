@@ -40,7 +40,7 @@ var Login = React.createClass({
           </div>
         </div>
         <div style={Style.group}>
-          <input style={Style.authInput} type="text" placeholder="验证码" onChange={(e) => msg.emit('changeAuthCode', e.target.value)} value={data.get('authCode')}/>
+          <input style={Style.authInput} type="text" placeholder="验证码" onChange={(e) => msg.emit('changeAuthCode', e.target.value)} value={data.get('authCode')} onKeyDown={this.keydown}/>
         </div>
         <div style={Style.group}>
           <div style={Style.submit} className="hoverBtn" onClick={() => msg.emit('login')}>submit</div>
@@ -49,6 +49,12 @@ var Login = React.createClass({
         <div style={assgin({}, Style.group, Style.msg)}>{data && data.get('msg')}</div>
       </div>
     );
+  },
+
+  keydown(e) {
+    if(e.keyCode == 13) {
+      msg.emit('login');
+    }
   }
 });
 

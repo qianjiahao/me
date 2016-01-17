@@ -4,7 +4,7 @@ module.exports = {
     width: '800px',
     height: '450px',
     position: 'absolute',
-    left: '230px',
+    left: '180px',
     top: '100px',
     backgroundColor: 'white',
     boxShadow: '0 1px 6px #333',
@@ -12,6 +12,9 @@ module.exports = {
     border: '10px #666 solid',
     overflow: 'hidden',
     cursor: 'default'
+  },
+  initial: {
+    fontSize: 'inherit'
   },
   open: {
     display: 'block'
@@ -119,7 +122,6 @@ module.exports = {
     float: 'left',
     textAlign: 'center',
     marginTop: '20px',
-    position: 'relative'
   },
   pageRight: {
     marginLeft: '420px',

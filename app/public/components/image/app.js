@@ -5,7 +5,7 @@ var { msg, mixins } = require('iflux');
 var StoreMixin = mixins.StoreMixin;
 var store = require('./store.js');
 
-var Pic = React.createClass({
+var Image = React.createClass({
   mixins: [StoreMixin(store)],
 
   getDefaultProps() {
@@ -14,6 +14,7 @@ var Pic = React.createClass({
       onFinish: () => {}
     }
   },
+
   render: function() {
     var data = store.data();
 
@@ -22,7 +23,7 @@ var Pic = React.createClass({
 
     return (
       <div style={this.props.styles}>
-      <span onClick={() => msg.emit('toggle_panel', true)}><i className="iconfont icon-image" style={Style.i}></i></span>
+      <span onClick={() => msg.emit('toggle_panel', true)}><i className="iconfont icon-image" style={Style.initial}></i></span>
 
         <div style={assgin({}, Style.panel, (data.get('toggle_panel') ? Style.open : {}))} draggable="true">
           <span style={Style.close} onClick={() => msg.emit('toggle_panel', false)}><i className="iconfont icon-close" style={Style.i}></i></span>
@@ -98,7 +99,11 @@ var Pic = React.createClass({
   },
 
   finish() {
-    this.props.onFinish(store.data().get('temp').toJS());
+    var value = store.data().get('toggle_select');
+    if(value) {
+      this.props.onFinish(store.data().get('temp').toJS());
+      msg.emit('toggle_select', value);
+    }
   },
 
   remove() {
@@ -106,4 +111,4 @@ var Pic = React.createClass({
   }
 });
 
-module.exports = Pic;
+module.exports = Image;

@@ -9,9 +9,10 @@ module.exports = {
     top: '0px'
   },
   wrapper: {
-    backgroundColor: 'white',
-    margin: '20px',
+    overflowX: 'hidden', 
+    backgroundColor: '#f8f8f8',
     boxShadow: '0px 1px 3px #aaa',
-    padding: '20px'
+    height: '100%',
+    boxSizing: 'border-box'
   }
 }

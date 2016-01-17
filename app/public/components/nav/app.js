@@ -13,6 +13,7 @@ var Nav = React.createClass({
   componentDidMount() {
     msg.emit('checkLoginStatus');
   },
+  
   render: function() {
 
     var data = store.data();
