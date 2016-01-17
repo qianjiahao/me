@@ -41,18 +41,40 @@ var Blog = mongoose.model('Blog', new mongoose.Schema({
 }));
 
 module.exports = {
-  create(blog, cb) {
-    Blog.create(blog, (err, blog) => {
-      if(err) return cb(err);
+  create(blog) {
+    return new Promise((resolve, reject) => {
+      Blog.create(blog, (err, blog) => {
+        if(err) reject(err);
 
-      return cb(null, blog);
+        resolve(blog);
+      });  
     });
   },
-  findByTitle(title, cb) {
-    Blog.find({ title: title }, (err, blog) => {
-      if(err) return cb(err);
+  save(blog) {
+    return new Promise((resolve, reject) => {
+      blog.save((err, blog) => {
+        if(err) reject(err);
 
-      return cb(null, blog);
+        resolve(blog);
+      });  
+    });
+  },
+  findByUuid(uuid) {
+    return new Promise((resolve, reject) => {
+      Blog.findOne({ uuid: uuid }, (err, blog) => {
+        if(err) reject(err);
+
+        resolve(blog);
+      });
+    });
+  },
+  findByTitle(title) {
+    return new Promise((resolve, reject) => {
+      Blog.find({ title: title }, (err, blog) => {
+        if(err) reject(err);
+
+        resolve(blog);
+      });
     });
   },
   findAll(cb) {

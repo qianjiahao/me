@@ -11,6 +11,12 @@ var StoreMixin = mixins.StoreMixin;
 var Writer = React.createClass({
   mixins: [StoreMixin(store)],
 
+  componentDidMount() {
+    var params = this.props.params;
+    if(params.id) {
+      msg.emit('change_uuid', params.id);
+    }
+  },
   render: function() {
 
     var data = store.data();

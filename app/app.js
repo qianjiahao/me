@@ -32,6 +32,7 @@ render((
       <Route path="console" component={Console}>
         <IndexRoute component={Writer} />
         <Route path="writer" component={Writer} />
+        <Route path="writer/:id" component={Writer} />
         
       </Route>
     </Route>

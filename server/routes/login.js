@@ -1,5 +1,4 @@
 var User = require('../db/User.js');
-var Blog = require('../db/Blog.js');
 var bcrypt = require('bcrypt');
 var ccap = require('ccap');
 
