@@ -9,12 +9,13 @@ var store = module.exports = Store({
 msg.on('init', () => {
 
   ajax({
-    url: '/blog/query',
+    url: '/blog/queryAll',
     type: 'post',
-    data: { obj: {} }
   }).then(res => {
     if(res.result === 'ok') {
       store.cursor().set('result', Immutable.fromJS(res.data));
     }
-  });
+  }).catch(err => {
+    console.log(err);
+  })
 });

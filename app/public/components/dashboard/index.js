@@ -13,31 +13,44 @@ var Dashboard = React.createClass({
 
     var data = store.data();
 
+    console.log(data && data.toJS());
     return (
       <div>
         dashboard .
 
-        <table>
-          {data.get('result').map((v, k) => {
-            return (
-              <tr key={k}>
-                <td>{v.title}</td>
-                <td>
-                  {v.tags.size 
-                    ? v.tags.map((t, i) => {
-                        return (<span key={i}>{t}</span>)
-                      })
-                    : null
-                  }
-                </td>
-                <td>{v.content.slice(0, 20)}</td>
-                <td>{v.create_date}</td>
-                <td>{v.modify_date}</td>
-              </tr>
-            )
-          })}
+        <table style={Style.table}>
+          <thead>
+            <tr>
+              <th style={Style.th}>title</th>
+              <th style={Style.th}>tags</th>
+              <th style={Style.th}>content</th>
+              <th style={Style.th}>create_date</th>
+              <th style={Style.th}>modify_date</th>
+              <th style={Style.th}>publish</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.get('result') && data.get('result').map((v, k) => {
+              return (
+                <tr key={k} style={Style.tr}>
+                  <td style={Style.td}>{v.get('title')}</td>
+                  <td style={Style.td}>
+                    {v.get('tags').size
+                      ? v.get('tags').map((t, i) => {
+                          return (<span key={i}>{t}</span>)
+                        })
+                      : null
+                    }
+                  </td>
+                  <td style={Style.td}>{v.get('content').slice(0, 20)}</td>
+                  <td style={Style.td}>{v.get('create_date')}</td>
+                  <td style={Style.td}>{v.get('modify_date')}</td>
+                  <td style={Style.td}>{v.get('publish')}</td>
+                </tr>
+              )
+            })}
+          </tbody>
         </table>
-        
       </div>
     );
   }

@@ -76,15 +76,19 @@ exports.publish = (req, res) => {
   }
 }
 
-exports.query_blog = (req, res) => {
-  var obj = req.body.obj;
-  console.log(req.body);
+
+exports.queryAll = (req, res) => {
   try {
 
-    var result = Blog.find(obj);
-    console.log(result);
+    (async function () {
 
-    res.json({ result: 'ok', data: result });
+      var result = await Blog.findAll();
+
+      console.log(result);
+
+      res.json({ result: 'ok', data: result });
+      
+    })();
   } catch (e) {
     console.log(e);
 

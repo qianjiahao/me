@@ -3,7 +3,7 @@ var router = express.Router();
 
 var { authCode, login, logout, checkLoginStatus } = require('./login.js');
 var { query, upload, remove } = require('./image.js');
-var { save, publish, query_blog } = require('./blog.js');
+var { save, publish, queryAll } = require('./blog.js');
 
 router.get('/image/query', query);
 router.post('/image/upload', upload);
@@ -16,6 +16,6 @@ router.post('/checkLoginStatus', checkLoginStatus);
 
 router.post('/blog/save', save);
 router.post('/blog/publish', publish);
-router.post('/blog/query', query_blog);
+router.post('/blog/queryAll', queryAll);
 
 module.exports = router;

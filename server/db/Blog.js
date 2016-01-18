@@ -85,5 +85,14 @@ module.exports = {
         resolve(blogs);
       });  
     });
+  },
+  findAll() {
+    return new Promise((resolve, reject) => {
+      Blog.find({}, (err, blogs) => {
+        if(err) reject(err);
+
+        resolve(blogs);
+      });  
+    });
   }
 }
