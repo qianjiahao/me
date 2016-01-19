@@ -64,6 +64,7 @@ msg.on('save', () => {
   }).then(res => {
     if(res.result === 'ok') {
       msg.emit('clear');
+      window.location.hash = '#/console/dashboard';
     } else {
       console.log(res.msg);
     }
@@ -88,6 +89,7 @@ msg.on('publish', () => {
   }).then(res => {
     if(res.result === 'ok') {
       msg.emit('clear');
+      window.location.hash = '#/console/dashboard';
     } else {
       console.log(res.msg);
     }

@@ -1,10 +1,10 @@
 module.exports = {
   panel: {
     display: 'none',
-    width: '800px',
+    width: '625px',
     height: '450px',
     position: 'absolute',
-    left: '180px',
+    left: '280px',
     top: '100px',
     backgroundColor: 'white',
     boxShadow: '0 1px 6px #333',
@@ -85,10 +85,21 @@ module.exports = {
     margin: '10px',
     position: 'relative'
   },
-  selectIcon: {
+  selected: {
     position: 'absolute',
-    right: '10px',
-    bottom: '10px'
+    left: '0',
+    right: '0',
+    top: '0',
+    bottom: '0',
+    opacity: '0.7',
+    backgroundColor: '#333',
+    textAlign: 'center',
+    lineHeight: '93px',
+
+  },
+  selected_icon: {
+    color: 'white',
+    fontSize: '24px'
   },
   show: {
     display: 'block'
@@ -117,14 +128,8 @@ module.exports = {
     fontSize: '22px',
     margin: '0 20px'
   },
-  page: {
-    width: '400px',
-    float: 'left',
-    textAlign: 'center',
-    marginTop: '20px',
-  },
-  pageRight: {
-    marginLeft: '420px',
+  operator: {
+    marginLeft: '300px',
     textAlign: 'right',
     marginTop: '20px'
   },

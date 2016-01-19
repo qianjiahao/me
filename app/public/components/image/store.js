@@ -4,8 +4,7 @@ var ajax = require('ajax');
 
 var store = module.exports = Store({
   toggle_panel: false,
-  toggle_tab: 0,
-  toggle_select: false,
+  tab: 0,
 
   currentPage: 1,
   totalPage: 1,
@@ -20,8 +19,8 @@ msg.on('toggle_panel', value => {
 });
 
 msg.on('toggle_tab', value => {
-  store.cursor().set('toggle_tab', value);
-  if(value == 1) {
+  store.cursor().set('tab', value);
+  if(value == 0) {
     msg.emit('query_images', store.data().get('pageSize'), store.data().get('currentPage'));
   }
 });
@@ -35,14 +34,7 @@ msg.on('toggle_page', value => {
   }
 });
 
-msg.on('toggle_select', value => {
-  store.cursor().set('toggle_select', !value);
-  store.cursor().update('temp', temp => temp.clear());
-});
-
 msg.on('select_image', value => {
-  if(!store.data().get('toggle_select')) return ;
-
   store.cursor().update('temp', temp => {
     var index = temp.indexOf(value);
 
