@@ -162,7 +162,9 @@
     <div class="circle c7"><div class="dot d7"></div></div>
     <div class="circle c8"><div class="dot d8"></div></div>
   </div>
-
+  
+  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.uploadfile.min.js"></script>
   {% for ( var i in o.htmlWebpackPlugin.files.js ) { %}
     <script type="text/javascript" src={%= o.htmlWebpackPlugin.files.js[i]%}></script>
   {% } %}

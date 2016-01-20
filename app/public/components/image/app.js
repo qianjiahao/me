@@ -1,9 +1,10 @@
 var React = require('react');
 var Style = require('./style.js');
-var assgin = require('../../javascripts/Object.assign.js');
+var assgin = require('javascripts/Object.assign.js');
 var { msg, mixins } = require('iflux');
 var StoreMixin = mixins.StoreMixin;
 var store = require('./store.js');
+require('../../stylesheets/uploadfile.css');
 
 var Image = React.createClass({
   mixins: [StoreMixin(store)],
@@ -17,6 +18,16 @@ var Image = React.createClass({
 
   componentDidMount() {
     msg.emit('toggle_tab', 0);
+
+    $(document).ready(function () {
+      $("#upload").uploadFile({
+        url: "/image/upload",
+        multiple: true,
+        dragDrop: true,
+        fileName: '123.jpg',
+
+      }); 
+    })
   },
   render: function() {
     var data = store.data();
@@ -63,14 +74,8 @@ var Image = React.createClass({
 
           {/* [批量]上传图片 */}
           <div style={assgin({}, Style.content, (data.get('tab') == 1 ? Style.open : {}))} className="clearFix">
-            <div style={Style.uploadsArea}  onClick={this.upload}>
-              <form ref="form" action="/image/upload" method="post" encType="multipart/form-data" target="frameFile" style={Style.form}>
-                <div style={Style.group}>
-                  <input type="file" name="file" ref="file" multiple="multiple" onChange={this.submit}/>
-                </div>
-              </form>
-            </div>
-            <iframe id='frameFile' name='frameFile' style={Style.frame}></iframe>
+            <div id="upload">upload</div>
+        
           </div>
         </div>
       </div>
