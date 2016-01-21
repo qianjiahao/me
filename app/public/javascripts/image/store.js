@@ -19,6 +19,7 @@ msg.on('image:tab', tab);
 msg.on('image:query', query);
 msg.on('image:remove', remove);
 msg.on('image:select', select);
+msg.on('image:page', page);
 
 function active (value) {
   store.cursor().set('active', value);
@@ -33,7 +34,6 @@ function tab (value) {
 }
 
 function select (value) {
-  console.log(value);
   store.cursor().update('selected', selected => {
     var index = selected.indexOf(value);
 
@@ -43,6 +43,15 @@ function select (value) {
       return selected.push(value);
     }
   });
+}
+
+function page (value) {
+  var currentPage = store.data().get('currentPage');
+  var totalPage = store.data().get('totalPage');
+
+  if(0 < value && value <= totalPage) {
+    query(store.data().get('pageSize'), value);
+  }
 }
 
 function query (pageSize, pageNumber) {
@@ -63,20 +72,19 @@ function query (pageSize, pageNumber) {
 }
 
 function remove () {
-  if(!store.data().get('temp').size) return ;
+  if(!store.data().get('selected').size) return ;
 
   ajax({
     url: '/image/remove',
     type: 'post',
-    data: { list: store.data().get('temp').toJS(), pageSize: store.data().get('pageSize') }
+    data: { list: store.data().get('selected').toJS(), pageSize: store.data().get('pageSize') }
   }).then(res => {
     if(res.result === 'ok') {
-      console.log('ok')
       store.cursor().withMutations(cursor => {
-        cursor.set('result', Immutable.fromJS(res.data.result));
+        cursor.set('images', Immutable.fromJS(res.data.result));
         cursor.set('currentPage', res.data.currentPage);
         cursor.set('totalPage', res.data.totalPage);
-        cursor.update('temp', temp => temp.clear());
+        cursor.update('selected', selected => selected.clear());
       });
     }
 

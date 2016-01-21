@@ -21,17 +21,18 @@ html,body {
   background-size: cover;
 }
 
-.page {
-  
-}
 .page:hover {
   color: #3dbcf5;
   background-color: #eee;
 }
 
-.hoverBtn {
-  transition: all 0.3s;
-}
+.color-hover { transition: all 0.3s; }
+.color-hover:hover { color: #3dbcf5; }
+
+.bg-color-hover { transition: all 0.3s; }
+.bg-color-hover:hover { background-color: #3dbcf5; }
+
+.hoverBtn { transition: all 0.3s; }
 .hoverBtn:hover {
   color: white;
   background-color: #3dbcf5;
