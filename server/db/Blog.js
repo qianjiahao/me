@@ -11,11 +11,20 @@ var Blog = mongoose.model('Blog', new mongoose.Schema({
     type: String,
     required: true
   },
+  cover: {
+    type: String,
+    required: false,
+    default: 'images/default.png'
+  },
   tags: {
     type: Array,
     required: false 
   },
-  content: {
+  h_content: {
+    type: String,
+    required: true
+  },
+  m_content: {
     type: String,
     required: true
   },

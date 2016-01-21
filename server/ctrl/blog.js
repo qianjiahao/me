@@ -7,7 +7,9 @@ exports.save = (req, res) => {
   var blog = {
     title: req.body.title,
     tags: req.body.tags ? req.body.tags.split('|') : [],
-    content: req.body.content,
+    h_content: req.body.h_content,
+    m_content: req.body.m_content,
+    cover: req.body.cover,
     modify_date: new Date(),
     publish: 0
   }
@@ -45,7 +47,9 @@ exports.publish = (req, res) => {
   var blog = {
     title: req.body.title,
     tags: req.body.tags ? req.body.tags.split('|') : [],
-    content: req.body.content,
+    h_content: req.body.h_content,
+    m_content: req.body.m_content,
+    cover: req.body.cover,
     modify_date: new Date(),
     publish: 1
   }

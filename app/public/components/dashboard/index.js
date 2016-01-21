@@ -42,9 +42,7 @@ var Dashboard = React.createClass({
                       : null
                     }
                   </td>
-                  <td style={Style.td}>{v.get('content').slice(0, 20)}</td>
-                  <td style={Style.td}>{v.get('create_date')}</td>
-                  <td style={Style.td}>{v.get('modify_date')}</td>
+                  <td style={Style.td}>{v.get('h_content').slice(0, 60)}</td>
                   <td style={Style.td}>{v.get('publish')}</td>
                 </tr>
               )

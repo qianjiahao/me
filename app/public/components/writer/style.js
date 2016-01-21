@@ -19,11 +19,16 @@ module.exports = {
     fontSize: '24px',
   },
   tags: {
-    fontSize: '18px'
+    fontSize: '18px',
+    marginLeft: '20px'
+  },
+  cover: {
+    fontSize: '18px',
+    marginLeft: '20px'
   },
   content: {
     padding: '2px',
-    height: '550px'
+    height: '510px'
   },
   content_bar: {
     fontSize: '20px',
@@ -54,6 +59,16 @@ module.exports = {
     padding: '5px',
     fontSize: '16px',
     overflow: 'auto',
+  },
+  coverBox: {
+    width: '500px',
+    height: '300px',
+    backgroundColor: '#eee',
+    overflow: 'hidden',
+    margin: '0 auto'
+  },
+  coverImage: {
+    width: '100%'
   },
   tab: {
     display: 'inline-block',
