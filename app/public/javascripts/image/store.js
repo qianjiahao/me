@@ -3,6 +3,8 @@ var Immutable = require('immutable');
 var ajax = require('ajax');
 
 var store = module.exports = Store({
+  id: '',
+
   active: false,
   tab: 0,   // 0 显示图片; 1 上传图片
 
@@ -14,6 +16,8 @@ var store = module.exports = Store({
   images: Immutable.List(),    // images data
   selected: Immutable.List(),      // selected data
 });
+
+msg.on('image:token', token);
 msg.on('image:active', active);
 msg.on('image:tab', tab);
 msg.on('image:query', query);
@@ -21,8 +25,18 @@ msg.on('image:remove', remove);
 msg.on('image:select', select);
 msg.on('image:page', page);
 
-function active (value) {
+/*
+  标示调用者，返回传入的id
+ */
+function token (value) {
+  store.cursor().set('id', value);
+}
+
+function active (value, id) {
   store.cursor().set('active', value);
+  if(id) {
+    token(id);
+  }
 }
 
 function tab (value) {
@@ -66,14 +80,12 @@ function query (pageSize, pageNumber) {
         cursor.set('totalPage', res.data.totalPage);
       });
     }
-  }).catch(err => {
-    console.log(err);
-  });
+  }).catch(err => console.log(err));
 }
 
 function remove () {
   if(!store.data().get('selected').size) return ;
-
+ 
   ajax({
     url: '/image/remove',
     type: 'post',
@@ -88,8 +100,6 @@ function remove () {
       });
     }
 
-  }).catch(err => {
-    console.log(err);
-  });
+  }).catch(err => console.log(err));
 }
 

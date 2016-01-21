@@ -69,9 +69,7 @@ msg.on('save', () => {
     } else {
       console.log(res.msg);
     }
-  }).catch(err => {
-    console.log(err);
-  })
+  }).catch(err => console.log(err))
 });
 
 msg.on('publish', () => {
@@ -94,7 +92,5 @@ msg.on('publish', () => {
     } else {
       console.log(res.msg);
     }
-  }).catch(err => {
-    console.log(err);
-  })
+  }).catch(err => console.log(err))
 });

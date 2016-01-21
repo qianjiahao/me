@@ -60,7 +60,6 @@ exports.query = (req,res) => {
   try {
     (async function () {
       var data = await Image.findByPage({pageNumber: pageNumber, pageSize: pageSize});
-      console.log(data);
 
       return res.json({ 
         result: 'ok', 

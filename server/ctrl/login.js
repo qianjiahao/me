@@ -9,8 +9,6 @@ exports.authCode = (req, res) => {
   var text = any[0];
   var butter = any[1];
 
-  console.log(text);
-
   req.session.authCode = text;
   res.end(butter);
 }
@@ -55,7 +53,6 @@ exports.logout = (req, res) => {
 };
 
 exports.checkLoginStatus = (req, res) => {
-  console.log(req.session);
   if(!req.session.username) return res.json({ result: 'error', msg: '用户未登录' });
   return res.json({ result: 'ok', msg: '欢迎归来', data: req.session });
 }

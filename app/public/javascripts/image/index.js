@@ -7,6 +7,13 @@ var { msg, mixins } = require('iflux');
 var Image = React.createClass({
   mixins: [mixins.StoreMixin(store)],
 
+  getDefaultProps() {
+    return {
+      styles: {},
+      onFinish: () => {}
+    }
+  },
+
   componentDidMount() {
     msg.emit('image:tab', 0);
   },
@@ -22,7 +29,7 @@ var Image = React.createClass({
     var totalPage = data.get('totalPage');
 
     return (
-      <div style={assign({}, Style.container, (active ? Style.show : Style.hide))}>
+      <div style={assign({}, Style.container, this.props.styles, (active ? Style.show : Style.hide))}>
         {/* 头部 */}
         <div style={Style.topBar}>
           <span style={assign({}, Style.left, Style.fontSize22)}>选择图片</span>
@@ -33,7 +40,6 @@ var Image = React.createClass({
         <div style={Style.leftAside}>
           <i className="iconfont icon-image color-hover" style={assign({}, Style.tab, Style.left, (tab == 0 ? Style.activeTab : {}))} onClick={() => msg.emit('image:tab', 0)}></i>
           <i className="iconfont icon-upload color-hover" style={assign({}, Style.tab, Style.left, (tab == 1 ? Style.activeTab : {}))} onClick={() => msg.emit('image:tab', 1)}></i>
-          <i className="iconfont icon-wrench color-hover" style={assign({}, Style.tab, Style.left, (tab == 2 ? Style.activeTab : {}))} onClick={() => msg.emit('image:tab', 2)}></i>
         </div>
 
         {/* 内容 content */}
@@ -59,7 +65,7 @@ var Image = React.createClass({
                   <div style={assign({}, Style.pageBtn, Style.pageNext)} className="page" onClick={() => msg.emit('image:page', data.get('currentPage') + 1)}><i className="iconfont icon-next"></i></div>
 
                   <div style={Style.pageInfo}>{`${currentPage}/${totalPage}`}<i className="iconfont icon-delete" style={Style.paddingLeft} onClick={() => msg.emit('image:remove')}></i></div>
-                  <div style={Style.finish}>完成</div>
+                  <div style={Style.finish} onClick={this.finish}>完成</div>
                 </div>
               ) 
             : (
@@ -72,6 +78,16 @@ var Image = React.createClass({
         </div>
       </div>
     );
+  },
+
+  finish() {
+    var data =  store.data().get('selected');
+    var id = store.data().get('id');
+
+    if(data.size) {
+      this.props.onFinish(data.toJS(), id);
+      msg.emit('image:token', '');
+    }
   }
 
 });
