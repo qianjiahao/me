@@ -67,60 +67,53 @@
       color: white;
       transition: all 0.3s;
       font-family:Verdana,Tahoma,sans-serif;
+      animation: roll 4s infinite;
+      -webkit-animation: roll 4s infinite;
     }
     .link:hover {
       color: black;
     }
 
-    @keyframes 'blink' {
+    @keyframes roll {
       0% {
-        visibility: visible;
+        transform: rotateY(0deg);
       }
-      33% {
-        visibility: hidden;
-      }
-      100% {
-        visibility: hidden; 
-      }
-    }
-
-    @-webkit-keyframes 'blink' {
-      0% {
-        visibility: visible;
-        transition: all 0.2s;
+      40% {
+        transform: rotateY(0deg);
       }
       50% {
-        visibility: hidden;
-        transition: all 0.2s;
+        transform: rotateY(180deg);
+      }
+      65% {
+        transform: rotateX(180deg);
+      }
+      80% {
+        transform: rotateY(360deg);
       }
       100% {
-        visibility: hidden; 
-        transition: all 0.2s;
+        transform: rotateY(360deg);
       }
     }
 
-    .arrow1 {
-      -webkit-animation-name:'blink';
-      -webkit-animation-duration: 1s;
-      -webkit-animation-timing-function: ease-in-out;
-      -webkit-animation-delay: 0.4s;
-      -webkit-animation-iteration-count: infinite;
-    }
-
-    .arrow2 {
-      -webkit-animation-name:'blink';
-      -webkit-animation-duration: 1s;
-      -webkit-animation-timing-function: ease-in-out;
-      -webkit-animation-delay: 0.2s;
-      -webkit-animation-iteration-count: infinite;
-    }
-
-    .arrow3 {
-      -webkit-animation-name:'blink';
-      -webkit-animation-duration: 1s;
-      -webkit-animation-timing-function: ease-in-out;
-      -webkit-animation-delay: 0s;
-      -webkit-animation-iteration-count: infinite;
+    @-webkit-keyframes roll {
+      0% {
+        -webkit-transform: rotateY(0deg);
+      }
+      40% {
+        -webkit-transform: rotateY(0deg);
+      }
+      50% {
+        -webkit-transform: rotateY(180deg);
+      }
+      65% {
+        -webkit-transform: rotateX(180deg);
+      }
+      80% {
+        -webkit-transform: rotateY(360deg);
+      }
+      100% {
+        -webkit-transform: rotateY(360deg);
+      }
     }
   </style>
 </head>
@@ -131,13 +124,7 @@
   <span class="message">本网页已飞向浩瀚宇宙</span>
 
   <div class="link">
-    <span class="arrow1"> < </span>
-    <span class="arrow2"> < </span>
-    <span class="arrow3"> < </span>
     <a href="/">回到过去</a>
-    <span class="arrow3"> > </span>
-    <span class="arrow2"> > </span>
-    <span class="arrow1"> > </span>
   </div>
 </body>
 </html>
