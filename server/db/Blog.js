@@ -88,20 +88,11 @@ module.exports = {
   },
   find(query) {
     return new Promise((resolve, reject) => {
-      Blog.find(query, (err, blogs) => {
+      Blog.find(query, { _id: 0, uuid: 1, h_content: 1, title: 1, modify_date: 1, tags: 1, cover: 1 }, (err, blogs) => {
         if(err) reject(err);
 
         resolve(blogs);
       });  
     });
   },
-  findAll() {
-    return new Promise((resolve, reject) => {
-      Blog.find({}, (err, blogs) => {
-        if(err) reject(err);
-
-        resolve(blogs);
-      });  
-    });
-  }
 }

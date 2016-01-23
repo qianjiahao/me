@@ -1,9 +1,20 @@
 var React = require('react');
 var Style = require('./style.js');
+var { msg , mixins } = require('iflux');
+var store = require('./store.js');
 
 var Index = React.createClass({
+  mixins: [mixins.StoreMixin(store)],
 
-  render: function() {
+  componentDidMount() {
+    msg.emit('index:init');
+  },
+
+  render() {
+    var data = store.data();
+
+    console.log(data && data.toJS());
+    
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>

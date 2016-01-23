@@ -1,15 +1,18 @@
+var fs = require('fs');
+var path = require('path');
 var formidable = require('formidable');
 var uploads_path = './app/public/uploads';
 var Image = require('../db/Image.js');
-var fs = require('fs');
-var path = require('path');
+var checkLogin = require('./check.js');
 
 var copy = require('../util/copy.js');
 var remove = require('../util/remove.js');
 var iter = require('../util/iter.js');
 
 
-exports.upload = (req, res) => {
+exports.image_upload = (req, res) => {
+  checkLogin(req, res);
+
   var form = new formidable.IncomingForm();
 
   form.encoding = 'utf-8';
@@ -53,7 +56,9 @@ exports.upload = (req, res) => {
 };
 
 
-exports.query = (req,res) => {
+exports.image_query = (req,res) => {
+  checkLogin(req, res);
+
   var pageSize = parseInt(req.query.pageSize); 
   var pageNumber = parseInt(req.query.pageNumber);
   
@@ -76,7 +81,9 @@ exports.query = (req,res) => {
   }
 };
 
-exports.remove = (req, res) => {
+exports.image_remove = (req, res) => {
+  checkLogin(req, res);
+  
   var list = req.body.list.split(',');
   var pageSize = req.body.pageSize;
 

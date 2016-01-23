@@ -9,8 +9,9 @@ var store = module.exports = Store({
 msg.on('init', () => {
 
   ajax({
-    url: '/blog/queryAll',
+    url: '/blog/query',
     type: 'post',
+    data: {}
   }).then(res => {
     if(res.result === 'ok') {
       store.cursor().set('result', Immutable.fromJS(res.data));

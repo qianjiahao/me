@@ -5,11 +5,11 @@ var { Router, Route, Link, browserHistory, IndexRoute } = require('react-router'
 require('./public/stylesheets/style.css');
 require('./public/icons/iconfont.css');
 
-var Nav = require('./public/components/nav/app.js');
-var Index = require('./public/components/index/app.js');
-var Login = require('./public/components/login/app.js');
-var Console = require('./public/components/console/app.js');
-var Writer = require('./public/components/writer/app.js');
+var Nav = require('./public/components/nav');
+var Index = require('./public/components/index');
+var Login = require('./public/components/login');
+var Console = require('./public/components/console');
+var Writer = require('./public/components/writer');
 var Dashboard = require('./public/components/dashboard');
 
 var App = React.createClass({

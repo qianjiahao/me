@@ -13,19 +13,15 @@ var Dashboard = React.createClass({
 
     var data = store.data();
 
-    console.log(data && data.toJS());
     return (
       <div>
-        dashboard .
-
         <table style={Style.table}>
           <thead>
             <tr>
+              <th style={Style.th}>cover</th>
               <th style={Style.th}>title</th>
               <th style={Style.th}>tags</th>
               <th style={Style.th}>content</th>
-              <th style={Style.th}>create_date</th>
-              <th style={Style.th}>modify_date</th>
               <th style={Style.th}>publish</th>
             </tr>
           </thead>
@@ -33,6 +29,7 @@ var Dashboard = React.createClass({
             {data.get('result') && data.get('result').map((v, k) => {
               return (
                 <tr key={k} style={Style.tr}>
+                  <td style={Style.td}><img src={`uploads/images/${v.get('cover')}`} width="50px" /></td>
                   <td style={Style.td}>{v.get('title')}</td>
                   <td style={Style.td}>
                     {v.get('tags').size

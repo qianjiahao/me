@@ -1,7 +1,8 @@
 var Blog = require('../db/Blog.js');
+var checkLogin = require('./check.js');
 
-exports.save = (req, res) => {
-
+exports.blog_save = (req, res) => {
+  checkLogin(req, res);
   var uuid = req.body.uuid;
 
   var blog = {
@@ -10,37 +11,32 @@ exports.save = (req, res) => {
     h_content: req.body.h_content,
     m_content: req.body.m_content,
     cover: req.body.cover,
-    modify_date: new Date(),
     publish: 0
   }
 
   try {
-
     (async function () {
 
-      if(blog.uuid) {
-
+      if(uuid) {
         blog.uuid = uuid;
-        var result = await Blog.save(blog);
+        blog.modify_date = new Date();
+        var data = await Blog.save(blog);
       } else {
-
         blog.create_date = new Date();
-        var result = await Blog.create(blog);
+        var data = await Blog.create(blog);
       }
 
-      console.log(result);
-
-      return res.json({ result: 'ok', data: result });
+      return res.json({ result: 'ok', data: data });
     })();
-
   } catch (e) {
     console.log(e);
+    
     return res.json({ result: 'error', msg: e });
   }
 }
 
-exports.publish = (req, res) => {
-  console.log(req.body);
+exports.blog_publish = (req, res) => {
+  checkLogin(req, res);
 
   var uuid = req.body.uuid;
 
@@ -50,48 +46,39 @@ exports.publish = (req, res) => {
     h_content: req.body.h_content,
     m_content: req.body.m_content,
     cover: req.body.cover,
-    modify_date: new Date(),
     publish: 1
   }
 
   try {
-
     (async function () {
 
-      if(blog.uuid) {
-
+      if(uuid) {
         blog.uuid = uuid;
-        var result = await Blog.save(blog);
-
+        blog.modify_date = new Date();
+        var data = await Blog.save(blog);
       } else {
-
         blog.create_date = new Date();
-        var result = await Blog.create(blog);
+        var data = await Blog.create(blog);
       }
 
-      console.log(result);
-
-      res.json({ result: 'ok', data: result });
+      res.json({ result: 'ok', data: data });
     })();
-
   } catch (e) {
     console.log(e);
+
     res.json({ result: 'error', msg: e });
   }
 }
 
-
-exports.queryAll = (req, res) => {
+exports.blog_query = (req, res) => {
   try {
-
     (async function () {
 
-      var result = await Blog.findAll();
+      var params = req.body;
+      var data = await Blog.find(params);
 
-      console.log(result);
+      res.json({ result: 'ok', data: data });
 
-      res.json({ result: 'ok', data: result });
-      
     })();
   } catch (e) {
     console.log(e);

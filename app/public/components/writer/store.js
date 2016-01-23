@@ -82,19 +82,18 @@ msg.on('save', () => {
     publish: 0
   }
 
-  console.log(model);
-  // ajax({
-  //   url: '/blog/save',
-  //   type: 'post',
-  //   data: model
-  // }).then(res => {
-  //   if(res.result === 'ok') {
-  //     msg.emit('clear');
-  //     window.location.hash = '#/console/dashboard';
-  //   } else {
-  //     console.log(res.msg);
-  //   }
-  // }).catch(err => console.log(err))
+  ajax({
+    url: '/blog/save',
+    type: 'post',
+    data: model
+  }).then(res => {
+    if(res.result === 'ok') {
+      msg.emit('clear');
+      window.location.hash = '#/console/dashboard';
+    } else {
+      console.log(res.msg);
+    }
+  }).catch(err => console.log(err))
 });
 
 msg.on('publish', () => {
@@ -111,7 +110,7 @@ msg.on('publish', () => {
   ajax({
     url: '/blog/publish',
     type: 'post',
-    data: data
+    data: model
   }).then(res => {
     if(res.result === 'ok') {
       msg.emit('clear');
