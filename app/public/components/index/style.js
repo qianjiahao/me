@@ -15,6 +15,18 @@ module.exports = {
   warpper: {
     marginRight: '25%',
     backgroundColor: 'white',
-    paddingLeft: '20px'
+    paddingRight: '10px'
+  },
+  content: {
+    padding: '10px',
+    backgroundColor: '#eee'
+  },
+  group: {
+    padding: '10px',
+    backgroundColor: '#ddd'
+  },
+  groupCoverBox: {
+    height: '80px',
+    overflow: 'hidden'
   }
 }

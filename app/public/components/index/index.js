@@ -21,80 +21,22 @@ var Index = React.createClass({
           <img className="cover-img" src="../../images/bg2.jpg" />
         </div>
         <div style={Style.warpper}>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
+          <div style={Style.content}>
+            {data.get('data').size 
+              ? data.get('data').map((v, k) => {
 
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          555</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdsffdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
+                return (
+                  <div key={k} style={Style.group}>
+                    <div style={Style.groupCoverBox}>
+                      <img src={`uploads/images/${v.get('cover')}`} height="80px"/>
+                    </div>
+                  </div>
+                )
+              })
+              : <span>nothing right now ...</span>
+            }
 
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdsdf</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
-          <p>sfsdfksdjfksdjlsjflkdfdsjfksdf
-          sdflksdjfsdfjsdfjsdjfsdj</p><br/>
+          </div>
         </div>
       </div>
     );
