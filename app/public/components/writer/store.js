@@ -1,6 +1,7 @@
 var { msg, Store } = require('iflux');
 var ajax = require('ajax');
 var markdown = require('markdown').markdown;
+var Immutable = require('immutable');
 
 var store = module.exports = Store({
   uuid: '',
