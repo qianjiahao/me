@@ -17,19 +17,30 @@ module.exports = {
     backgroundColor: 'white',
     paddingRight: '10px',
   },
+  head: {
+    padding: '10px',
+    fontStyle: 'italic'
+  },
+  headOne: {
+    fontSize: '24px',
+    paddingLeft: '100px'
+  },
+  headSecond: {
+    fontSize: '30px',
+    paddingLeft: '220px'
+  },
   content: {
     padding: '10px',
     width: '75%',
-    marginTop: '100px'
+    margin: '10px auto'
   },
   group: {
     padding: '10px',
     position: 'relative',
-    marginTop: '20px',
-    border: '1px #b1b1b1 solid'
+    marginTop: '10px',
   },
   groupCoverBox: {
-    maxHeight: '100px',
+    maxHeight: '40px',
     overflow: 'hidden',
     float: 'left'
   },
@@ -44,11 +55,10 @@ module.exports = {
     left: '0'
   },
   groupTitle: {
-    fontSize: '28px',
+    fontSize: '22px',
+    float: 'left'
   },
   groupDate: {
-    position: 'absolute',
-    bottom: '10px',
-    left: '10px'
+    fontSize: '16px',
   }
 }
