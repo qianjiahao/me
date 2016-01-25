@@ -38,7 +38,7 @@ var Index = React.createClass({
                     </div>
                     <div style={Style.groupContent}>
                       <span style={Style.groupTitle}>{v.get('title')}</span>
-                      <span style={Style.groupDate}>{moment(v.get('modify_date')).format('YYYY MM-DD')}</span>
+                      <span style={Style.groupDate}>{moment(v.get('modify_date')).format('MM-DD YYYY')}</span>
                     </div>
                   </div>
                 )

@@ -42,10 +42,10 @@ module.exports = {
   groupCoverBox: {
     maxHeight: '40px',
     overflow: 'hidden',
-    float: 'left'
+    float: 'left',
   },
   groupContent: {
-    marginLeft: '120px',
+    marginLeft: '50px',
     textAlign: 'right',
     padding: '10px',
     position: 'absolute',
@@ -55,10 +55,11 @@ module.exports = {
     left: '0'
   },
   groupTitle: {
-    fontSize: '22px',
+    fontSize: '20px',
     float: 'left'
   },
   groupDate: {
-    fontSize: '16px',
+    fontSize: '14px',
+    fontStyle: 'italic'
   }
 }
