@@ -54,7 +54,6 @@ exports.logout = (req, res) => {
 
 exports.checkLoginStatus = (req, res) => {
   if(!req.session.username) return res.json({ result: 'error', msg: '用户未登录' });
-  console.log(req.session.expires < new Date());
   if(req.session.username && req.session.expires < new Date()) return res.json({ result: 'error', msg: '会话过期，请重新登录' });
   return res.json({ result: 'ok', msg: '欢迎归来', data: req.session });
 }

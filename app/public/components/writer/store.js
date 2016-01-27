@@ -67,7 +67,7 @@ msg.on('save', () => {
       msg.emit('clear');
       window.location.hash = '#/console/dashboard';
     } else {
-      console.log(res.msg);
+      console.log(res.err);
     }
   }).catch(err => console.log(err))
 });
@@ -91,7 +91,7 @@ msg.on('publish', () => {
       msg.emit('clear');
       window.location.hash = '#/';
     } else {
-      console.log(res.msg);
+      console.log(res.err);
     }
   }).catch(err => console.log(err))
 });

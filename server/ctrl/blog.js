@@ -3,18 +3,18 @@ var checkLogin = require('./check.js');
 
 exports.blog_post = (req, res) => {
   try {
-
-    checkLogin(req, res);
-    var uuid = req.body.uuid;
-    var blog = {
-      title: req.body.title,
-      h_content: req.body.h_content,
-      m_content: req.body.m_content,
-      modify_date: req.body.modify_date,
-      publish: req.body.publish
-    }
-
     (async function () {
+
+      checkLogin(req, res);
+      var uuid = req.body.uuid || '';
+      var blog = {
+        title: req.body.title,
+        h_content: req.body.h_content,
+        m_content: req.body.m_content,
+        modify_date: req.body.modify_date,
+        publish: req.body.publish
+      }
+
       if(uuid) {
         blog.uuid = uuid;
         var data = await Blog.save(blog);
@@ -27,7 +27,7 @@ exports.blog_post = (req, res) => {
     })();
   } catch (e) {
     console.log(e);
-    return res.json({ result: 'error', msg: e });
+    return res.json({ result: 'error', err: e });
   }
 }
 
@@ -43,6 +43,6 @@ exports.blog_query = (req, res) => {
     
   } catch (e) {
     console.log(e);
-    res.json({ result: 'error', msg: e });
+    res.json({ result: 'error', err: e });
   }
 }

@@ -13,7 +13,6 @@ msg.on('index:init', () => {
     type: 'post',
     data: { publish: 1 }
   }).then(res => {
-    console.log(res);
     if(res.result === 'ok') {
       store.cursor().set('data', Immutable.fromJS(res.data));
     }

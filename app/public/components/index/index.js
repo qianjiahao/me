@@ -63,7 +63,6 @@ var Index = React.createClass({
                                     <h3 style={Style.day}>{day}日</h3>
                                     {
                                       result[year][month][day].map((doc, k) => {
-                                        console.log(doc);
                                         return (
                                           <div key={k} style={Style.doc}>
                                             <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
