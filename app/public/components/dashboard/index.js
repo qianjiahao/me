@@ -18,9 +18,7 @@ var Dashboard = React.createClass({
         <table style={Style.table}>
           <thead>
             <tr>
-              <th style={Style.th}>cover</th>
               <th style={Style.th}>title</th>
-              <th style={Style.th}>tags</th>
               <th style={Style.th}>content</th>
               <th style={Style.th}>publish</th>
             </tr>
@@ -29,16 +27,7 @@ var Dashboard = React.createClass({
             {data.get('result') && data.get('result').map((v, k) => {
               return (
                 <tr key={k} style={Style.tr}>
-                  <td style={Style.td}><img src={`uploads/images/${v.get('cover')}`} width="50px" /></td>
                   <td style={Style.td}>{v.get('title')}</td>
-                  <td style={Style.td}>
-                    {v.get('tags').size
-                      ? v.get('tags').map((t, i) => {
-                          return (<span key={i}>{t}</span>)
-                        })
-                      : null
-                    }
-                  </td>
                   <td style={Style.td}>{v.get('h_content').slice(0, 60)}</td>
                   <td style={Style.td}>{v.get('publish')}</td>
                 </tr>

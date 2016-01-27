@@ -35,18 +35,24 @@ module.exports = {
     margin: '10px auto'
   },
   year: {
-    color: '#bbb'
+
   },
   month: {
-    color: '#999',
     marginLeft: '20px'
   },
   day: {
-    color: '#666',
     marginLeft: '50px'
   },
   doc: {
     color: '#666',
-    marginLeft: '70px'
+    marginLeft: '70px',
+    fontSize: '14px',
+    padding: '5px'
+  },
+  date: {
+    float: 'left'
+  },
+  title: {
+    marginLeft: '40px'
   }
 }

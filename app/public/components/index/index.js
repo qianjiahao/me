@@ -34,7 +34,7 @@ var Index = React.createClass({
           });
         });
       });
-      
+
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>
@@ -50,7 +50,7 @@ var Index = React.createClass({
               Object.keys(result).map((year, k) => {
                 return (
                   <div key={k}>
-                    <h1 style={Style.year}>{year}年</h1>
+                    <h2 style={Style.year}>{year}年</h2>
                     {
                       Object.keys(result[year]).map((month, k) => {
                         return (
@@ -66,7 +66,8 @@ var Index = React.createClass({
                                         console.log(doc);
                                         return (
                                           <div key={k} style={Style.doc}>
-                                            <h4>{doc.title}</h4>
+                                            <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
+                                            <span style={Style.title}>{doc.title}</span>
                                           </div>
                                         )
                                       })         

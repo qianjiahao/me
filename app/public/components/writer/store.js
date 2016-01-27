@@ -6,28 +6,15 @@ var Immutable = require('immutable');
 var store = module.exports = Store({
   uuid: '',
   title: '',
-  tags: '',
-  cover: '',
   h_content: '',
   m_content: '',
 
   tab: 0,
 });
 
-var model = {
-  uuid: store.data().get('uuid'),
-  title: store.data().get('title'),
-  tags: store.data().get('tags'),
-  cover: store.data().get('cover'),
-  m_content: store.data().get('m_content'),
-  h_content: store.data().get('h_content'),
-}
-
 msg.on('clear', () => {
   store.cursor().withMutations(cursor => {
     cursor.set('title', '');
-    cursor.set('tags', '');
-    cursor.set('cover', '');
     cursor.set('h_content', '');
     cursor.set('m_content', '');
   });
@@ -40,17 +27,6 @@ msg.on('change_uuid', value => {
 msg.on('change_title', value => {
   store.cursor().set('title', value);
 });
-
-msg.on('change_tags', value => {
-  store.cursor().set('tags', value);
-});
-
-msg.on('change_cover', value => {
-
-  // 封面 取首个元素
-  store.cursor().set('cover', value[0]);
-});
-
 
 msg.on('change_content', value => {
   store.cursor().set('m_content', value);
@@ -76,15 +52,14 @@ msg.on('save', () => {
   var model = {
     uuid: store.data().get('uuid'),
     title: store.data().get('title'),
-    tags: store.data().get('tags'),
-    cover: store.data().get('cover'),
     m_content: store.data().get('m_content'),
     h_content: store.data().get('h_content'),
+    modify_date: new Date(),
     publish: 0
   }
 
   ajax({
-    url: '/blog/save',
+    url: '/blog/post',
     type: 'post',
     data: model
   }).then(res => {
@@ -101,21 +76,20 @@ msg.on('publish', () => {
   var model = {
     uuid: store.data().get('uuid'),
     title: store.data().get('title'),
-    tags: store.data().get('tags'),
-    cover: store.data().get('cover'),
     m_content: store.data().get('m_content'),
     h_content: store.data().get('h_content'),
+    modify_date: new Date(),
     publish: 1
   }
 
   ajax({
-    url: '/blog/publish',
+    url: '/blog/post',
     type: 'post',
     data: model
   }).then(res => {
     if(res.result === 'ok') {
       msg.emit('clear');
-      window.location.hash = '#/console/dashboard';
+      window.location.hash = '#/';
     } else {
       console.log(res.msg);
     }

@@ -27,15 +27,6 @@ var Writer = React.createClass({
           <input type="text" style={assgin({}, Style.title, Style.input)} value={data.get('title')} onChange={(e) => msg.emit('change_title', e.target.value)} placeholder="标题"/>
         </div>
 
-        <div style={Style.bar}>
-          <input type="text" style={assgin({}, Style.input, Style.tags)} value={data.get('tags')} onChange={(e) => msg.emit('change_tags', e.target.value)} placeholder="分类"/>
-          
-        </div>
-
-        <div style={Style.bar}>
-          <input type="text" style={assgin({}, Style.input, Style.cover)} value={data.get('cover')} onChange={(e) => msg.emit('change_cover', e.target.value)} onClick={this.focusCover} placeholder="封面"/>
-        </div>
-        
         <div style={Style.content}>
           <div style={Style.content_bar}>
             <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 0)}><i className="iconfont icon-text" style={Style.i}></i></span>
@@ -55,22 +46,9 @@ var Writer = React.createClass({
       </div>
     );
   },
-  focusCover(e) {
-    msg.emit('image:active', true, 'cover');
-    if(e.target.value) {
-      msg.emit('image:select', e.target.value);
-    }
-  },
-  
+
   finish(data, id) {
-    switch (id) {
-      case 'content' :
-        msg.emit('select_image', data);
-        break;
-      case 'cover' :
-        msg.emit('change_cover', data);
-        msg.emit('image:select', data[0]);
-    }
+    msg.emit('select_image', data);
   }
 });
 

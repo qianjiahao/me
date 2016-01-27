@@ -11,15 +11,6 @@ var Blog = mongoose.model('Blog', new mongoose.Schema({
     type: String,
     required: true
   },
-  cover: {
-    type: String,
-    required: false,
-    default: 'images/default.png'
-  },
-  tags: {
-    type: Array,
-    required: false 
-  },
   h_content: {
     type: String,
     required: true
@@ -34,13 +25,11 @@ var Blog = mongoose.model('Blog', new mongoose.Schema({
   },
   create_date: {
     type: Date,
-    required: true,
-    default: new Date()
+    required: true
   },
   modify_date: {
     type: Date,
-    required: true,
-    default: new Date()
+    required: true
   },
   publish: {
     type: Number,
@@ -88,7 +77,7 @@ module.exports = {
   },
   find(query) {
     return new Promise((resolve, reject) => {
-      Blog.find(query, { _id: 0, uuid: 1, h_content: 1, title: 1, modify_date: 1, tags: 1, cover: 1 }, (err, blogs) => {
+      Blog.find(query, { _id: 0}, (err, blogs) => {
         if(err) reject(err);
 
         resolve(blogs);

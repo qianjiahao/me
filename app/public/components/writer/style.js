@@ -28,7 +28,7 @@ module.exports = {
   },
   content: {
     padding: '2px',
-    height: '510px'
+    height: '590px'
   },
   content_bar: {
     fontSize: '20px',
@@ -59,16 +59,6 @@ module.exports = {
     padding: '5px',
     fontSize: '16px',
     overflow: 'auto',
-  },
-  coverBox: {
-    width: '500px',
-    height: '300px',
-    backgroundColor: '#eee',
-    overflow: 'hidden',
-    margin: '0 auto'
-  },
-  coverImage: {
-    width: '100%'
   },
   tab: {
     display: 'inline-block',
