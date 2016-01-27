@@ -31,35 +31,22 @@ module.exports = {
   },
   content: {
     padding: '10px',
-    width: '75%',
+    width: '95%',
     margin: '10px auto'
   },
-  group: {
-    padding: '10px',
-    position: 'relative',
-    marginTop: '10px',
+  year: {
+    color: '#bbb'
   },
-  groupCoverBox: {
-    maxHeight: '40px',
-    overflow: 'hidden',
-    float: 'left',
+  month: {
+    color: '#999',
+    marginLeft: '20px'
   },
-  groupContent: {
-    marginLeft: '50px',
-    textAlign: 'right',
-    padding: '10px',
-    position: 'absolute',
-    top: '0',
-    bottom: '0',
-    right: '0',
-    left: '0'
+  day: {
+    color: '#666',
+    marginLeft: '50px'
   },
-  groupTitle: {
-    fontSize: '20px',
-    float: 'left'
-  },
-  groupDate: {
-    fontSize: '14px',
-    fontStyle: 'italic'
+  doc: {
+    color: '#666',
+    marginLeft: '70px'
   }
 }

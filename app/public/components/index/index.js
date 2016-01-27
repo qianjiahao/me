@@ -14,9 +14,27 @@ var Index = React.createClass({
 
   render() {
     var data = store.data();
+    var result = {};
 
-    console.log(data && data.toJS());
-    
+    data.get('data')
+      .groupBy(item => new Date(item.get('modify_date')).getFullYear())
+      .forEach((v, year) => {
+        result[year] = {};
+        v
+        .groupBy(item => new Date(item.get('modify_date')).getMonth() + 1)
+        .forEach((v, month) => {
+          result[year][month] = {};
+          v
+          .groupBy(item => new Date(item.get('modify_date')).getDate())
+          .forEach((v, day) => {
+            result[year][month][day] = [];
+            v.forEach((v, k) => {
+              result[year][month][day].push(v.toJS());
+            });
+          });
+        });
+      });
+      
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>
@@ -28,24 +46,43 @@ var Index = React.createClass({
             <span style={Style.headSecond}>点滴</span>
           </div>
           <div style={Style.content}>
-            {data.get('data').size 
-              ? data.get('data').map((v, k) => {
-
+            {
+              Object.keys(result).map((year, k) => {
                 return (
-                  <div key={k} style={Style.group} className="clearFix">
-                    <div style={Style.groupCoverBox}>
-                      <img src={`uploads/images/${v.get('cover')}`} width="40px"/>
-                    </div>
-                    <div style={Style.groupContent}>
-                      <span style={Style.groupTitle}>{v.get('title')}</span>
-                      <span style={Style.groupDate}>{moment(v.get('modify_date')).format('MM-DD YYYY')}</span>
-                    </div>
+                  <div key={k}>
+                    <h1 style={Style.year}>{year}年</h1>
+                    {
+                      Object.keys(result[year]).map((month, k) => {
+                        return (
+                          <div key={k}>
+                            <h2 style={Style.month}>{month}月</h2>
+                            {
+                              Object.keys(result[year][month]).map((day, k) => {
+                                return (
+                                  <div key={k}>
+                                    <h3 style={Style.day}>{day}日</h3>
+                                    {
+                                      result[year][month][day].map((doc, k) => {
+                                        console.log(doc);
+                                        return (
+                                          <div key={k} style={Style.doc}>
+                                            <h4>{doc.title}</h4>
+                                          </div>
+                                        )
+                                      })         
+                                    }
+                                  </div>
+                                )
+                              })
+                            }
+                          </div>
+                        )
+                      })                      
+                    }
                   </div>
                 )
               })
-              : <span>nothing right now ...</span>
             }
-
           </div>
         </div>
       </div>
