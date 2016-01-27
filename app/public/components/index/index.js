@@ -4,6 +4,7 @@ var Style = require('./style.js');
 var { msg , mixins } = require('iflux');
 var store = require('./store.js');
 var moment = require('moment');
+var { Link } = require('react-router');
 
 var Index = React.createClass({
   mixins: [mixins.StoreMixin(store), PureRenderMixin],
@@ -38,7 +39,7 @@ var Index = React.createClass({
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>
-          <img className="cover-img" src="../../images/bg2.jpg" />
+          <img className="cover-img" src="images/bg2.jpg" />
         </div>
         <div style={Style.warpper}>
           <div style={Style.head}>
@@ -66,7 +67,7 @@ var Index = React.createClass({
                                         return (
                                           <div key={k} style={Style.doc}>
                                             <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
-                                            <span style={Style.title}>{doc.title}</span>
+                                            <Link style={Style.title} to={`/doc/${doc.uuid}`}>{doc.title}</Link>
                                           </div>
                                         )
                                       })         

@@ -84,4 +84,13 @@ module.exports = {
       });  
     });
   },
+  findOne(query) {
+    return new Promise((resolve, reject) => {
+      Blog.findOne(query, { _id: 0}, (err, blogs) => {
+        if(err) reject(err);
+
+        resolve(blogs);
+      });  
+    });
+  },
 }

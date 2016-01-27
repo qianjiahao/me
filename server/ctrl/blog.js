@@ -4,7 +4,6 @@ var checkLogin = require('./check.js');
 exports.blog_post = (req, res) => {
   try {
     (async function () {
-
       checkLogin(req, res);
       var uuid = req.body.uuid || '';
       var blog = {
@@ -23,7 +22,6 @@ exports.blog_post = (req, res) => {
         var data = await Blog.create(blog);
       }
       return res.json({ result: 'ok', data: data });
-
     })();
   } catch (e) {
     console.log(e);
@@ -34,15 +32,30 @@ exports.blog_post = (req, res) => {
 
 exports.blog_query = (req, res) => {
   try {
-
+    
     (async function () {
       var params = req.body;
       var data = await Blog.find(params);
       res.json({ result: 'ok', data: data });
     })();
-    
+
   } catch (e) {
     console.log(e);
     res.json({ result: 'error', err: e });
+  }
+}
+
+exports.blog_findOne = (req, res) => {
+  try {
+    (async function () {
+
+      var params = req.body;
+      var data = await Blog.findOne(params);
+
+      res.json({ result: 'ok', data: data });
+    })();
+  } catch (e) {
+    console.log(e);
+    return res.json({ result: 'error', err: e });
   }
 }
