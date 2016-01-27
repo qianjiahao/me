@@ -1,9 +1,10 @@
 module.exports = {
   container: {
-    width: '600px',
+    width: '620px',
     boxShadow: '0px 0px 6px #666',
     height: '100%',
-    margin: '0 auto'
+    margin: '0 auto',
+    padding: '0 10px'
   },
   title: {
     textAlign: 'center',

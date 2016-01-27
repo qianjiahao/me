@@ -24,6 +24,7 @@ msg.on('image:query', query);
 msg.on('image:remove', remove);
 msg.on('image:select', select);
 msg.on('image:page', page);
+msg.on('image:clear', clear);
 
 /*
   标示调用者，返回传入的id
@@ -103,3 +104,6 @@ function remove () {
   }).catch(err => console.log(err));
 }
 
+function clear () {
+  store.cursor().set('selected', Immutable.List());
+}

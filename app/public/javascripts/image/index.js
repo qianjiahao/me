@@ -87,9 +87,9 @@ var Image = React.createClass({
     if(data.size) {
       this.props.onFinish(data.toJS(), id);
       msg.emit('image:token', '');
-
     }
     msg.emit('image:active', false);
+    msg.emit('image:clear');
   }
 
 });
