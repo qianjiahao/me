@@ -10,5 +10,8 @@ module.exports = {
     textAlign: 'center',
     fontSize: '24px',
     padding: '10px'
+  },
+  modify_date: {
+    float: 'right'
   }
 }
