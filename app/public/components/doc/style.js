@@ -9,9 +9,13 @@ module.exports = {
   title: {
     textAlign: 'center',
     fontSize: '24px',
-    padding: '10px'
+    padding: '10px',
   },
   modify_date: {
-    float: 'right'
+    float: 'right',
+    fontStyle: 'italic'
+  },
+  content: {
+    marginTop: '40px'
   }
 }

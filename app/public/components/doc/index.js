@@ -16,9 +16,9 @@ var Doc = React.createClass({
 
     return (
       <div style={Style.container}>
-        <div style={Style.title}>{data.getIn(['data', 'title'])}</div>
-        <span style={Style.modify_date}>{moment(data.getIn(['data', 'modify_date'])).format('HH:mm:ss  MMMM Do YYYY')}</span>
-        <div dangerouslySetInnerHTML={{__html: data.getIn(['data', 'h_content'])}}></div>
+        <div style={Style.title}>{data.getIn(['doc', 'title'])}</div>
+        <span style={Style.modify_date}>{moment(data.getIn(['doc', 'modify_date'])).format('HH:mm:ss  MMMM Do YYYY')}</span>
+        <div style={Style.content} dangerouslySetInnerHTML={{__html: data.getIn(['doc', 'h_content'])}}></div>
       </div>
     );
   }
