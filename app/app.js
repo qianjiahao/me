@@ -16,7 +16,7 @@ var Doc = require('./public/components/doc');
 var App = React.createClass({
   render () {
     return (
-      <div>
+      <div style={{height: '100%'}}>
         <Nav />
         <div style={{marginLeft: '40px', overflowX: 'hidden', height: '100%'}}>{this.props.children}</div>
       </div>

@@ -39,7 +39,7 @@ var Index = React.createClass({
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>
-          <img className="cover-img" src="images/bg2.jpg" />
+          <div className="cover-img" style={{backgroundImage: 'url(images/bg2.jpg)'}} />
         </div>
         <div style={Style.warpper}>
           <div style={Style.head}>
