@@ -8,9 +8,30 @@ var store = module.exports = Store({
   title: '',
   h_content: '',
   m_content: '',
+  create_date: '',
 
   tab: 0,
 });
+msg.on('writer:init', id => {
+  ajax({
+    url: '/blog/findOne',
+    type: 'post',
+    data: { uuid: id }
+  }).then(res => {
+    if(res.result === 'ok') {
+      store.cursor().withMutations(cursor => {
+        cursor.set('uuid', res.data.uuid);
+        cursor.set('title', res.data.title);
+        cursor.set('m_content', res.data.m_content);
+        cursor.set('h_content', res.data.h_content);
+        cursor.set('create_date', res.data.create_date);
+      });
+    } else {
+      window.location.hash = '#/index';
+    }
+    console.log(res);
+  }).catch(err => console.log(err));
+})
 
 msg.on('clear', () => {
   store.cursor().withMutations(cursor => {
@@ -58,6 +79,10 @@ msg.on('save', () => {
     publish: 0
   }
 
+  if(store.data().get('uuid')) {
+    model.create_date = store.data().get('create_date');
+  }
+
   ajax({
     url: '/blog/post',
     type: 'post',
@@ -80,6 +105,10 @@ msg.on('publish', () => {
     h_content: store.data().get('h_content'),
     modify_date: new Date(),
     publish: 1
+  }
+
+  if(store.data().get('uuid')) {
+    model.create_date = store.data().get('create_date');
   }
 
   ajax({

@@ -18,3 +18,15 @@ msg.on('doc:init', id => {
   }).catch(err => console.log(err));
 })
 
+msg.on('doc:remove', id => {
+  ajax({
+    url: '/blog/remove',
+    type: 'post',
+    data: { uuid: id }
+  }).then(res => {
+    console.log(res);
+    if(res.result === 'ok') {
+      msg.emit('index:init');
+    }
+  }).catch(err => console.log(err));
+})

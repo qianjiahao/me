@@ -14,7 +14,7 @@ var Writer = React.createClass({
   componentDidMount() {
     var params = this.props.params;
     if(params.id) {
-      msg.emit('change_uuid', params.id);
+      msg.emit('writer:init', params.id);
     }
   },
   render: function() {

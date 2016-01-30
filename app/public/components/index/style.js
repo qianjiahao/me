@@ -54,5 +54,9 @@ module.exports = {
   },
   title: {
     marginLeft: '40px'
+  },
+  edit: {
+    float: 'right',
+    margin: '0 10px'
   }
 }

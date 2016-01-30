@@ -15,6 +15,8 @@ module.exports = {
     fontStyle: 'italic'
   },
   content: {
-    marginTop: '40px'
+    marginTop: '40px',
+    minHeight: '500px',
+    paddingBottom: '20px'
   }
 }

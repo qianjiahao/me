@@ -18,15 +18,15 @@ var Index = React.createClass({
     var result = {};
 
     data.get('data')
-      .groupBy(item => new Date(item.get('modify_date')).getFullYear())
+      .groupBy(item => new Date(item.get('create_date')).getFullYear())
       .forEach((v, year) => {
         result[year] = {};
         v
-        .groupBy(item => new Date(item.get('modify_date')).getMonth() + 1)
+        .groupBy(item => new Date(item.get('create_date')).getMonth() + 1)
         .forEach((v, month) => {
           result[year][month] = {};
           v
-          .groupBy(item => new Date(item.get('modify_date')).getDate())
+          .groupBy(item => new Date(item.get('create_date')).getDate())
           .forEach((v, day) => {
             result[year][month][day] = [];
             v.forEach((v, k) => {
@@ -68,6 +68,9 @@ var Index = React.createClass({
                                           <div key={k} style={Style.doc}>
                                             <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
                                             <Link style={Style.title} to={`/doc/${doc.uuid}`}>{doc.title}</Link>
+                                            
+                                            <Link style={Style.edit} to={`/console/writer/${doc.uuid}`}>编辑</Link>
+                                            <a style={Style.edit} href="javascript:;" onClick={() => msg.emit('doc:remove', doc.uuid)}>remove</a>
                                           </div>
                                         )
                                       })         

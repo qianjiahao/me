@@ -22,7 +22,7 @@ msg.on('login', () => {
     data: user
   }).then(res => {
     if(res.result === 'ok') {
-      window.location.hash = '#/console';
+      window.location.hash = '#/index';
     }
     store.cursor().set('msg', res.msg);
   }).catch(err => {

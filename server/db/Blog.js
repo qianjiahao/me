@@ -49,28 +49,12 @@ module.exports = {
   save(blog) {
     return new Promise((resolve, reject) => {
       blog.save((err, blog) => {
+        if(err) console.log(err);
+
         if(err) reject(err);
 
         resolve(blog);
       });  
-    });
-  },
-  findByUuid(uuid) {
-    return new Promise((resolve, reject) => {
-      Blog.findOne({ uuid: uuid }, (err, blog) => {
-        if(err) reject(err);
-
-        resolve(blog);
-      });
-    });
-  },
-  findByTitle(title) {
-    return new Promise((resolve, reject) => {
-      Blog.find({ title: title }, (err, blog) => {
-        if(err) reject(err);
-
-        resolve(blog);
-      });
     });
   },
   find(query) {
@@ -84,11 +68,20 @@ module.exports = {
   },
   findOne(query) {
     return new Promise((resolve, reject) => {
-      Blog.findOne(query, { _id: 0}, (err, blogs) => {
+      Blog.findOne(query, {}, (err, blogs) => {
         if(err) reject(err);
 
         resolve(blogs);
       });  
     });
   },
+  remove(query) {
+    return new Promise((resolve, reject) => {
+      Blog.remove(query, (err) => {
+        if(err) reject(err);
+
+        resolve();
+      })
+    })
+  }
 }

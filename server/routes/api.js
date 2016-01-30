@@ -3,7 +3,7 @@ var router = express.Router();
 
 var { authCode, login, logout, checkLoginStatus } = require('../ctrl/login.js');
 var { image_query, image_upload, image_remove } = require('../ctrl/image.js');
-var { blog_post, blog_query, blog_findOne } = require('../ctrl/blog.js');
+var { blog_post, blog_query, blog_findOne, blog_remove } = require('../ctrl/blog.js');
 
 /**
  * 无需验证登录状态
@@ -26,5 +26,6 @@ router.post('/image/remove', image_remove);
 router.post('/blog/post', blog_post);
 router.post('/blog/query', blog_query);
 router.post('/blog/findOne', blog_findOne);
+router.post('/blog/remove', blog_remove);
 
 module.exports = router;
