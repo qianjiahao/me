@@ -23,6 +23,7 @@ msg.on('login', () => {
   }).then(res => {
     if(res.result === 'ok') {
       window.location.hash = '#/index';
+      msg.emit('checkLoginStatus');
     }
     store.cursor().set('msg', res.msg);
   }).catch(err => {

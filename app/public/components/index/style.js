@@ -1,5 +1,4 @@
 module.exports = {
-  
   container: {
     width: '100%',
     position: 'relative',
@@ -23,11 +22,11 @@ module.exports = {
   },
   headOne: {
     fontSize: '24px',
-    paddingLeft: '100px'
+    paddingLeft: '20%'
   },
   headSecond: {
-    fontSize: '30px',
-    paddingLeft: '220px'
+    fontSize: '24px',
+    paddingLeft: '40%'
   },
   content: {
     padding: '10px',

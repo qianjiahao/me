@@ -3,10 +3,10 @@ var Style = require('./style.js');
 var store = require('./store.js');
 var assgin = require('../../javascripts/Object.assign.js');
 var { msg, mixins } = require('iflux');
-var StoreMixin = mixins.StoreMixin;
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Login = React.createClass({
-  mixins: [StoreMixin(store)],
+  mixins: [mixins.StoreMixin(store), PureRenderMixin],
 
   render: function() {
 

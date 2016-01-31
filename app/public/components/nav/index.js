@@ -5,10 +5,10 @@ var assgin = require('../../javascripts/Object.assign.js');
 var { msg, mixins } = require('iflux');
 var store = require('./store.js');
 var StoreMixin = mixins.StoreMixin;
-
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Nav = React.createClass({
-  mixins: [StoreMixin(store)],
+  mixins: [StoreMixin(store), PureRenderMixin],
 
   componentDidMount() {
     msg.emit('checkLoginStatus');

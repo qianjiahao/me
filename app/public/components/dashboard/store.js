@@ -6,7 +6,7 @@ var store = module.exports = Store({
   result: Immutable.List()
 });
 
-msg.on('init', () => {
+msg.on('dashboard:init', () => {
 
   ajax({
     url: '/blog/query',

@@ -43,8 +43,8 @@ var Index = React.createClass({
         </div>
         <div style={Style.warpper}>
           <div style={Style.head}>
-            <span style={Style.headOne}>记录生活<br /></span>
-            <span style={Style.headSecond}>点滴</span>
+            <span style={Style.headOne}>“所谓诚其意者，毋自欺也”<br /></span>
+            <span style={Style.headSecond}>--《礼记·大学》</span>
           </div>
           <div style={Style.content}>
             {
@@ -68,9 +68,6 @@ var Index = React.createClass({
                                           <div key={k} style={Style.doc}>
                                             <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
                                             <Link style={Style.title} to={`/doc/${doc.uuid}`}>{doc.title}</Link>
-                                            
-                                            <Link style={Style.edit} to={`/console/writer/${doc.uuid}`}>编辑</Link>
-                                            <a style={Style.edit} href="javascript:;" onClick={() => msg.emit('doc:remove', doc.uuid)}>remove</a>
                                           </div>
                                         )
                                       })         

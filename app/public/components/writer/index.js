@@ -31,7 +31,7 @@ var Writer = React.createClass({
           <div style={Style.content_bar}>
             <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 0)}><i className="iconfont icon-text" style={Style.i}></i></span>
             <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 1)}><i className="iconfont icon-html" style={Style.i}></i></span>
-            <span style={assgin({}, Style.tab)} onClick={() => msg.emit('image:active', true, 'content')}><i className="iconfont icon-image" style={Style.i}></i></span>            
+            <span style={assgin({}, Style.tab)} onClick={this.image}><i className="iconfont icon-image" style={Style.i}></i></span>
             <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('publish')}><i className="iconfont icon-publish" style={Style.i}></i></div>
             <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('save')}><i className="iconfont icon-save" style={Style.i}></i></div>
           </div>
@@ -45,6 +45,12 @@ var Writer = React.createClass({
         <Image onFinish={this.finish}/>
       </div>
     );
+  },
+
+  image() {
+    msg.emit('image:active', true, 'content');
+    msg.emit('image:tab', 0);
+
   },
 
   finish(data, id) {

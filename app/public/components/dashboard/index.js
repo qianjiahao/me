@@ -2,12 +2,14 @@ var React = require('react');
 var Style = require('./style.js');
 var { msg, mixins } = require('iflux');
 var store = require('./store.js');
+var { Link } = require('react-router');
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Dashboard = React.createClass({
-  mixins: [mixins.StoreMixin(store)],
+  mixins: [mixins.StoreMixin(store), PureRenderMixin],
 
   componentDidMount() {
-    msg.emit('init');
+    msg.emit('dashboard:init');
   },
   render: function() {
 
@@ -21,6 +23,8 @@ var Dashboard = React.createClass({
               <th style={Style.th}>title</th>
               <th style={Style.th}>content</th>
               <th style={Style.th}>publish</th>
+              <th style={Style.th}>edit</th>
+              <th style={Style.th}>remove</th>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +34,8 @@ var Dashboard = React.createClass({
                   <td style={Style.td}>{v.get('title')}</td>
                   <td style={Style.td}>{v.get('h_content').slice(0, 60)}</td>
                   <td style={Style.td}>{v.get('publish')}</td>
+                  <td style={Style.td}><Link to={`/console/writer/${v.get('uuid')}`}>编辑</Link></td>
+                  <td style={Style.td}><a href="javascript:;" onClick={() => msg.emit('doc:remove', v.get('uuid'))}>remove</a></td>
                 </tr>
               )
             })}

@@ -8,7 +8,7 @@ if(Object.keys(data)) {
     if(err) return err;
 
     if(user) {
-      return console.log('Find one reuslt : ', user);
+      return console.log('Find one reuslt : ', user.username);
     }
 
     if(!user) {
@@ -19,7 +19,7 @@ if(Object.keys(data)) {
           User.create(data, (err, user) => {
             if(err) return err;
 
-            console.log('Create one user : ', user);
+            console.log('Create one user : ', user.username);
           });
         });
       });    

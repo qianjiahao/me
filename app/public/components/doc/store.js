@@ -26,7 +26,7 @@ msg.on('doc:remove', id => {
   }).then(res => {
     console.log(res);
     if(res.result === 'ok') {
-      msg.emit('index:init');
+      msg.emit('dashboard:init');
     }
   }).catch(err => console.log(err));
 })

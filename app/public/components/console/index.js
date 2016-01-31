@@ -1,10 +1,10 @@
 var React = require('react');
 var { msg, mixins } = require('iflux');
 var Style = require('./style.js');
-var { Link } = require('react-router');
-var assgin = require('../../javascripts/Object.assign.js');
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Console = React.createClass({
+  mixins: [PureRenderMixin],
 
   componentWillMount() {
     msg.emit('checkLoginStatus');

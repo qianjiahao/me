@@ -14,10 +14,6 @@ var Image = React.createClass({
     }
   },
 
-  componentDidMount() {
-    msg.emit('image:tab', 0);
-  },
-
   render: function() {
 
     var data = store.data();
@@ -46,7 +42,7 @@ var Image = React.createClass({
         <div style={Style.content}>
           {tab == 0 
             ? (
-                <div style={Style.imageContent} className="clearFix">
+                <div style={Style.imageContent} className="clearFix" onKeyUp={this.keyUp}>
                   <div style={assign({}, Style.pageBtn, Style.pagePre)} className="page" onClick={() => msg.emit('image:page', data.get('currentPage') - 1)}><i className="iconfont icon-pre"></i></div>
                   <div className="clearFix">
                     {/* 图片 */}
@@ -90,6 +86,13 @@ var Image = React.createClass({
     }
     msg.emit('image:active', false);
     msg.emit('image:clear');
+  },
+
+  keyUp(e) {
+    if(e.keyCode == 13) {
+      console.log('keyUp')
+      // this.finish();
+    }
   }
 
 });
