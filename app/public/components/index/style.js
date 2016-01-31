@@ -28,6 +28,10 @@ module.exports = {
     fontSize: '24px',
     paddingLeft: '40%'
   },
+  author: {
+    textAlign: 'right',
+    padding: '20px'
+  },
   content: {
     padding: '10px',
     width: '95%',

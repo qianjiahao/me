@@ -1,4 +1,7 @@
 module.exports = {
+  image: {
+    transition: 'all 0.3s'
+  },
   nav: {
     position: 'absolute',
     bottom: '10px',
@@ -10,6 +13,11 @@ module.exports = {
     color: 'white',
     cursor: 'pointer',
     fontSize: '24px',
-    transition: 'all 0.3s'
+  },
+  show: {
+    opacity: '1'
+  },
+  hide: {
+    opacity: '0'
   }
 }

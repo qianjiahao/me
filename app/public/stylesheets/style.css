@@ -6,7 +6,18 @@ html,body {
   box-sizing: border-box;
   position: relative;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #666;
+  color: #444;
+}
+
+.item {
+  color: #111;
+  text-decoration: none;
+}
+.item:hover {
+  text-decoration: underline;
+}
+.item:visited, .item:active {
+  color: #bbb;
 }
 
 .clearFix {
@@ -75,6 +86,3 @@ html,body {
     transform: rotate(405deg); 
   }
 }
-
-/*blue #00B7FF*/
-/*blue #3dbcf5 */

@@ -1,5 +1,6 @@
 var React = require('react');
 var Style = require('./style.js');
+var assign = require('javascripts/Object.assign.js');
 
 var Cover = React.createClass({
   getInitialState() {
@@ -13,7 +14,8 @@ var Cover = React.createClass({
     return {
       images: images,
       url: images[0],
-      index: 0
+      index: 0,
+      time: 5000
     }
   },
 
@@ -24,36 +26,35 @@ var Cover = React.createClass({
 
     var timer ;
 
-    this.toggleCover = function () {
+    this.toggleCover = function (index) {
 
       _this.setState({
-        url: _this.state.images[this.state.index],
-        index: (this.state.index + 1) % len
+        index: (index) % len
       });
 
       clearInterval(timer);
 
       timer = setInterval(() => {
         _this.setState({
-          url: _this.state.images[this.state.index],
-          index: (this.state.index + 1) % len
+          index: (index + 1) % len
         });
-      },3000);
+      },_this.state.time);
     }
 
-    this.toggleCover();
+    this.toggleCover(this.state.index);
 
   },
 
   render: function() {
     return (
       <div>
-        <div className="cover-img" style={{backgroundImage: `url(${this.state.url})`}} />
+        {this.state.images.map((v, k) => {
+          return (<div key={k} className="cover-img" style={assign({}, {backgroundImage: `url(${v})`}, Style.image, (this.state.index == k ? Style.show : Style.hide))} />)
+        })}
+        
         <div style={Style.nav}>
         {this.state.images.map((v, k) => {
-          return (
-              <i key={k} className="iconfont icon-dot" style={Style.dot} onClick={this.click.bind(this, k)}></i>
-            )
+          return (<i key={k} className="iconfont icon-dot" style={Style.dot} onClick={this.click.bind(this, k)}></i>)
         })}
         </div>
       </div>
@@ -61,11 +62,7 @@ var Cover = React.createClass({
   },
 
   click(index) {
-    this.setState({
-      index: index
-    });
-
-    this.toggleCover();
+    this.toggleCover(index);
   }
 });
 

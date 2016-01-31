@@ -48,6 +48,7 @@ var Index = React.createClass({
             <span style={Style.headOne}>“所谓诚其意者，毋自欺也”<br /></span>
             <span style={Style.headSecond}>--《礼记·大学》</span>
           </div>
+          <div style={Style.author}>博主：qianjiahao</div>
           <div style={Style.content}>
             {
               Object.keys(result).map((year, k) => {
@@ -69,10 +70,10 @@ var Index = React.createClass({
                                         return (
                                           <div key={k} style={Style.doc}>
                                             <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
-                                            <Link style={Style.title} to={`/doc/${doc.uuid}`}>{doc.title}</Link>
+                                            <Link style={Style.title} className="item" to={`/doc/${doc.uuid}`}>{doc.title}</Link>
                                           </div>
                                         )
-                                      })         
+                                      })
                                     }
                                   </div>
                                 )
@@ -80,7 +81,7 @@ var Index = React.createClass({
                             }
                           </div>
                         )
-                      })                      
+                      })
                     }
                   </div>
                 )
