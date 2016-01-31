@@ -18,6 +18,7 @@
 .icon-image:before { content: "\e600"; }
 .icon-pre:before { content: "\e601"; }
 .icon-next:before { content: "\e602"; }
+.icon-dot:before { content: "\e61b"; }
 .icon-close:before { content: "\e613"; }
 .icon-login:before { content: "\e608"; }
 .icon-publish:before { content: "\e60d"; }

@@ -5,6 +5,8 @@ var { msg , mixins } = require('iflux');
 var store = require('./store.js');
 var moment = require('moment');
 var { Link } = require('react-router');
+var Cover = require('javascripts/cover');
+
 
 var Index = React.createClass({
   mixins: [mixins.StoreMixin(store), PureRenderMixin],
@@ -39,7 +41,7 @@ var Index = React.createClass({
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>
-          <div className="cover-img" style={{backgroundImage: 'url(images/bg2.jpg)'}} />
+          <Cover />
         </div>
         <div style={Style.warpper}>
           <div style={Style.head}>
