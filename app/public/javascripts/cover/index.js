@@ -13,7 +13,6 @@ var Cover = React.createClass({
 
     return {
       images: images,
-      url: images[0],
       index: 0,
       time: 5000
     }
