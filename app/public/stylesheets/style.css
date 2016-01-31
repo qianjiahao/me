@@ -15,6 +15,7 @@ html,body {
 }
 .item:hover {
   text-decoration: underline;
+  color: #3dbcf5;
 }
 .item:visited, .item:active {
   color: #bbb;
