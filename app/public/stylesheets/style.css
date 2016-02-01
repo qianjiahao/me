@@ -12,10 +12,12 @@ html,body {
 .item {
   color: #111;
   text-decoration: none;
+  border-left: 5px white solid;
+  padding-left: 10px;
 }
 .item:hover {
-  text-decoration: underline;
-  color: #3dbcf5;
+  /*text-decoration: underline;*/
+  border-left: 5px red solid;
 }
 .item:visited, .item:active {
   color: #bbb;
