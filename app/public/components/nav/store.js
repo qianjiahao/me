@@ -28,9 +28,7 @@ msg.on('checkLoginStatus', () => {
       store.cursor().set('isLogin', false);
       window.location.hash = '#/';
     }
-  }).catch(err => {
-    console.log(err);
-  });
+  }).catch(err => console.log(err));
 });
 
 msg.on('logout', () => {
@@ -44,7 +42,5 @@ msg.on('logout', () => {
     } else {
       console.log(res.msg);
     }
-  }).catch(err => {
-    console.log(err);
-  });
+  }).catch(err => console.log(err));
 });

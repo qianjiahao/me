@@ -26,9 +26,7 @@ msg.on('login', () => {
       msg.emit('checkLoginStatus');
     }
     store.cursor().set('msg', res.msg);
-  }).catch(err => {
-    console.log(err);
-  });
+  }).catch(err => console.log(err));
 });
 
 msg.on('changeUsername', username => {

@@ -17,4 +17,4 @@ msg.on('index:init', () => {
       store.cursor().set('data', Immutable.fromJS(res.data));
     }
   }).catch(err => console.log(err))
-})
+});

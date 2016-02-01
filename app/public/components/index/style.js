@@ -14,7 +14,6 @@ module.exports = {
   warpper: {
     marginRight: '25%',
     backgroundColor: 'white',
-    paddingRight: '10px',
   },
   head: {
     padding: '10px',

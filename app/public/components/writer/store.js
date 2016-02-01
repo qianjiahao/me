@@ -29,7 +29,6 @@ msg.on('writer:init', id => {
     } else {
       window.location.hash = '#/index';
     }
-    console.log(res);
   }).catch(err => console.log(err));
 })
 

@@ -1,9 +1,10 @@
 var React = require('react');
+var PureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
+var { msg, mixins } = require('iflux');
+var assign = require('javascripts/Object.assign.js');
+
 var Style = require('./style.js');
 var store = require('./store.js');
-var assgin = require('../../javascripts/Object.assign.js');
-var { msg, mixins } = require('iflux');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Login = React.createClass({
   mixins: [mixins.StoreMixin(store), PureRenderMixin],
@@ -46,7 +47,7 @@ var Login = React.createClass({
           <div style={Style.submit} className="hoverBtn" onClick={() => msg.emit('login')}>submit</div>
         </div>
 
-        <div style={assgin({}, Style.group, Style.msg)}>{data && data.get('msg')}</div>
+        <div style={assign({}, Style.group, Style.msg)}>{data && data.get('msg')}</div>
       </div>
     );
   },

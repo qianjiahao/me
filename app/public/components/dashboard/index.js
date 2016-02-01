@@ -1,9 +1,10 @@
 var React = require('react');
-var Style = require('./style.js');
+var PureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 var { msg, mixins } = require('iflux');
-var store = require('./store.js');
 var { Link } = require('react-router');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
+
+var Style = require('./style.js');
+var store = require('./store.js');
 
 var Dashboard = React.createClass({
   mixins: [mixins.StoreMixin(store), PureRenderMixin],

@@ -1,15 +1,15 @@
 var React = require('react');
-var Style = require('./style.js');
+var PureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 var { msg, mixins } = require('iflux');
-var store = require('./store.js');
-var assgin = require('../../javascripts/Object.assign.js');
+var assign = require('javascripts/Object.assign.js');
 var markdown = require('markdown').markdown;
 var Image = require('javascripts/image');
 
-var StoreMixin = mixins.StoreMixin;
+var Style = require('./style.js');
+var store = require('./store.js');
 
 var Writer = React.createClass({
-  mixins: [StoreMixin(store)],
+  mixins: [mixins.StoreMixin(store), PureRenderMixin],
 
   componentDidMount() {
     var params = this.props.params;
@@ -24,16 +24,16 @@ var Writer = React.createClass({
     return (
       <div style={Style.container}>
         <div style={Style.bar}>
-          <input type="text" style={assgin({}, Style.title, Style.input)} value={data.get('title')} onChange={(e) => msg.emit('change_title', e.target.value)} placeholder="标题"/>
+          <input type="text" style={assign({}, Style.title, Style.input)} value={data.get('title')} onChange={(e) => msg.emit('change_title', e.target.value)} placeholder="标题"/>
         </div>
 
         <div style={Style.content}>
           <div style={Style.content_bar}>
-            <span style={assgin({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 0)}><i className="iconfont icon-text" style={Style.i}></i></span>
-            <span style={assgin({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 1)}><i className="iconfont icon-html" style={Style.i}></i></span>
-            <span style={assgin({}, Style.tab)} onClick={this.image}><i className="iconfont icon-image" style={Style.i}></i></span>
-            <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('publish')}><i className="iconfont icon-publish" style={Style.i}></i></div>
-            <div style={assgin({}, Style.tab, Style.right)} onClick={() => msg.emit('save')}><i className="iconfont icon-save" style={Style.i}></i></div>
+            <span style={assign({}, Style.tab, (data.get('tab') == 0 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 0)}><i className="iconfont icon-text" style={Style.i}></i></span>
+            <span style={assign({}, Style.tab, (data.get('tab') == 1 ? Style.active : {}))} onClick={(e) => msg.emit('toggle_tab', 1)}><i className="iconfont icon-html" style={Style.i}></i></span>
+            <span style={assign({}, Style.tab)} onClick={this.image}><i className="iconfont icon-image" style={Style.i}></i></span>
+            <div style={assign({}, Style.tab, Style.right)} onClick={() => msg.emit('publish')}><i className="iconfont icon-publish" style={Style.i}></i></div>
+            <div style={assign({}, Style.tab, Style.right)} onClick={() => msg.emit('save')}><i className="iconfont icon-save" style={Style.i}></i></div>
           </div>
           <div style={Style.content_area}>
             {data.get('tab') == 0 

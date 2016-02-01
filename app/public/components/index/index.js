@@ -1,11 +1,12 @@
 var React = require('react');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
-var Style = require('./style.js');
+var PureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 var { msg , mixins } = require('iflux');
-var store = require('./store.js');
-var moment = require('moment');
 var { Link } = require('react-router');
+var moment = require('moment');
 var Cover = require('javascripts/cover');
+
+var Style = require('./style.js');
+var store = require('./store.js');
 
 
 var Index = React.createClass({
@@ -31,8 +32,9 @@ var Index = React.createClass({
           .groupBy(item => new Date(item.get('create_date')).getDate())
           .forEach((v, day) => {
             result[year][month][day] = [];
-            v.forEach((v, k) => {
-              result[year][month][day].push(v.toJS());
+            v
+            .forEach((v, k) => {
+              result[year][month][day].push(v);
             });
           });
         });
@@ -69,8 +71,8 @@ var Index = React.createClass({
                                       result[year][month][day].map((doc, k) => {
                                         return (
                                           <div key={k} style={Style.doc}>
-                                            <span style={Style.date}>{moment(doc.modify_date).format('HH:mm:ss')}</span>
-                                            <Link style={Style.title} className="item" to={`/doc/${doc.uuid}`}>{doc.title}</Link>
+                                            <span style={Style.date}>{moment(doc.get('modify_date')).format('HH:mm:ss')}</span>
+                                            <Link style={Style.title} className="item" to={`/doc/${doc.get('uuid')}`}>{doc.get('title')}</Link>
                                           </div>
                                         )
                                       })

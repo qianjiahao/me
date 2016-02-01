@@ -24,7 +24,6 @@ msg.on('doc:remove', id => {
     type: 'post',
     data: { uuid: id }
   }).then(res => {
-    console.log(res);
     if(res.result === 'ok') {
       msg.emit('dashboard:init');
     }

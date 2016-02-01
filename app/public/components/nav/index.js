@@ -1,14 +1,14 @@
 var React = require('react');
+var PureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 var { Link } = require('react-router');
-var Style = require('./style.js');
-var assgin = require('../../javascripts/Object.assign.js');
+var assign = require('javascripts/Object.assign.js');
 var { msg, mixins } = require('iflux');
+
+var Style = require('./style.js');
 var store = require('./store.js');
-var StoreMixin = mixins.StoreMixin;
-var PureRenderMixin = require('react-addons-pure-render-mixin');
 
 var Nav = React.createClass({
-  mixins: [StoreMixin(store), PureRenderMixin],
+  mixins: [mixins.StoreMixin(store), PureRenderMixin],
 
   componentDidMount() {
     msg.emit('checkLoginStatus');
@@ -21,24 +21,24 @@ var Nav = React.createClass({
     return (
       <div style={Style.container}>
 
-        <Link to="/index" style={assgin({}, Style.box, Style.logo, Style.a)}>Q</Link>
+        <Link to="/index" style={assign({}, Style.box, Style.logo, Style.a)}>Q</Link>
         
         {data && data.get('isLogin')
           ? (
             <div>
-              <a href="javascript:;" style={assgin({}, Style.box, Style.login, Style.a)} onClick={() => msg.emit('logout')}>
+              <a href="javascript:;" style={assign({}, Style.box, Style.login, Style.a)} onClick={() => msg.emit('logout')}>
                 <i className="iconfont icon-logout"></i>
               </a>
-              <Link to="/console/writer" style={assgin({}, Style.box, Style.a)}>
+              <Link to="/console/writer" style={assign({}, Style.box, Style.a)}>
                 <i className="iconfont icon-writer"></i>
               </Link>
-              <Link to="/console/dashboard" style={assgin({}, Style.box, Style.a)}>
+              <Link to="/console/dashboard" style={assign({}, Style.box, Style.a)}>
                 <i className="iconfont icon-dashboard"></i>
               </Link>
             </div>
           ) 
           : (
-            <Link to="/login" style={assgin({}, Style.box, Style.login, Style.a)}>
+            <Link to="/login" style={assign({}, Style.box, Style.login, Style.a)}>
               <i className="iconfont icon-login"></i>
             </Link>
           )
