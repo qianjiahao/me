@@ -7,6 +7,16 @@ var { msg, mixins } = require('iflux');
 var Cover = React.createClass({
   mixins: [mixins.StoreMixin(store)],
 
+  getDefaultProps() {
+    return {
+      data: []
+    }
+  },
+
+  componentWillMount() {
+    msg.emit('cover:init', this.props.data);
+  },
+
   componentDidMount() {
     msg.emit('cover:start', 0);
   },

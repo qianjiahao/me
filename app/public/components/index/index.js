@@ -43,7 +43,7 @@ var Index = React.createClass({
     return (
       <div style={Style.container}>
         <div style={Style.rightAside}>
-          <Cover />
+          <Cover data={['images/bg2.jpg', 'images/bg3.jpg', 'latte.jpg']}/>
         </div>
         <div style={Style.warpper}>
           <div style={Style.head}>

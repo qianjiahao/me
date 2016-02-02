@@ -21,47 +21,38 @@
       width: 100% !important;
     }
 
-    .circle {
+    .round {
       width: 26vw;
       height: 26vw;
       position: absolute;
       top: 25%;
       right: 38vw;
-      /*border: 1px #b1b1b1 solid;*/
+      border: 3px #eee solid;
+      border-top: 3px #b1b1b1 solid;
+      border-radius: 26vw;
       transform: rotate(45deg);
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);
 
       animation-name:round;
-      animation-duration: 2.4s;
-      animation-timing-function: ease-in-out;
+      animation-duration: 0.8s;
+      animation-timing-function: linear;
       animation-iteration-count: infinite;
 
       -webkit-animation-name:round;
-      -webkit-animation-duration: 2.4s;
-      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-duration: 0.8s;
+      -webkit-animation-timing-function: linear;
       -webkit-animation-iteration-count: infinite;
 
       -moz-animation-name:round;
-      -moz-animation-duration: 2.4s;
-      -moz-animation-timing-function: ease-in-out;
+      -moz-animation-duration: 0.8s;
+      -moz-animation-timing-function: linear;
       -moz-animation-iteration-count: infinite;
-    }
-
-    .dot {
-      width: 1.5vw;
-      height: 1.5vw;
-      border-radius: 1.5vw;
-      position: absolute;
-      box-shadow: 0px 0px 2px #333;
     }
 
     @keyframes round {
       0% {
         transform: rotate(45deg);
-      }
-      60% {
-        transform: rotate(405deg); 
       }
       100% {
         transform: rotate(405deg); 
@@ -72,9 +63,6 @@
       0% {
         -webkit-transform: rotate(45deg);
       }
-      60% {
-        -webkit-transform: rotate(405deg); 
-      }
       100% {
         -webkit-transform: rotate(405deg); 
       }
@@ -84,83 +72,16 @@
       0% {
         -moz-transform: rotate(45deg);
       }
-      60% {
-        -moz-transform: rotate(405deg); 
-      }
       100% {
         -moz-transform: rotate(405deg); 
       }
-    }
-
-    .d8 { background-color: #000000; }
-    .d7 { background-color: #8B00FF; }
-    .d6 { background-color: #0000FF; }
-    .d5 { background-color: #00FFFF; }
-    .d4 { background-color: #00FF00; }
-    .d3 { background-color: #FFFF00; }
-    .d2 { background-color: #FF7F00; }
-    .d1 { background-color: #FF0000; }
-    .d0 { background-color: #FFFFFF; }
-
-    .c0 { 
-      animation-delay: 0.0s;
-      -webkit-animation-delay: 0.0s;
-      -moz-animation-delay: 0.0s;
-    }
-    .c1 { 
-      animation-delay: 0.1s;
-      -webkit-animation-delay: 0.1s;
-      -moz-animation-delay: 0.1s;
-    }
-    .c2 { 
-      animation-delay: 0.2s;
-      -webkit-animation-delay: 0.2s;
-      -moz-animation-delay: 0.2s;
-    }
-    .c3 { 
-      animation-delay: 0.3s;
-      -webkit-animation-delay: 0.3s;
-      -moz-animation-delay: 0.3s;
-    }
-    .c4 { 
-      animation-delay: 0.4s;
-      -webkit-animation-delay: 0.4s;
-      -moz-animation-delay: 0.4s;
-    }
-    .c5 { 
-      animation-delay: 0.5s;
-      -webkit-animation-delay: 0.5s;
-      -moz-animation-delay: 0.5s;
-    }
-    .c6 { 
-      animation-delay: 0.6s;
-      -webkit-animation-delay: 0.6s;
-      -moz-animation-delay: 0.6s;
-    }
-    .c7 { 
-      animation-delay: 0.7s;
-      -webkit-animation-delay: 0.7s;
-      -moz-animation-delay: 0.7s;
-    }
-    .c8 { 
-      animation-delay: 0.8s;
-      -webkit-animation-delay: 0.8s;
-      -moz-animation-delay: 0.8s;
     }
     
     </style>
 </head>
 <body>
   <div id="content">
-    <div class="circle c0"><div class="dot d0"></div></div>
-    <div class="circle c1"><div class="dot d1"></div></div>
-    <div class="circle c2"><div class="dot d2"></div></div>
-    <div class="circle c3"><div class="dot d3"></div></div>
-    <div class="circle c4"><div class="dot d4"></div></div>
-    <div class="circle c5"><div class="dot d5"></div></div>
-    <div class="circle c6"><div class="dot d6"></div></div>
-    <div class="circle c7"><div class="dot d7"></div></div>
-    <div class="circle c8"><div class="dot d8"></div></div>
+  <div class="round"></div>
   </div>
   
   

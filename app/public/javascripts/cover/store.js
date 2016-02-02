@@ -2,16 +2,16 @@ var { msg, Store } = require('iflux');
 var Immutable = require('immutable');
 
 var store = module.exports = Store({
-  images: Immutable.fromJS([
-    'images/bg2.jpg',
-    'images/bg3.jpg',
-    'images/latte.jpg'
-  ]),
+  images: Immutable.List(),
   index: 0,
   time: 5000
 });
 
 var timer ;
+
+msg.on('cover:init', data => {
+  store.cursor().set('images', Immutable.fromJS(data));
+});
 
 msg.on('cover:start', (index) => {
   var len = store.data().get('images').size;
