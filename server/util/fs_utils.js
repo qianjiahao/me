@@ -1,6 +1,18 @@
 var fs = require('fs');
 var path = require('path');
 
+exports.copy = copy;
+exports.iter = iter;
+exports.remove = remove;
+
+/**
+ * 复制文件、文件夹
+ * @param  {[type]} source   [description]
+ * @param  {[type]} target   [description]
+ * @param  {[type]} type     [description]
+ * @param  {[type]} progress [description]
+ * @return {[type]}          [description]
+ */
 function copy (source, target, type, progress) {
   return new Promise((resolve, reject) => {
 
@@ -73,5 +85,63 @@ function copy (source, target, type, progress) {
   })
 }
 
-module.exports = copy;
 
+/**
+ * 遍历目标路径
+ * @param  {[type]} sources [description]
+ * @return {[type]}         [description]
+ */
+function iter (sources) {
+  return new Promise((resolve, reject) => {
+    fs.stat(sources, (err) => {
+      if(err) reject(err);
+
+      fs.readdir(sources, (err, file) => {
+        if(err) reject(err);
+
+        resolve(file);
+      })
+    })
+  })
+}
+
+
+/**
+ * 删除文件、清空文件夹
+ * @param  {[type]} source [description]
+ * @param  {[type]} type   [description]
+ * @return {[type]}        [description]
+ */
+function remove (source, type) {
+  return new Promise((resolve, reject) => {
+    fs.stat(source, (err) => {
+      if(err) return reject(err);
+
+      if(type === 'file') {
+        fs.unlink(source, (err) => {
+          if(err) return reject(err);
+
+          return resolve(source);
+        })
+      } else {
+        fs.readdir(source, (err, dir) => {
+          if(err) return reject(err);
+
+          if(dir && !dir.length) return reject('directory is empty now!');
+
+          Promise.all(
+            dir.map((v) => {
+              return new Promise((resolve, reject) => {
+                fs.unlink(path.join(source, v), (err) => {
+                  if(err) return reject(err);
+
+                  return resolve(path.join(source, v));
+                });
+              });
+            })
+          ).then(res => resolve(res)).catch(err => reject(err))
+        })
+      }
+    })
+  })
+}

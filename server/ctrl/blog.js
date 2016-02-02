@@ -6,6 +6,7 @@ var assign = require('../util/Object.assign.js');
 exports.blog_post = (req, res) => {
   try {
     (async function () {
+
       checkLogin(req, res);
       var id = req.body.uuid || '';
       var blog = {
@@ -33,13 +34,11 @@ exports.blog_post = (req, res) => {
       } else {
         blog.uuid = uuid.v1();
         blog.create_date = new Date();
-        console.log(blog);
         // 是否发布
         var data = await Blog.create(blog);
-        console.log(data);
       }
-
       return res.json({ result: 'ok', data: data });
+
     })();
   } catch (e) {
     console.log(e);
@@ -50,15 +49,16 @@ exports.blog_post = (req, res) => {
 
 exports.blog_query = (req, res) => {
   try {
-    
     (async function () {
+
       var params = req.body;
       var data = await Blog.find(params);
       res.json({ result: 'ok', data: data });
-    })();
 
+    })();
   } catch (e) {
     console.log(e);
+
     res.json({ result: 'error', err: e });
   }
 }
@@ -69,27 +69,29 @@ exports.blog_findOne = (req, res) => {
 
       var params = req.body;
       var data = await Blog.findOne(params);
-
       res.json({ result: 'ok', data: data });
+
     })();
   } catch (e) {
     console.log(e);
+
     return res.json({ result: 'error', err: e });
   }
 }
 
 exports.blog_remove = (req, res) => {
   try {
-    checkLogin(req, res);
     (async function () {
-      var params = req.body;
-      console.log(params);
-      await Blog.remove(params);
 
+      checkLogin(req, res);
+      var params = req.body;
+      await Blog.remove(params);
       res.json({ result: 'ok', data: {} });
+      
     })();
   } catch (e) {
     console.log(e);
+
     return res.json({ result: 'error', err: e }); 
   }
 }

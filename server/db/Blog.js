@@ -49,8 +49,6 @@ module.exports = {
   save(blog) {
     return new Promise((resolve, reject) => {
       blog.save((err, blog) => {
-        if(err) console.log(err);
-
         if(err) reject(err);
 
         resolve(blog);
