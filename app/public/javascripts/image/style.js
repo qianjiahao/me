@@ -6,13 +6,16 @@ module.exports = {
     boxShadow: '0px 0px 6px #666',
     position: 'relative',
     margin: '-500px auto',    
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    transition: 'all 0.3s'
   },
   show: {
-    display: 'block'
+    zIndex: '1',
+    opacity: '1'
   },
   hide: {
-    display: 'none'
+    zIndex: '-1',
+    opacity: '0'
   },
   left: {
     float: 'left'
@@ -32,7 +35,8 @@ module.exports = {
     bottom: '0',
     left: '0',
     right: '0',
-    backgroundColor: 'rgba(102, 102, 102, 0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    transition: 'all 0.3s'
   },
 
   // 头部
@@ -94,10 +98,15 @@ module.exports = {
     bottom: '0px',
     left: '0px',
     right: '0px',
-    opacity: '0.7',
     backgroundColor: 'black',
     textAlign: 'center',
     lineHeight: '98px'
+  },
+  selected: {
+    opacity: '0.7'
+  },
+  unselected: {
+    opacity: '0'
   },
   boxIcon: {
     color: 'white',

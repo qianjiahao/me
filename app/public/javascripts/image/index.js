@@ -26,7 +26,7 @@ var Image = React.createClass({
 
     return (
       <div>
-        <div style={assign({}, Style.bg, (active ? Style.show : Style.hide))}></div>
+        <div style={assign({}, Style.bg, (active ? Style.show : Style.hide))}  onClick={() => msg.emit('image:active', false)}></div>
         <div style={assign({}, Style.container, this.props.styles, (active ? Style.show : Style.hide))}>
                 {/* 头部 */}
           <div style={Style.topBar}>
@@ -54,7 +54,7 @@ var Image = React.createClass({
 
                         return (
                           <div style={Style.box} key={k} onClick={() => msg.emit('image:select', v)}>
-                          <div style={assign({}, Style.boxTop, (s ? Style.show : Style.hide))}><i className="iconfont icon-done" style={Style.boxIcon}></i></div>
+                          <div style={assign({}, Style.boxTop, (s ? Style.selected : Style.unselected))}><i className="iconfont icon-done" style={Style.boxIcon}></i></div>
                             <img src={`uploads/images/${v}`} width="100%"/>
                           </div>
                         )
@@ -88,7 +88,6 @@ var Image = React.createClass({
       msg.emit('image:token', '');
     }
     msg.emit('image:active', false);
-    msg.emit('image:clear');
   }
 });
 

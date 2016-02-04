@@ -38,6 +38,9 @@ function active (value, id) {
   if(id) {
     token(id);
   }
+  if(!value) {
+    clear()
+  }
 }
 
 function tab (value) {
