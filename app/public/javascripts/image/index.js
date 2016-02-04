@@ -28,7 +28,7 @@ var Image = React.createClass({
       <div>
         <div style={assign({}, Style.bg, (active ? Style.show : Style.hide))}  onClick={() => msg.emit('image:active', false)}></div>
         <div style={assign({}, Style.container, this.props.styles, (active ? Style.show : Style.hide))}>
-                {/* 头部 */}
+          {/* 头部 */}
           <div style={Style.topBar}>
             <span style={assign({}, Style.left, Style.fontSize22)}>选择图片</span>
             <span style={assign({}, Style.right)} onClick={() => msg.emit('image:active', false)}><i className="iconfont icon-close" style={Style.fontSize22}></i></span>
