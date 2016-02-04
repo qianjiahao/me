@@ -4,10 +4,8 @@ module.exports = {
     width: '700px',
     height: '400px',
     boxShadow: '0px 0px 6px #666',
-    position: 'absolute',
-    left: '270px',
-    top: '100px',
-    zIndex: '100',
+    position: 'relative',
+    margin: '-500px auto',    
     backgroundColor: 'white'
   },
   show: {
@@ -27,6 +25,14 @@ module.exports = {
   },
   paddingLeft: {
     paddingLeft: '10px'
+  },
+  bg: {
+    position: 'absolute',
+    top: '0',
+    bottom: '0',
+    left: '0',
+    right: '0',
+    backgroundColor: 'rgba(102, 102, 102, 0.7)',
   },
 
   // 头部

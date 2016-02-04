@@ -3,7 +3,6 @@ module.exports = {
     width: '700px',
     margin: '0 auto',
     backgroundColor: 'white',
-    padding: '0 50px',
     boxSizing: 'border-box',
     height: '100%'
   },
