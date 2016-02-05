@@ -1,6 +1,6 @@
 var React = require('react');
 var { render } = require('react-dom');
-var { Router, Route, Link, browserHistory, IndexRoute } = require('react-router');
+var { Router, Route, browserHistory, IndexRoute } = require('react-router');
 
 require('./public/stylesheets/style.css');
 require('./public/icons/iconfont.css');

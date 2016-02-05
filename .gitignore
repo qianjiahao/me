@@ -34,3 +34,6 @@ dist
 
 # uploads
 uploads/
+
+# idea config
+.idea
